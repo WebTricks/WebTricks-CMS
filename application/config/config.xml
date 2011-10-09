@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * WebTricks
+ *
+ * LICENSE
+ *
+ * For the full copyright and license information, please view the 
+ * following URL: http://www.webtricksframework.com/license 
+ * 
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in
+ * the future. If you wish to customize WebTricks for your needs please go to 
+ * http://www.webtricksframework.com for more information.
+ *
+ * @copyright Copyright (c) 2007-2010 Cream (http://www.cream.nl)
+ * @license   http://www.webtricksframework.com/license
+ */
+-->
+<config>
+    <global>
+        <install>
+            <date></date>
+        </install>
+        <data>
+        	<connection>
+        		<default_setup>
+                    <server>localhost</server>
+                    <username/>
+                    <password/>
+                    <database>webtricks</database>
+					<init_statements>SET NAMES utf8</init_statements>
+                    <type>mysql</type>        	        		
+        		</default_setup>
+        	</connection>
+        </data>
+		<content>
+			<fields>
+				<checkbox>Cream_Content_Fields_CheckboxField</checkbox>			
+				<date>Cream_Content_Fields_DateField</date>			
+				<datetime>Cream_Content_Fields_DateTimeField</datetime>
+				<html>Cream_Content_Fields_DateField</html>
+				<icon>Cream_Content_Fields_TextField</icon>
+				<image>Cream_Content_Fields_DateField</image>			
+				<text>Cream_Content_Fields_TextField</text>
+			
+				<tree>Cream_Content_Fields_TreeField</tree>
+			</fields>
+			<links>
+				<type>database</type>
+				<connection>
+					<read>default_read</read>
+					<write>default_write</write>
+				</connection>						
+			</links>		
+			<repository>
+				<core>
+					<type>database</type>
+					<read_only>0</read_only>
+					<connection>
+						<read>default_read</read>
+						<write>default_write</write>
+					</connection>				
+				</core>
+				<content>
+					<type>database</type>
+					<read_only>0</read_only>					
+					<connection>
+						<read>default_read</read>
+						<write>default_write</write>
+					</connection>								
+				</content>
+				<web>
+					<type>database</type>
+					<read_only>0</read_only>					
+					<connection>
+						<read>default_read</read>
+						<write>default_write</write>
+					</connection>								
+				</web>				
+				<default_content_repository>core</default_content_repository>
+			</repository>
+		</content>
+		<environment>
+			<max_execution_time>60</max_execution_time>
+			<smtp_server>localhost</smtp_server>
+			<smtp_port>25</smtp_port>
+		</environment>
+		<links>
+    		<urlReplacements>
+      			<replace>
+      				<mode>1</mode>
+      				<find>&amp;</find> 
+      				<replaceWith>and</replaceWith>
+      			</replace>
+      			<replace>
+      				<mode>1</mode>
+      				<find> </find> 
+      				<replaceWith>-</replaceWith>
+      			</replace>      			
+    		</urlReplacements>		
+		</links>
+
+		<overrides>
+			
+		</overrides>
+		<security>
+			<authentication>
+				<default_domain>website</default_domain>
+			</authentication>
+			<domains>
+				<domain>
+					<name>shell</name>
+					<description>Domain for WebTricks shell users.</description>
+					<anonymousUserName>anonymous</anonymousUserName>
+				</domain>
+				<domain>
+					<name>website</name>
+					<description>Domain for website users.</description>
+				</domain>				
+			</domains>
+			<managers>
+				<domains>
+					<data_manager>config</data_manager>
+					<path>global/security/domains</path>				
+				</domains>
+			</managers>
+			<data>
+				<type>database</type>
+				<connection>
+					<read>default_read</read>
+					<write>default_write</write>
+				</connection>	
+			</data>
+		</security>
+    	<webcontrols>
+    		<webcontrol>
+    			<class>Cream_Web_UI_WebControls</class>
+    		</webcontrol>
+    		<htmlcontrol>
+    			<class>Cream_Web_UI_HtmlControls</class>    		
+    		</htmlcontrol>
+    	</webcontrols>
+		<websites>
+		
+			<database>core</database>
+			
+			<site>
+				<name>WebTricks</name>
+				<content_repository>content</content_repository>
+				<culture>en</culture>
+				<path>/webtricks</path>		
+				<repository>core</repository>
+				<rootPath>WebTricks/content/Applications</rootPath>
+				<router>Cream_Controller_Router_WebTricks</router>
+				<domain>shell</domain>
+			</site>
+			<site>
+				<name>Install</name>
+				<path>/install</path>
+				<repository>core</repository>
+				<domain>shell</domain>
+			</site>
+			<site>
+				<name>Website</name>
+				<repository>content</repository>
+				<rootPath>WebTricks/content</rootPath>
+				<router>Cream_Controller_Router_Frontend</router>	
+				<domain>website</domain>
+			</site>
+		</websites>    	
+    	<globalization>
+			<default_culture>en_US</default_culture>
+			<timezone>America/Los_Angeles</timezone>
+    	</globalization>
+		<workflows>
+			<!-- 
+			Defines the storage of the workflow history entries. The following config options are
+			available:
+
+			type: Type of data manager to use.
+			connection.read: Name of the database connection to use for reading.
+			connection.write: Name of the database connection to use for writing.
+			-->
+			<history>
+				<type>database</type>
+				<connection>
+					<read>default_read</read>
+					<write>default_write</write>
+				</connection>						
+			</history>
+		</workflows>
+    </global>
+
+	<system>
+		<web>
+	    	<routers>
+    	    	<webtricks>
+    	    		<area>webtricks</area>
+    	    		<class>Cream_Controller_Router_WebTricks</class>
+    	    	</webtricks>
+	            <install>
+	            	<class>Cream_Controller_Router_Default</class>
+	            </install>    	    	
+	            <frontend>
+	            	<class>Cream_Controller_Router_Frontend</class>
+	            </frontend>
+			</routers>
+		</web>
+	</system>
+</config>

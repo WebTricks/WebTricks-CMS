@@ -1,0 +1,51 @@
+<?php
+/**
+ * WebTricks
+ *
+ * LICENSE
+ *
+ * For the full copyright and license information, please view the 
+ * following URL: http://www.webtricksframework.com/license 
+ * 
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in
+ * the future. If you wish to customize WebTricks for your needs please go to 
+ * http://www.webtricksframework.com for more information.
+ *
+ * @copyright Copyright (c) 2007-2011 Cream (http://www.cream.nl)
+ * @license   http://www.webtricksframework.com/license
+ */
+?>
+<div class="page-head">
+    <h2><?php echo $this->__("WebTricks CMS Installation Wizard") ?>!</h2>
+</div>
+<form action="" method="post">
+<div style="height:20em; border:1px solid #ccc; margin-bottom:8px; padding:5px; background:#fff; overflow: auto; overflow-x:hidden; overflow-y:scroll;">
+<?php echo $this->getLicenseHtml(); ?>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+function changeSubmitStatus(obj) {
+    $('#submit-button').attr('disabled', !obj.checked);
+
+    if(obj.checked){
+        $('#submit-button').removeClass('disabled');
+    } else {        
+        $('#submit-button').addClass('disabled');
+    }
+}
+//]]>
+</script>
+    <p>
+        <button type="submit" id="submit-button" class="disabled right" disabled="disabled"><span><?php echo $this->__('Continue') ?></span></button>    
+        <input type="checkbox" name="agree" value="1" id="agree" onclick="changeSubmitStatus(this)" class="checkbox" />
+        <label for="agree">I agree to the above terms and conditions</label>
+    </p>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    changeSubmitStatus($('#agree'));
+//]]>
+</script>

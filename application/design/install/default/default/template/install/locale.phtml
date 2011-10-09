@@ -1,0 +1,57 @@
+<?php
+/**
+ * WebTricks
+ *
+ * LICENSE
+ *
+ * For the full copyright and license information, please view the 
+ * following URL: http://www.webtricksframework.com/license 
+ * 
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in
+ * the future. If you wish to customize WebTricks for your needs please go to 
+ * http://www.webtricksframework.com for more information.
+ *
+ * @copyright Copyright (c) 2007-2011 Cream (http://www.cream.nl)
+ * @license   http://www.webtricksframework.com/license
+ */
+?>
+<div class="page-head">
+    <h2><?php echo $this->__('Localization') ?></h2>
+</div>
+
+<form method="post" id="form-validate">
+<fieldset class="callout blue rounded">
+    <h3><?php echo $this->__('Locale settings') ?></h3>
+    <ul>
+        <li>
+            <div class="input-box">
+                <label for="locale"><?php echo $this->__('Locale') ?> <span class="required">*</span></label><br/>
+                <?php echo $this->getLocaleSelect() ?>
+            </div>
+        </li>
+        <li>
+            <div class="input-box">
+                <label for="timezone"><?php echo $this->__('Time Zone') ?> <span class="required">*</span></label><br/>
+                <?php echo $this->getTimezoneSelect() ?>
+            </div>
+            <div class="input-box">
+                <label for="currency"><?php echo $this->__('Default Currency') ?> <span class="required">*</span></label><br/>
+                <?php echo $this->getCurrencySelect() ?>
+            </div>
+        </li>
+    </ul>
+</fieldset>
+<div class="button-set">
+    <button class="form-button right" type="submit"><span><?php echo $this->__('Continue') ?></span></button>
+    <p class="required">* <?php echo $this->__('Required Fields') ?></p>
+</div>
+</form>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#locale').change(function () {
+		document.location = '<?php echo $this->getChangeUrl(); ?>locale/'+ $('#locale').val() +'/?timezone='+ $('#timezone').val() +'&amp;currency='+ $('#currency').val();
+    });
+});
+</script>

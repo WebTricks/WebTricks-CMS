@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * WebTricks
+ *
+ * LICENSE
+ *
+ * For the full copyright and license information, please view the 
+ * following URL: http://www.webtricksframework.com/license 
+ * 
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in
+ * the future. If you wish to customize WebTricks for your needs please go to 
+ * http://www.webtricksframework.com for more information.
+ *
+ * @copyright Copyright (c) 2007-2011 Cream (http://www.cream.nl)
+ * @license   http://www.webtricksframework.com/license
+ */
+-->
+<config>
+    <modules>
+        <WebTricks_Shell>
+            <version>1.0.0</version>
+        </WebTricks_Shell>
+    </modules>
+
+    <webtricks>
+        <routers>
+            <shell>
+                <use>webtricks</use>
+                <args>
+                    <module>WebTricks_Shell</module>
+                    <frontName>webtricks</frontName>
+                </args>
+            </shell>
+        </routers>
+    </webtricks>
+    
+    <shell>
+        <layout>
+            <updates>
+                <main>
+                	<file>main.xml</file>
+                </main>
+            </updates>
+        </layout>
+        <commands>
+			<accessviewer_selectcolumns>WebTricks_Shell_Commands_AccessViewer_SelectColumns</accessviewer_selectcolumns>
+
+			<archive_delete>WebTricks_Shell_Commands_Archives_Delete</archive_delete>
+			<archive_empty>WebTricks_Shell_Commands_Archives_Empty</archive_empty>
+			<archive_refresh>WebTricks_Shell_Commands_Archives_Refresh</archive_refresh>
+			<archive_restore>WebTricks_Shell_Commands_Archives_Restore</archive_restore>
+
+			<brokenlinks_showsystemitems>WebTricks_Shell_Commands_BrokenLinks_ShowSystemItems</brokenlinks_showsystemitems>
+
+			<carousel_home>WebTricks_Shell_Commands_Carousel_Home</carousel_home>
+			<carousel_refresh>WebTricks_Shell_Commands_Carousel_Refresh</carousel_refresh>
+
+			<clipboard_copyidtoclipboard>WebTricks_Shell_Commands_Clipboard_CopyIDToClipboard</clipboard_copyidtoclipboard>
+			<clipboard_copypathtoclipboard>WebTricks_Shell_Commands_Clipboard_CopyPathToClipboard</clipboard_copypathtoclipboard>
+
+			<contenteditor_archive>WebTricks_Shell_Commands_ContentManager_Archive</contenteditor_archive>
+			<contenteditor_back>WebTricks_Shell_Commands_ContentManager_Back</contenteditor_back>
+			<contenteditor_close>WebTricks_Shell_Commands_ContentManager_Close</contenteditor_close>
+			<contenteditor_closepreview>WebTricks_Shell_Commands_ContentManager_ClosePreview</contenteditor_closepreview>
+			<contenteditor_edit>WebTricks_Shell_Commands_ContentManager_Edit</contenteditor_edit>
+			<contenteditor_forward>WebTricks_Shell_Commands_ContentManager_Forward</contenteditor_forward>
+			<contenteditor_home>WebTricks_Shell_Commands_ContentManager_Home</contenteditor_home>
+			<contenteditor_opensecurity>WebTricks_Shell_Commands_ContentManager_OpenSecurity</contenteditor_opensecurity>
+			<contenteditor_incrementmark>WebTricks_Shell_Commands_ContentManager_IncrementMark</contenteditor_incrementmark>
+			<contenteditor_pagedesigner>WebTricks_Shell_Commands_ContentManager_PageDesigner</contenteditor_pagedesigner>
+			<contenteditor_preview>WebTricks_Shell_Commands_ContentManager_Preview</contenteditor_preview>
+			<contenteditor_properties>WebTricks_Shell_Commands_ContentManager_Properties</contenteditor_properties>
+			<contenteditor_reminder>WebTricks_Shell_Commands_ContentManager_Reminder</contenteditor_reminder>
+			<contenteditor_save>WebTricks_Shell_Commands_ContentManager_Save</contenteditor_save>
+			<contenteditor_saveandclose>WebTricks_Shell_Commands_ContentManager_SaveAndClose</contenteditor_saveandclose>
+			<contenteditor_seticon>WebTricks_Shell_Commands_ContentManager_SetIcon</contenteditor_seticon>
+			<contenteditor_showvalidationresult>WebTricks_Shell_Commands_ContentManager_ShowValidationResult</contenteditor_showvalidationresult>			
+			<contenteditor_showworkflowcommands>WebTricks_Shell_Commands_ContentManager_ShowWorkflowCommands</contenteditor_showworkflowcommands>
+			<contenteditor_spellcheck>WebTricks_Shell_Applications_ContentManager_Commands_Spellcheck</contenteditor_spellcheck>
+			<contenteditor_subitems>WebTricks_Shell_Commands_ContentManager_Subitems</contenteditor_subitems>
+			<contenteditor_toggleentiretree>WebTricks_Shell_Commands_ContentManager_ToggleEntireTree</contenteditor_toggleentiretree>
+			<contenteditor_togglefolders>WebTricks_Shell_Commands_ContentManager_ToggleFolders</contenteditor_togglefolders>
+			<contenteditor_togglehiddenitems>WebTricks_Shell_Commands_ContentManager_ToggleHiddenItems</contenteditor_togglehiddenitems>
+			<contenteditor_togglestandardfields>WebTricks_Shell_Commands_ContentManager_ToggleStandardFields</contenteditor_togglestandardfields>
+			<contenteditor_togglerawvalues>WebTricks_Shell_Commands_ContentManager_ToggleRawValues</contenteditor_togglerawvalues>
+			<contenteditor_toggletranslate>WebTricks_Shell_Commands_ContentManager_ToggleTranslate</contenteditor_toggletranslate>
+			<contenteditor_up>WebTricks_Shell_Commands_ContentManager_Up</contenteditor_up>
+			<contenteditor_validatemarkup>WebTricks_Shell_Applications_ContentManager_Commands_ValidateMarkup</contenteditor_validatemarkup>
+			
+			<contentimage_editimage>WebTricks_Shell_Commands_ContentManager_ContentImage_EditImage</contentimage_editimage>
+			
+			<createuser_addroles>WebTricks_Shell_Applications_Security_CreateNewUser_AddRoles</createuser_addroles>
+			
+			<databases_cleanup>WebTricks_Shell_Commands_Databases_CleanUp</databases_cleanup>
+			
+			<domainmanager_delete>WebTricks_Shell_Commands_DomainManager_DeleteDomain</domainmanager_delete>
+			<domainmanager_newdomain>WebTricks_Shell_Commands_DomainManager_NewDomain</domainmanager_newdomain>
+			<domainmanager_editdomain>WebTricks_Shell_Commands_DomainManager_EditDomain</domainmanager_editdomain>
+			
+			<edithtml_fix>WebTricks_Shell_Applications_ContentManager_Dialogs_EditHtml_Commands_Fix</edithtml_fix>
+			<edithtml_format>WebTricks_Shell_Applications_ContentManager_Dialogs_EditHtml_Commands_Format</edithtml_format>
+			<edithtml_validatexhtml>WebTricks_Shell_Applications_ContentManager_Dialogs_EditHtml_Commands_ValidateXHtml</edithtml_validatexhtml>
+			
+			<favorites_add>WebTricks_Shell_Commands_Favorites_Add</favorites_add>
+			<favorites_organize>WebTricks_Shell_Commands_Favorites_Organize</favorites_organize>
+			<favorites_showmenu>WebTricks_Shell_Commands_Favorites_ShowMenu</favorites_showmenu>
+			
+			<globalization_exportlanguage>WebTricks_Shell_Commands_ExportLanguage</globalization_exportlanguage>
+			<globalization_importlanguage>WebTricks_Shell_Commands_ImportLanguage</globalization_importlanguage>
+			<globalization_untranslatedfields>WebTricks_Shell_Commands_UntranslatedFields</globalization_untranslatedfields>
+								
+			<imager_save>WebTricks_Shell_Commands_Imager_Save</imager_save>
+			<imager_open>WebTricks_Shell_Commands_Imager_Open</imager_open>
+			<imager_undo>WebTricks_Shell_Commands_Imager_Undo</imager_undo>
+			<imager_redo>WebTricks_Shell_Commands_Imager_Redo</imager_redo>
+			<imager_crop>WebTricks_Shell_Commands_Imager_Crop</imager_crop>
+			<imager_resize>WebTricks_Shell_Commands_Imager_Resize</imager_resize>
+			<imager_rotateleft>WebTricks_Shell_Commands_Imager_RotateLeft</imager_rotateleft>
+			<imager_rotateright>WebTricks_Shell_Commands_Imager_RotateRight</imager_rotateright>
+			<imager_flipvertical>WebTricks_Shell_Commands_Imager_FlipVertical</imager_flipvertical>
+			<imager_fliphorizontal>WebTricks_Shell_Commands_Imager_FlipHorizontal</imager_fliphorizontal>
+			
+			<item_addfromtemplate>WebTricks_Shell_Commands_AddFromTemplate</item_addfromtemplate>
+			<item_addmaster>WebTricks_Shell_Commands_AddMaster</item_addmaster>
+			<item_addtemplatefield>WebTricks_Shell_Commands_AddTemplateField</item_addtemplatefield>
+			<item_addversion>WebTricks_Shell_Commands_Item_AddVersion</item_addversion>
+			<item_archive>WebTricks_Shell_Commands_Archive</item_archive>
+			<item_archivedateclear>WebTricks_Shell_Commands_ArchiveDateClear</item_archivedateclear>
+			<item_archivedateset>WebTricks_Shell_Commands_ArchiveDateSet</item_archivedateset>
+			<item_changetemplate>WebTricks_Shell_Commands_ChangeTemplate</item_changetemplate>
+			<item_checkin>WebTricks_Shell_Commands_CheckIn</item_checkin>
+			<item_checkout>WebTricks_Shell_Commands_CheckOut</item_checkout>
+			<item_compareversions>WebTricks_Shell_Commands_Item_CompareVersions</item_compareversions>
+			<item_copyto>WebTricks_Shell_Commands_CopyTo</item_copyto>
+			<item_copytoclipboard>WebTricks_Shell_Commands_Item_CopyToClipboard</item_copytoclipboard>
+			<item_cuttoclipboard>WebTricks_Shell_Commands_Item_CutToClipboard</item_cuttoclipboard>
+			<item_create>WebTricks_Shell_Commands_Create</item_create>
+			<item_delete>WebTricks_Shell_Commands_Delete</item_delete>
+			<item_deletechildren>WebTricks_Shell_Commands_DeleteChildren</item_deletechildren>
+			<item_deletetemplatefield>WebTricks_Shell_Commands_DeleteTemplateField</item_deletetemplatefield>
+			<item_deleteversion>WebTricks_Shell_Commands_Item_DeleteVersion</item_deleteversion>
+			<item_design>WebTricks_Shell_Commands_DesignItem</item_design>
+			<item_duplicate>WebTricks_Shell_Commands_Duplicate</item_duplicate>
+			<item_download>WebTricks_Shell_Commands_Download</item_download>
+			<item_edit>WebTricks_Shell_Commands_Edit</item_edit>
+			<item_gototemplate>WebTricks_Shell_Commands_GotoTemplate</item_gototemplate>
+			<item_gotomaster>WebTricks_Shell_Commands_GotoMaster</item_gotomaster>
+			<item_movedown>WebTricks_Shell_Commands_MoveDown</item_movedown>
+			<item_movefirst>WebTricks_Shell_Commands_MoveFirst</item_movefirst>
+			<item_movelast>WebTricks_Shell_Commands_MoveLast</item_movelast>
+			<item_moveto>WebTricks_Shell_Commands_MoveTo</item_moveto>
+			<item_moveup>WebTricks_Shell_Commands_MoveUp</item_moveup>
+			<item_myitems>WebTricks_Shell_Commands_MyItems</item_myitems>
+			<item_new>WebTricks_Shell_Commands_Item_New</item_new>
+			<item_newfolder>WebTricks_Shell_Commands_NewFolder</item_newfolder>
+			<item_openitemsecurityeditor>WebTricks_Shell_Commands_ContentManager_OpenItemSecurityEditor</item_openitemsecurityeditor>
+			<item_pastefromclipboard>WebTricks_Shell_Commands_Item_PasteFromClipboard</item_pastefromclipboard>
+			<item_publish>WebTricks_Shell_Commands_PublishItem</item_publish>
+			<item_publishnow>WebTricks_Shell_Commands_PublishNow</item_publishnow>
+			<item_publishingviewer>WebTricks_Shell_Commands_PublishingViewer</item_publishingviewer>
+			<item_preview>WebTricks_Shell_Commands_PreviewItem</item_preview>
+			<item_rename>WebTricks_Shell_Commands_Rename</item_rename>
+			<item_removelanguage>WebTricks_Shell_Commands_RemoveLanguage</item_removelanguage>
+			<item_reminderclear>WebTricks_Shell_Commands_ReminderClear</item_reminderclear>
+			<item_reminderset>WebTricks_Shell_Commands_ReminderSet</item_reminderset>
+			<item_resetdefaultworkflow>WebTricks_Shell_Commands_ResetDefaultWorkflow</item_resetdefaultworkflow>
+			<item_resetfields>WebTricks_Shell_Commands_ResetFields</item_resetfields>
+			<item_resetsortorder>WebTricks_Shell_Commands_ResetSortorder</item_resetsortorder>
+			<item_securitypreset>WebTricks_Shell_Commands_SecurityPreset</item_securitypreset>
+			<item_selecticon>WebTricks_Shell_Commands_SelectIcon</item_selecticon>
+			<item_selectlanguage>WebTricks_Shell_Commands_SelectLanguage</item_selectlanguage>
+			<item_setlayoutdetails>WebTricks_Shell_Commands_SetLayoutDetails</item_setlayoutdetails>
+			<item_setaliases>WebTricks_Shell_Commands_SetAliases</item_setaliases>
+			<item_setcontextmenu>WebTricks_Shell_Commands_SetContextMenu</item_setcontextmenu>
+			<item_setcustomeditors>WebTricks_Shell_Commands_SetCustomEditors</item_setcustomeditors>
+			<item_setdefaultworkflow>WebTricks_Shell_Commands_SetDefaultWorkflow</item_setdefaultworkflow>
+			<item_setdisplayname>WebTricks_Shell_Commands_SetDisplayName</item_setdisplayname>
+			<item_sethelp>WebTricks_Shell_Commands_SetHelp</item_sethelp>
+			<item_seticon>WebTricks_Shell_Commands_SetIcon</item_seticon>
+			<item_setmasters>WebTricks_Shell_Commands_SetMasters</item_setmasters>
+			<item_setowner>WebTricks_Shell_Commands_SetOwner</item_setowner>
+			<item_setpublishing>WebTricks_Shell_Commands_SetPublishing</item_setpublishing>
+			<item_setribbon>WebTricks_Shell_Commands_SetRibbon</item_setribbon>
+			<item_setsubitemssorting>WebTricks_Shell_Commands_SetSubitemsSorting</item_setsubitemssorting>
+			<item_settreenodestyle>WebTricks_Shell_Commands_SetTreeNodeStyle</item_settreenodestyle>
+			<item_showversions>WebTricks_Shell_Commands_Item_ShowVersions</item_showversions>
+			<item_togglehidden>WebTricks_Shell_Commands_ToggleHidden</item_togglehidden>
+			<item_togglereadonly>WebTricks_Shell_Commands_ToggleReadOnly</item_togglereadonly>
+			<item_transfertodatabase>WebTricks_Shell_Commands_TransferToDatabase</item_transfertodatabase>
+			<item_upload>WebTricks_Shell_Commands_Upload</item_upload>
+			<item_workflow>WebTricks_Shell_Commands_Workflow</item_workflow>
+			
+			<itemsync_dumpitem>WebTricks_Shell_Commands_Serialization_DumpItemCommand</itemsync_dumpitem>
+			<itemsync_dumptree>WebTricks_Shell_Commands_Serialization_DumpTreeCommand</itemsync_dumptree>
+			<itemsync_loadalldatabases>WebTricks_Shell_Commands_Serialization_LoadAllDatabasesCommand</itemsync_loadalldatabases>
+			<itemsync_loaddatabase>WebTricks_Shell_Commands_Serialization_LoadDatabaseCommand</itemsync_loaddatabase>
+			<itemsync_loaditem>WebTricks_Shell_Commands_Serialization_LoadItemCommand</itemsync_loaditem>
+			<itemsync_loadtree>WebTricks_Shell_Commands_Serialization_LoadTreeCommand</itemsync_loadtree>
+			
+			<itemsecurityeditor_changedomain>WebTricks_Shell_Commands_ItemSecurityEditor_ChangeDomain</itemsecurityeditor_changedomain>
+			
+			<masters_new>WebTricks_Shell_Commands_Masters_New</masters_new>
+			<masters_reset>WebTricks_Shell_Commands_Masters_Reset</masters_reset>
+			
+			<media_batchupload>WebTricks_Shell_Commands_Media_BatchUpload</media_batchupload>
+			<media_download>WebTricks_Shell_Commands_Media_Download</media_download>
+			<media_newfolder>WebTricks_Shell_Commands_Media_NewFolder</media_newfolder>
+			<media_multiupload>WebTricks_Shell_Commands_Media_MultiUpload</media_multiupload>
+			<media_play>WebTricks_Shell_Commands_Media_Play</media_play>
+			<media_upload>WebTricks_Shell_Commands_Media_Upload</media_upload>
+			<media_view>WebTricks_Shell_Commands_Media_View</media_view>
+			
+			<preferences_changeregionalsettings>WebTricks_Shell_Commands_Preferences_ChangeRegionalSettings</preferences_changeregionalsettings>
+			<preferences_changeuserinformation>WebTricks_Shell_Commands_Preferences_ChangeUserInformation</preferences_changeuserinformation>
+			<preferences_changewallpaper>WebTricks_Shell_Commands_Preferences_ChangeWallPaper</preferences_changewallpaper>
+			
+			<ribbon_new>WebTricks_Shell_Commands_Ribbon_New</ribbon_new>
+			<ribbon_languages>WebTricks_Shell_Commands_Ribbon_Languages</ribbon_languages>
+			<ribbon_layout>WebTricks_Shell_Commands_Ribbon_Layout</ribbon_layout>
+			<ribbon_security>WebTricks_Shell_Commands_Ribbon_Security</ribbon_security>
+			<ribbon_customize>WebTricks_Shell_Commands_Ribbon_Customize</ribbon_customize>
+			
+			<rolemanager_addmember>WebTricks_Shell_Commands_RoleManager_AddMember</rolemanager_addmember>
+			<rolemanager_addmemberof>WebTricks_Shell_Commands_RoleManager_AddMemberOf</rolemanager_addmemberof>
+			<rolemanager_delete>WebTricks_Shell_Commands_RoleManager_Delete</rolemanager_delete>
+			<rolemanager_newrole>WebTricks_Shell_Commands_RoleManager_NewRole</rolemanager_newrole>
+			<rolemanager_removemember>WebTricks_Shell_Commands_RoleManager_RemoveMember</rolemanager_removemember>
+			<rolemanager_removememberof>WebTricks_Shell_Commands_RoleManager_RemoveMemberOf</rolemanager_removememberof>
+			<rolemanager_viewmembers>WebTricks_Shell_Commands_RoleManager_ViewMembers</rolemanager_viewmembers>
+			<rolemanager_viewparentroles>WebTricks_Shell_Commands_RoleManager_ViewParentRoles</rolemanager_viewparentroles>
+			
+			<security_changeaccount>WebTricks_Shell_Commands_UserManager_ChangeAccount</security_changeaccount>
+			<security_changedomain>WebTricks_Shell_Commands_UserManager_ChangeDomain</security_changedomain>
+			<security_changepassword>WebTricks_Shell_Commands_ChangePassword</security_changepassword>
+			<security_createnewrole>WebTricks_Shell_Commands_CreateNewRole</security_createnewrole>
+			<security_createnewuser>WebTricks_Shell_Commands_CreateNewUser</security_createnewuser>
+			<security_opensecuritymanager>WebTricks_Shell_Commands_OpenSecurityManager</security_opensecuritymanager>
+			<security_openitemsecurityeditor>WebTricks_Shell_Commands_UserManager_OpenItemSecurityEditor</security_openitemsecurityeditor>
+			<security_selectaccount>WebTricks_Shell_Commands_UserManager_SelectAccount</security_selectaccount>
+			
+			<securityeditor_changedomain>WebTricks_Shell_Commands_SecurityEditor_ChangeDomain</securityeditor_changedomain>
+			<securityeditor_changeuser>WebTricks_Shell_Commands_SecurityEditor_ChangeUser</securityeditor_changeuser>
+			<securityeditor_selectcolumns>WebTricks_Shell_Commands_SecurityEditor_SelectColumns</securityeditor_selectcolumns>
+			  
+			<shell_accessviewer>WebTricks_Shell_Commands_Shell_AccessViewer</shell_accessviewer>
+			<shell_audit>WebTricks_Shell_Commands_Shell_Audit</shell_audit>
+			<shell_autodoc>WebTricks_Shell_Commands_Shell_AutoDoc</shell_autodoc>
+			<shell_domainmanager>WebTricks_Shell_Commands_Shell_DomainManager</shell_domainmanager>
+			<shell_editimage>WebTricks_Shell_Commands_Shell_EditImage</shell_editimage>
+			<shell_edittemplate>WebTricks_Shell_Commands_Shell_EditTemplate</shell_edittemplate>
+			<shell_logviewer>WebTricks_Shell_Commands_Shell_LogViewer</shell_logviewer>
+			<shell_rolemanager>WebTricks_Shell_Commands_Shell_RoleManager</shell_rolemanager>
+			<shell_search>WebTricks_Shell_Commands_Shell_Search</shell_search>
+			<shell_securityeditor>WebTricks_Shell_Commands_Shell_SecurityEditor</shell_securityeditor>
+			<shell_useroptions>WebTricks_Shell_Commands_Shell_UserOptions</shell_useroptions>
+			<shell_usermanager>WebTricks_Shell_Commands_Shell_UserManager</shell_usermanager>
+			
+			<system_addlanguage>WebTricks_Shell_Commands_System_AddLanguage</system_addlanguage>
+			<system_brokenlinks>WebTricks_Shell_Commands_System_BrokenLinks</system_brokenlinks>
+			<system_databaseusage>WebTricks_Shell_Commands_System_DatabaseUsage</system_databaseusage>
+			<system_debug>WebTricks_Shell_Commands_System_Debug</system_debug>
+			<system_deletelanguage>WebTricks_Shell_Commands_System_DeleteLanguage</system_deletelanguage>
+			<system_installpackage>WebTricks_Shell_Commands_System_InstallPackage</system_installpackage>
+			<system_logout>WebTricks_Shell_Commands_System_Logout</system_logout>
+			<system_openwebsite>WebTricks_Shell_Commands_System_OpenWebSite</system_openwebsite>
+			<system_preview>WebTricks_Shell_Commands_System_Preview</system_preview>
+			<system_publish>WebTricks_Shell_Commands_System_Publish</system_publish>
+			<system_rebuilddatabase>WebTricks_Shell_Commands_System_RebuildDatabase</system_rebuilddatabase>
+			<system_rebuildlinkdatabase>WebTricks_Shell_Commands_System_RebuildLinkDatabase</system_rebuildlinkdatabase>
+			<system_rebuildsearchindex>WebTricks_Shell_Commands_System_RebuildSearchIndex</system_rebuildsearchindex>
+			<system_run>WebTricks_Shell_Commands_System_RunProgram</system_run>
+			<system_search>WebTricks_Shell_Commands_System_Search</system_search>
+			<system_showabout>WebTricks_Shell_Commands_System_ShowAbout</system_showabout>
+			<system_showlicenses>WebTricks_Shell_Commands_System_ShowLicenses</system_showlicenses>
+			<system_webedit>WebTricks_Shell_Commands_System_WebEdit</system_webedit>
+			
+			<templatebuilder_build>WebTricks_Shell_Commands_TemplateBuilder_Build</templatebuilder_build>
+			<templatebuilder_remove>WebTricks_Shell_Commands_TemplateBuilder_Remove</templatebuilder_remove>
+			<templatebuilder_moveup>WebTricks_Shell_Commands_TemplateBuilder_MoveUp</templatebuilder_moveup>
+			<templatebuilder_movedown>WebTricks_Shell_Commands_TemplateBuilder_MoveDown</templatebuilder_movedown>
+			<templatebuilder_movefirst>WebTricks_Shell_Commands_TemplateBuilder_MoveFirst</templatebuilder_movefirst>
+			<templatebuilder_movelast>WebTricks_Shell_Commands_TemplateBuilder_MoveLast</templatebuilder_movelast>
+			<templatebuilder_newmaster>WebTricks_Shell_Commands_TemplateBuilder_NewMaster</templatebuilder_newmaster>
+			<templatebuilder_setbasetemplates>WebTricks_Shell_Commands_TemplateBuilder_SetBaseTemplates</templatebuilder_setbasetemplates>
+			<templatebuilder_setstandardvalues>WebTricks_Shell_Commands_TemplateBuilder_SetStandardValues</templatebuilder_setstandardvalues>
+			
+			<templates_addfield>WebTricks_Shell_Commands_Templates_AddField</templates_addfield>
+			<templates_addsection>WebTricks_Shell_Commands_Templates_AddSection</templates_addsection>
+			<templates_addmaster>WebTricks_Shell_Commands_Templates_AddMaster</templates_addmaster>
+			<templates_createstandardvalues>WebTricks_Shell_Commands_Templates_CreateStandardValues</templates_createstandardvalues>
+			<templates_new>WebTricks_Shell_Commands_Templates_New</templates_new>
+			<templates_newfolder>WebTricks_Shell_Commands_Templates_NewFolder</templates_newfolder>
+			
+			<user_opensecurityeditor>WebTricks_Shell_Commands_OpenSecurityEditor</user_opensecurityeditor>
+			
+			<usermanager_delete>WebTricks_Shell_Commands_UserManager_Delete</usermanager_delete>
+			<usermanager_disable>WebTricks_Shell_Commands_UserManager_Disable</usermanager_disable>
+			<usermanager_enable>WebTricks_Shell_Commands_UserManager_Enable</usermanager_enable>
+			<usermanager_edituser>WebTricks_Shell_Commands_UserManager_EditUser</usermanager_edituser>
+			<usermanager_newuser>WebTricks_Shell_Commands_UserManager_NewUser</usermanager_newuser>
+			<usermanager_resetsettings>WebTricks_Shell_Commands_UserManager_ResetSettings</usermanager_resetsettings>
+			<usermanager_resetmysettings>WebTricks_Shell_Commands_UserManager_ResetMySettings</usermanager_resetmysettings>
+			<usermanager_setpassword>WebTricks_Shell_Commands_UserManager_SetPassword</usermanager_setpassword>
+			<usermanager_unlock>WebTricks_Shell_Commands_UserManager_Unlock</usermanager_unlock>
+			
+			<webedit_add>WebTricks_Shell_Applications_WebEdit_Commands_Add</webedit_add>
+			<webedit_addrendering>WebTricks_Shell_Applications_WebEdit_Commands_AddRendering</webedit_addrendering>
+			<webedit_aspnettrace>WebTricks_Shell_Applications_WebEdit_Commands_AspNetTrace</webedit_aspnettrace>
+			<webedit_beginedit>WebTricks_Shell_Applications_WebEdit_Commands_BeginEdit</webedit_beginedit>
+			<webedit_changedevice>WebTricks_Shell_Applications_WebEdit_Commands_ChangeDevice</webedit_changedevice>
+			<webedit_changelanguage>WebTricks_Shell_Applications_WebEdit_Commands_ChangeLanguage</webedit_changelanguage>
+			<webedit_changelayout>WebTricks_Shell_Applications_WebEdit_Commands_ChangeLayout</webedit_changelayout>
+			<webedit_close>WebTricks_Shell_Applications_WebEdit_Commands_Close</webedit_close>
+			<webedit_closepagedesigner>WebTricks_Shell_Applications_WebEdit_Commands_ClosePageDesigner</webedit_closepagedesigner>
+			<webedit_chooseimage>WebTricks_Shell_Applications_WebEdit_Commands_ChooseImage</webedit_chooseimage>
+			<webedit_debug>WebTricks_Shell_Applications_WebEdit_Commands_Debug</webedit_debug>
+			<webedit_delete>WebTricks_Shell_Applications_WebEdit_Commands_Delete</webedit_delete>
+			<webedit_downloadprofile>WebTricks_Shell_Applications_WebEdit_Commands_DownloadProfile</webedit_downloadprofile>
+			<webedit_downloadtrace>WebTricks_Shell_Applications_WebEdit_Commands_DownloadTrace</webedit_downloadtrace>
+			<webedit_edit>WebTricks_Shell_Applications_WebEdit_Commands_Edit</webedit_edit>
+			<webedit_edithtml>WebTricks_Shell_Applications_WebEdit_Commands_EditHtml</webedit_edithtml>
+			<webedit_editdate>WebTricks_Shell_Applications_WebEdit_Commands_EditDate</webedit_editdate>
+			<webedit_editimage>WebTricks_Shell_Applications_WebEdit_Commands_EditImage</webedit_editimage>
+			<webedit_editlink>WebTricks_Shell_Applications_WebEdit_Commands_EditLink</webedit_editlink>
+			<webedit_editplaceholderproperties>WebTricks_Shell_Applications_WebEdit_Commands_EditPlaceholderProperties</webedit_editplaceholderproperties>
+			<webedit_editrenderingproperties>WebTricks_Shell_Applications_WebEdit_Commands_EditRenderingProperties</webedit_editrenderingproperties>
+			<webedit_end>WebTricks_Shell_Applications_WebEdit_Commands_End</webedit_end>
+			<webedit_insertlink>WebTricks_Shell_Applications_WebEdit_Commands_InsertLink</webedit_insertlink>
+			<webedit_insertimage>WebTricks_Shell_Applications_WebEdit_Commands_InsertImage</webedit_insertimage>
+			<webedit_layoutsaved>WebTricks_Shell_Applications_WebEdit_Commands_LayoutSaved</webedit_layoutsaved>
+			<webedit_lock>WebTricks_Shell_Applications_WebEdit_Commands_Lock</webedit_lock>
+			<webedit_logout>WebTricks_Shell_Applications_WebEdit_Commands_Logout</webedit_logout>
+			<webedit_new>WebTricks_Shell_Applications_WebEdit_Commands_New</webedit_new>
+			<webedit_nextday>WebTricks_Shell_Applications_WebEdit_Commands_NextDay</webedit_nextday>
+			<webedit_open>WebTricks_Shell_Applications_WebEdit_Commands_Open</webedit_open>
+			<webedit_openmyitems>WebTricks_Shell_Applications_WebEdit_Commands_OpenMyItems</webedit_openmyitems>
+			<webedit_openpagedesigner>WebTricks_Shell_Applications_WebEdit_Commands_OpenPageDesigner</webedit_openpagedesigner>
+			<webedit_openworkbox>WebTricks_Shell_Applications_WebEdit_Commands_OpenWorkbox</webedit_openworkbox>
+			<webedit_preview>WebTricks_Shell_Applications_WebEdit_Commands_Preview</webedit_preview>
+			<webedit_previousday>WebTricks_Shell_Applications_WebEdit_Commands_PreviousDay</webedit_previousday>
+			<webedit_save>WebTricks_Shell_Applications_WebEdit_Commands_Save</webedit_save>
+			<webedit_saved>WebTricks_Shell_Applications_WebEdit_Commands_Saved</webedit_saved>
+			<webedit_saveprofile>WebTricks_Shell_Applications_WebEdit_Commands_SaveProfile</webedit_saveprofile>
+			<webedit_savetrace>WebTricks_Shell_Applications_WebEdit_Commands_SaveTrace</webedit_savetrace>
+			<webedit_selectdate>WebTricks_Shell_Applications_WebEdit_Commands_SelectDate</webedit_selectdate>
+			<webedit_setdevice>WebTricks_Shell_Applications_WebEdit_Commands_SetDevice</webedit_setdevice>
+			<webedit_setlanguage>WebTricks_Shell_Applications_WebEdit_Commands_SetLanguage</webedit_setlanguage>
+			<webedit_stopdebug>WebTricks_Shell_Applications_WebEdit_Commands_StopDebug</webedit_stopdebug>
+			<webedit_toggleborders>WebTricks_Shell_Applications_WebEdit_Commands_ToggleBorders</webedit_toggleborders>
+			<webedit_toggledots>WebTricks_Shell_Applications_WebEdit_Commands_ToggleDots</webedit_toggledots>
+			<webedit_toggleedit>WebTricks_Shell_Applications_WebEdit_Commands_ToggleEdit</webedit_toggleedit>
+			<webedit_toggleinformation>WebTricks_Shell_Applications_WebEdit_Commands_ToggleInformation</webedit_toggleinformation>
+			<webedit_toggleprofile>WebTricks_Shell_Applications_WebEdit_Commands_ToggleProfile</webedit_toggleprofile>
+			<webedit_toggleselect>WebTricks_Shell_Applications_WebEdit_Commands_ToggleSelect</webedit_toggleselect>
+			<webedit_toggletrace>WebTricks_Shell_Applications_WebEdit_Commands_ToggleTrace</webedit_toggletrace>
+			<webedit_unlock>WebTricks_Shell_Applications_WebEdit_Commands_Unlock</webedit_unlock>
+			<webedit_unlockall>WebTricks_Shell_Applications_WebEdit_Commands_UnlockAll</webedit_unlockall>
+			<webedit_webedit>WebTricks_Shell_Applications_WebEdit_Commands_WebEdit</webedit_webedit>
+			
+			<validator_trim>WebTricks_Shell_Commands_ContentManager_Validators_Trim</validator_trim>
+			<validator_viewxhtml>WebTricks_Shell_Commands_ContentManager_Validators_ViewXhtml</validator_viewxhtml>
+			
+			<workbox_logout>WebTricks_Shell_Commands_Workbox_Logout</workbox_logout>
+        </commands>
+	</shell>    
+</config>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<config>
+    <wizard>
+        <steps>
+            <begin>
+                <title>License Agreement</title>
+                <controller>wizard</controller>
+                <action>begin</action>
+            </begin>
+            <locale>
+                <title>Localization</title>
+                <controller>wizard</controller>
+                <action>locale</action>
+            </locale>
+            <config>
+                <title>Configuration</title>
+                <controller>wizard</controller>
+                <action>config</action>
+            </config>
+            <administrator>
+                <title>Create Admin Account</title>
+                <controller>wizard</controller>
+                <action>administrator</action>
+            </administrator>
+            <end>
+                <title>You're All Set!</title>
+                <controller>wizard</controller>
+                <action>end</action>
+            </end>
+        </steps>
+    </wizard>
+    <check>
+        <filesystem>
+            <writeable>
+                <app_etc>
+                    <path>/app/etc</path>
+                    <existence>1</existence>
+                    <recursive>0</recursive>
+                </app_etc>
+				<!--                
+                <var>
+                    <path>/var</path>
+                    <existence>1</existence>
+                    <recursive>1</recursive>
+                </var>
+ 				<media>
+                    <path>/media</path>
+                    <existence>1</existence>
+                    <recursive>1</recursive>
+                </media>
+                -->
+            </writeable>
+        </filesystem>
+        <php>
+            <extensions>
+                <spl/>
+                <dom/>
+                <simplexml/>
+                <pdo_mysql/>
+                <mcrypt/>
+                <hash/>
+                <curl/>
+                <iconv/>
+                <ctype/>
+                <gd/>
+            </extensions>
+        </php>
+        <mysql>
+            <version>4.1.20</version>
+        </mysql>
+    </check>
+</config>

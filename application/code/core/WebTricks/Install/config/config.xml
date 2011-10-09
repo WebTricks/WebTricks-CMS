@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * WebTricks
+ *
+ * LICENSE
+ *
+ * For the full copyright and license information, please view the 
+ * following URL: http://www.webtricksframework.com/license 
+ * 
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in
+ * the future. If you wish to customize WebTricks for your needs please go to 
+ * http://www.webtricksframework.com for more information.
+ *
+ * @copyright Copyright (c) 2007-2010 Cream (http://www.cream.nl)
+ * @license   http://www.webtricksframework.com/license
+ */
+-->
+<config>
+    <modules>
+        <WebTricks_Install>
+            <version>1.0.0</version>
+        </WebTricks_Install>
+    </modules>
+    
+    <global>
+    	<webcontrols>
+    		<install>
+    			<class>WebTricks_Install_WebControls</class>
+    		</install>
+    	</webcontrols>
+    </global>
+
+    <webtricks>
+        <routers>
+            <install>
+                <use>webtricks</use>
+                <args>
+                    <module>WebTricks_Install</module>
+                    <frontName>install</frontName>
+                </args>
+            </install>
+        </routers>
+    </webtricks>
+    
+    <install>
+        <layout>
+            <updates>
+                <main>
+                	<file>main.xml</file>
+                </main>
+            </updates>
+        </layout>
+        <eula_file>LICENSE.html</eula_file>            
+    </install>
+</config>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * WebTricks
+ *
+ * LICENSE
+ *
+ * For the full copyright and license information, please view the 
+ * following URL: http://www.webtricksframework.com/license 
+ * 
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in
+ * the future. If you wish to customize WebTricks for your needs please go to 
+ * http://www.webtricksframework.com for more information.
+ *
+ * @copyright Copyright (c) 2007-2011 Cream (http://www.cream.nl)
+ * @license   http://www.webtricksframework.com/license
+ */
+-->
+<layout>
+    <install_wizard>
+        <block type="webcontrol/template" name="root" output="toHtml">
+            <action method="setTemplate"><template>page.phtml</template></action>
+            <block type="webcontrol/text_list" name="left" as="left"/>
+            <block type="webcontrol/text_list" name="content" as="content"/>
+        </block>
+    </install_wizard>
+</layout>
