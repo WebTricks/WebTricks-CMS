@@ -74,7 +74,7 @@ class WebTricks_Install_WizardController extends WebTricks_Install_Controller_Ac
         }
 
         $leftBlock = $this->getLayout()->createBlock('install/state', 'install.state', array('steps' => $this->_getWizard()->getSteps()));
-        $this->getLayout()->getBlock('left')->append($leftBlock);
+        $this->getLayout()->getBlock('right')->append($leftBlock);
     }	
 
     /**
@@ -106,7 +106,7 @@ class WebTricks_Install_WizardController extends WebTricks_Install_Controller_Ac
      */
     public function beginAction()
     {
-    	if ($this->getRequest()->isPost()) {
+	   	if ($this->getRequest()->isPost()) {
         	$this->_checkIsInstalled();
 
         	$agree = $this->getRequest()->getPost('agree');

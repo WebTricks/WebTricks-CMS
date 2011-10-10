@@ -22,7 +22,7 @@
     <install_wizard>
         <block type="webcontrol/template" name="root" output="toHtml">
             <action method="setTemplate"><template>page.phtml</template></action>
-            <block type="webcontrol/text_list" name="left" as="left"/>
+            <block type="webcontrol/text_list" name="right" as="right"/>
             <block type="webcontrol/text_list" name="content" as="content"/>
         </block>
     </install_wizard>

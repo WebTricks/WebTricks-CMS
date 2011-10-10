@@ -460,7 +460,7 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
         }
 
         $child = $this->getChild($name);
-
+        
         if (!$child) {
             $html = '';
         } else {
@@ -648,6 +648,7 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
      */
     protected function _beforeToHtml()
     {
+    	return true;
     }
 
     /**
@@ -773,6 +774,20 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
     {
         return $this->getLayout()->getController()->getDesign()->getSkinUrl($file, $params);
     }
+    
+    /**
+     * Get url of base javascript file
+     *
+     * To get url of skin javascript file use getSkinUrl()
+     *
+     * @param string $fileName
+     * @return string
+     */
+    public function getJsUrl($fileName='')
+    {
+        /* @TODO correct URL */       
+        return '/js'. $fileName;
+    }    
 
     /**
      * Enter description here...
