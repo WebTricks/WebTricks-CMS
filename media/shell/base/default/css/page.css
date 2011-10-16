@@ -1,0 +1,169 @@
+
+body {
+	background-image: url(../images/background.png);
+	color: #434343;
+    font: 14px/1.4em "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+    color: #314E64;
+    font-weight: bold;
+	text-rendering: optimizelegibility;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+    margin: 0px;
+    padding: 0px;    
+}
+
+h2 {
+	font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 8px;	
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 4px;
+}
+
+.active {
+	font-weight: bold;
+	color: #4C8E0E;	
+}
+
+.right {
+	float: right;	
+}
+
+#content {
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: left;
+    width: 600px;
+}
+
+#col-right {
+	float: right;
+	width: 200px;
+	margin-top: 10px;		
+}
+
+#main {
+	margin-top: 10px;	
+}
+
+#middle-container {
+    min-height: 300px;
+    padding: 18px 18px;
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 5px 5px 5px 5px;
+}
+
+form button {
+	cursor: pointer;
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+}
+
+.button-link, 
+form button {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("../images/button-bg.png") repeat scroll 0 -27px #4C8E0E;
+    border-color: #274807 !important;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1em;
+    padding: 6px 8px 9px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.button-link:hover, 
+form button:hover,
+.button-link:focus, 
+form button:focus, 
+.button-link:active, 
+form button:active {
+    background: url("../images/button-bg.png") repeat scroll 0 -75px #38690A;
+}
+
+.button-link:active, 
+form button:active {
+    position: relative;
+    top: 1px;
+}
+
+
+form button.disabled, 
+form button.disabled:hover {
+    background: url("../images/button-bg.png") repeat scroll 0 -309px #B9D4E7;
+    border-color: #80B1D3 !important;
+    color: #516F83;
+    cursor: default;
+    opacity: 0.5;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+form button.disabled:hover, 
+form button.disabled:focus, 
+form button.disabled:active, 
+form button.disabled:hover:hover, 
+form button.disabled:hover:focus, 
+form button.disabled:hover:active {
+    background: url("../images/button-bg.png") repeat scroll 0 -357px #9BC1DD;
+}
+
+form input {
+	border: 1px solid #CCCCCC;
+	border-radius: 3px 3px 3px 3px;
+	height: 25px;
+}
+
+.page-head {
+	border-bottom: 1px solid #F1F1F1;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.rounded {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;	
+}
+
+.callout {
+	border: 1px solid #DFDFDF;
+	margin-bottom: 18px;
+	padding: 11px;
+	background-color: #ffffff;
+}
+
+.callout.blue {
+	background-color: #ECF5FC;
+	background-image: none;
+	border: 1px solid #C7D1D8;
+}
+
+.footer-container .footer .legality
+{
+	font-size: 11px;
+	color: #ffffff;	
+	text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+	text-align: center;
+}

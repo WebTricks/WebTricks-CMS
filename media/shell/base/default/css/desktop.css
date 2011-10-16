@@ -110,7 +110,7 @@ ul.ux-quickstart-strip li.ux-quickstart-edge { background:transparent !important
 .ux-shortcut-item .x-btn-over .x-btn-br { background-position:-9px -3px; }
 .ux-shortcut-item .x-btn-over .x-btn-bc { background-position:0 -18px; }
 .ux-shortcut-item .x-btn-text { white-space:normal !important; }
-.ux-shortcut-item .x-btn-icon-large-top .x-btn-text { overflow:hidden; padding-top:48px; }
+.ux-shortcut-item .x-btn-icon-large-top .x-btn-text { overflow:hidden; }
 .ux-shortcut-item  button { font-size:11px !important; width:100%; }
 
 /* start menu */
@@ -163,9 +163,10 @@ ul.ux-quickstart-strip li.ux-quickstart-edge { background:transparent !important
 	background-image: url(../images/taskbar/black/start-menu-top-bottom.png);
 }
 .ux-startmenu-nofooter { height:6px; padding:0; }
-.ux-startmenu-bl .ux-startmenu-footer { background-position:12px 6px; background-repeat:no-repeat; color:#15428b; font-size:18px; font-weight:bold; padding:8px 0 1px 48px; }
-.ux-startmenu .ux-menu-app { border-right:1px solid #f0f0f0; float:left; width:60%; }
-.ux-startmenu .ux-menu-tool { float:left; width:39%; }
+.ux-startmenu-bl .ux-startmenu-footer { background-position:12px 6px; background-repeat:no-repeat; color:#15428b; font-size:18px; font-weight:bold; padding:8px 0 1px 0px; }
+.ux-startmenu-bl .ux-startmenu-footer .x-toolbar { background: none; background-color: none; border: none;}
+.ux-startmenu .ux-menu-app { border-right:1px solid #f0f0f0; float:left; width:55%; }
+.ux-startmenu .ux-menu-tool { float:left; width:44%; }
 .ux-startmenu-tl .ux-startmenu-header { 
 	background-position:left center; 
 	background-repeat:no-repeat; 
@@ -473,3 +474,74 @@ ul.ux-quickstart-strip li.ux-quickstart-edge { background:transparent !important
 .x-btn-group.x-btn-group-ribbonstyle .x-btn-group-tc {
     vertical-align:        top;
 }
+
+a.x-menu-item-large {
+    cursor: pointer;
+    display: block;
+    line-height: 16px;
+    outline: 0 none;
+    padding: 11px 21px 11px 43px;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #222222;
+}
+
+.x-menu-item-active a.x-menu-item-large {
+    border-style:solid;
+    border-width:0 1px;
+    margin:0 -1px;
+}
+
+.x-menu-item-active a.x-menu-item-large {
+	border-color:#aaccf6;
+}
+
+.x-menu-item-active {
+    background-position: top center;
+}
+
+a.x-menu-item-large img.x-menu-item-icon {
+    background-position: center center;
+    border: 0 none;
+    height: 32px;
+    left: 3px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 3px;
+    vertical-align: top;
+    width: 32px;
+}
+
+.webtricks-toolbar-body {
+	background-color: #CCD8E7 !important;
+}
+
+/* CONTENT MANAGER */
+.x-fieldcontainer .x-panel-header {
+	background: none;
+	background-color: transparent;
+	border: none;
+}
+
+.x-fieldcontainer .x-toolbar
+{
+	background: none;
+	background-color: transparent;
+	border: none;
+}
+
+.x-contenteditor-header-icon
+{
+	float: left;	
+}
+
+.x-contenteditor-header-title
+{
+	float: left;
+}
+
+.x-contenteditor-header-title h1
+{
+	font-size: 18px;
