@@ -128,8 +128,20 @@ form button.disabled:hover:active {
 
 form input {
 	border: 1px solid #CCCCCC;
-	border-radius: 3px 3px 3px 3px;
+	border-radius: 3px;
 	height: 25px;
+}
+
+form textarea, 
+form select {
+	background: white;
+	border: 1px solid #CCCCCC;
+	padding: 4px 5px;
+	outline: 0;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	box-sizing: border-box;
 }
 
 .page-head {

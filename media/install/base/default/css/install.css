@@ -34,6 +34,19 @@ form input[type=textarea] {
 	height: 25px;
 }
 
+form textarea, 
+form select {
+	background: white;
+	border: 1px solid #CCCCCC;
+	padding: 4px 5px;
+	outline: 0;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+
 .active {
 	font-weight: bold;
 	color: #4C8E0E;	
