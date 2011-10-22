@@ -82,6 +82,11 @@ class Cream_Content_ItemAppearance extends Cream_ApplicationComponent
 		$field->setValue($sortOrder);
 	}
 	
+	/**
+	 * Returns the name of the icon to be used for the item.
+	 * 
+	 * @return string
+	 */
 	public function getIcon()
 	{
 		$field = $this->item->getFields()->getField(Cream_Application_FieldIds::getIconId());
@@ -93,24 +98,46 @@ class Cream_Content_ItemAppearance extends Cream_ApplicationComponent
 		//$this->item->getTemplate()->getIcon();
 	}
 	
+	/**
+	 * Returns true if the item is hidden, otherwise false.
+	 * 
+	 * @return boolean
+	 */
 	public function isHidden()
 	{
 		$field = $this->item->getFields()->getField(Cream_Application_FieldIds::getHidden());
 		return $field->getValue();
 	}
 	
+	/**
+	 * Set if the item is hidden. 
+	 *  
+	 * @param boolean $hidden
+	 * @return void
+	 */
 	public function setHidden($hidden)
 	{
 		$field = $this->item->getFields()->getField(Cream_Application_FieldIds::getHidden());
 		$field->setValue($hidden);
 	}
 	
+	/**
+	 * Returns true if the item is read only, otherwise false.
+	 * 
+	 * @return boolean
+	 */
 	public function isReadOnly()
 	{
 		$field = $this->item->getFields()->getField(Cream_Application_FieldIds::getReadOnly());
 		return $field->getValue();
 	}
 	
+	/**
+	 * Set if the item is read only.
+	 * 
+	 * @param boolean $readOnly
+	 * @return void
+	 */
 	public function setReadOnly($readOnly)
 	{
 		$field = $this->item->getFields()->getField(Cream_Application_FieldIds::getReadOnly());
