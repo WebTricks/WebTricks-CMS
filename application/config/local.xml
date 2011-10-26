@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * WebTricks
+ *
+ * LICENSE
+ *
+ * For the full copyright and license information, please view the 
+ * following URL: http://www.webtricksframework.com/license 
+ * 
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in
+ * the future. If you wish to customize WebTricks for your needs please go to 
+ * http://www.webtricksframework.com for more information.
+ *
+ * @copyright Copyright (c) 2007-2010 Cream (http://www.cream.nl)
+ * @license   http://www.webtricksframework.com/license
+ */
+-->
+<config>
+    <global>
+        <install>
+            <date><![CDATA[Fri, 25 Jun 2010 22:29:08 +0000]]></date>
+        </install>
+    	<data>
+    		<connection>
+    			<default_read>
+                    <server><![CDATA[app01.cream.nl]]></server>
+                    <username><![CDATA[cream_all]]></username>
+                    <password><![CDATA[creammgt]]></password>
+                    <database><![CDATA[webtricks_dev]]></database>
+					<init_statements>SET NAMES utf8</init_statements>
+                    <type>mysql</type>
+    			</default_read>
+    			<default_write>
+                    <server><![CDATA[app01.cream.nl]]></server>
+                    <username><![CDATA[cream_all]]></username>
+                    <password><![CDATA[creammgt]]></password>
+                    <database><![CDATA[webtricks_dev]]></database>
+					<init_statements>SET NAMES utf8</init_statements>
+                    <type>mysql</type>   			
+    			</default_write>
+    		</connection>
+    	</data>
+        <session_save><![CDATA[files]]></session_save>
+    </global>
+</config>

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!--
 /**
- * WebTricks - PHP Framework
+ * WebTricks
  *
  * LICENSE
  *
@@ -20,21 +20,18 @@
 -->
 <config>
     <modules>
-        <WebTricks_Content>
-            <active>true</active>
-            <codePool>core</codePool>
-        </WebTricks_Content>
         <WebTricks_Core>
-            <active>true</active>
-            <codePool>core</codePool>        
+            <version>1.0.0</version>
         </WebTricks_Core>
-        <WebTricks_Install>
-            <active>true</active>
-            <codePool>core</codePool>
-        </WebTricks_Install>        
-        <WebTricks_Shell>
-            <active>true</active>
-            <codePool>core</codePool>
-        </WebTricks_Shell>
     </modules>
-</config> 
+    
+    <global>
+    	<resources>
+    		<webtricks_core>
+    			<setup>
+					<module>WebTricks_Core</module>
+				</setup>
+    		</webtricks_core>
+    	</resources>
+    </global>
+</config>
