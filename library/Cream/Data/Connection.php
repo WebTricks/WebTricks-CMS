@@ -191,9 +191,11 @@ class Cream_Data_Connection
 
 		// Set select statement info
 		if ($statement instanceof Cream_Data_Statement_Select || is_string($statement)) {
-			$result->setRows($this->getDriver()->getRows());
-			$result->setNumRows($this->getDriver()->getNumRows());
-			$result->setNumFields($this->getDriver()->getNumFields());
+			if (is_resource($this->getDriver()->getResult())) {
+				$result->setRows($this->getDriver()->getRows());
+				$result->setNumRows($this->getDriver()->getNumRows());
+				$result->setNumFields($this->getDriver()->getNumFields());
+			}
 		}
 
 		// Clear result set
@@ -203,6 +205,88 @@ class Cream_Data_Connection
 		return $result;
 	}
 	
+	/**
+	 * Runs multiple queries to the databases. Returns an array with
+	 * for each query a result object.
+	 *  
+	 * @param string $sql
+	 * @return array
+	 */
+	public function multiQuery($sql)
+	{
+        $result = array();
+        $statements = $this->_splitMultiQuery($sql);
+        foreach ($statements as $statement) {
+        	$result[] = $this->query($statement);
+		}
+		
+		return $result;
+	}
+	
+	/**
+     * Split multi statement query
+     *
+     * @param $sql string
+     * @return array
+     */
+    protected function _splitMultiQuery($sql)
+    {
+        $parts = preg_split('#(;|\'|"|\\\\|//|--|\n|/\*|\*/)#', $sql, null, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+
+        $q = false;
+        $c = false;
+        $stmts = array();
+        $s = '';
+
+        foreach ($parts as $i=>$part) {
+            // strings
+            if (($part==="'" || $part==='"') && ($i===0 || $parts[$i-1]!=='\\')) {
+                if ($q===false) {
+                    $q = $part;
+                } else if ($q===$part) {
+                    $q = false;
+                }
+            }
+
+            // single line comments
+            if (($part==='//' || $part==='--') && ($i===0 || $parts[$i-1]==="\n")) {
+                $c = $part;
+            } else if ($part==="\n" && ($c==='//' || $c==='--')) {
+                $c = false;
+            }
+
+            // multi line comments
+            if ($part==='/*' && $c===false) {
+                $c = '/*';
+            } else if ($part==='*/' && $c==='/*') {
+                $c = false;
+            }
+
+            // statements
+            if ($part===';' && $q===false && $c===false) {
+                if (trim($s)!=='') {
+                    $stmts[] = trim($s);
+                    $s = '';
+                }
+            } else {
+                $s .= $part;
+            }
+        }
+        if (trim($s)!=='') {
+            $stmts[] = trim($s);
+        }
+
+        return $stmts;
+    }
+	
+    /**
+     * Fetch pairs of a select statement. Returns an array with the
+     * first column in the query as the array key, the second column
+     * will be the value.
+     * 
+     * @param Cream_Data_Statement_Select $statement
+     * @return array
+     */
 	public function fetchPairs($statement)
 	{
 		$data = array();
