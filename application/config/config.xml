@@ -103,8 +103,15 @@
 		</links>
 
 		<overrides>
-			
+
 		</overrides>
+		
+		<resources>			
+			<default>
+				<connection>default_write</connection>
+			</default>
+		</resources>
+		
 		<security>
 			<authentication>
 				<default_domain>website</default_domain>
