@@ -184,7 +184,7 @@ class Cream_Application extends Cream_Component
         //if (!$this->getConfig()->loadModulesCache()) {
             $this->getConfig()->loadModules();
             if ($this->getConfig()->isLocalConfigLoaded()) {
-                //WebTricks_Shell_Setup::applyAllUpdates();
+                WebTricks_Core_Setup::applyAllUpdates();
             }
         //    $this->getConfig()->loadDb();
         //    $this->getConfig()->saveCache();
