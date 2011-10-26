@@ -252,6 +252,17 @@ class Cream_Config extends Cream_Config_Base
     }
     
     /**
+     * Get resource configuration for resource name
+     *
+     * @param string $name
+     * @return Varien_Simplexml_Object
+     */
+    public function getResourceConfig($name)
+    {
+        return $this->_xml->global->resources->{$name};
+    }    
+    
+    /**
      * Sort modules and check depends
      *
      * @param array $modules
