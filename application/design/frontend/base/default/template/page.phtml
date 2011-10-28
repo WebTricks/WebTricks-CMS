@@ -22,11 +22,9 @@
 <?php echo $this->getChildHtml('head') ?>
 <body class="<?php echo $this->getBodyClass(); ?>">
 <div>
-<?php echo $this->getChildHtml('after_body_start') ?>
-<?php echo $this->getChildHtml('global_messages') ?>
-<?php echo $this->getChildHtml('content') ?>
-<?php echo $this->getChildHtml('before_body_end') ?>
-<?php echo $this->getAbsoluteFooter() ?>
+<?php echo $this->getChildHtml('after_body_start'); ?>
+<?php echo $this->getChildHtml('content'); ?>
+<?php echo $this->getChildHtml('before_body_end'); ?>
 </div>
 </body>
 </html>

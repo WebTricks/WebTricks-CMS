@@ -22,27 +22,15 @@
 <!--
 Default layout, loads most of the pages
 -->
-
-    <default translate="label" module="page">
+	<default translate="label" module="page">
         <label>All Pages</label>
         <block type="webcontrol/html" name="root" output="toHtml" template="page.phtml">
-
             <block type="htmlcontrol/head" name="head" as="head">
-                <action method="addJs"><script>prototype/prototype.js</script></action>
-                <action method="addJs"><script>lib/ccard.js</script></action>
-                <action method="addJs"><script>prototype/validation.js</script></action>
-                <action method="addJs"><script>scriptaculous/builder.js</script></action>
-                <action method="addJs"><script>scriptaculous/effects.js</script></action>
-                <action method="addJs"><script>scriptaculous/dragdrop.js</script></action>
-                <action method="addJs"><script>scriptaculous/controls.js</script></action>
-                <action method="addJs"><script>scriptaculous/slider.js</script></action>
-
-                <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
-                <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
+                <action method="addJs"><script>jquery/jquery-1.5.1.min.js</script></action>
+                <action method="addCss"><stylesheet>css/screen.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
             </block>
         </block>
-
     </default>
 
     <print translate="label" module="page">
