@@ -5,7 +5,6 @@ class Cream_Web_UI_WebControls_TextControl extends Cream_Web_UI_WebControl
     public function setText($text)
     {
         $this->_setData('text', $text);
-        return $this;
     }
 
     public function getText()
@@ -27,7 +26,7 @@ class Cream_Web_UI_WebControls_TextControl extends Cream_Web_UI_WebControl
         if (!$this->_beforeToHtml()) {
             return '';
         }
-
+        
         return $this->getText();
     }
 }

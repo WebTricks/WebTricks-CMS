@@ -25,6 +25,14 @@
         </WebTricks_Content>
     </modules>
     
+    <global>
+    	<webcontrols>
+    		<content>
+    			<class>WebTricks_Content_WebControls</class>
+    		</content>
+    	</webcontrols>
+    </global>    
+    
     <frontend>
         <layout>
             <updates>
