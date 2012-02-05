@@ -25,5 +25,32 @@
  */
 class WebTricks_Content_Controller_Action extends Cream_Controller_Action
 {
+	public function preDispatch()
+	{
+		$this->_setDesign();
+		$this->_setLayout();	
+	}
 	
+	protected function _setLayout()
+	{
+		$item = $this->_getApplication()->getContext()->getItem();
+		
+        $update = $this->getLayout()->getUpdate();
+        $update->addHandle('default');
+        
+        //if ($item->get('Layout')) {
+        //	
+        //}
+        
+		$this->getLayout()->getUpdate()->load();        		
+		$this->getLayout()->generateXml();
+		$this->getLayout()->generateBlocks();
+	}
+	
+	protected function _setDesign()
+	{
+        $this->getDesign()->setArea('frontend');
+        $this->getDesign()->setPackageName('base');
+        $this->getDesign()->setTheme('default');
+	}
 }

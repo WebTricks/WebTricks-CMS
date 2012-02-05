@@ -37,7 +37,7 @@ class WebTricks_Install_Installer_Db extends WebTricks_Install_Installer_Abstrac
      */
     protected function _getConnenctionType()
     {
-        return (string) $this->getApplication()->getConfig()->getNode('global/data/connection/default_setup/type');
+        return (string) $this->_getApplication()->getConfig()->getNode('global/data/connection/default_setup/type');
     }    
 	
     /**
