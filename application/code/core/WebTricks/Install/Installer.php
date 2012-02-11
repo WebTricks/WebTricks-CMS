@@ -29,7 +29,7 @@ class WebTricks_Install_Installer extends Cream_ApplicationComponent
      */
     public function isApplicationInstalled()
     {
-        return $this->getApplication()->isInstalled();
+        return $this->_getApplication()->isInstalled();
     }
 
     /**
@@ -277,7 +277,7 @@ class WebTricks_Install_Installer extends Cream_ApplicationComponent
     public function finish()
     {
         WebTricks_Install_Installer_Config::singleton()->replaceTmpInstallDate();
-        $this->getApplication()->getCache()->clean();
+        $this->_getApplication()->getCache()->clean();
 
         $cacheData = array();
         foreach (Mage::helper('core')->getCacheTypes() as $type=>$label) {

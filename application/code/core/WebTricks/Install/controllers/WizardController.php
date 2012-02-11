@@ -41,7 +41,7 @@ class WebTricks_Install_WizardController extends WebTricks_Install_Controller_Ac
      */
     protected function _checkIsInstalled()
     {
-        if ($this->getApplication()->isInstalled()) {
+        if ($this->_getApplication()->isInstalled()) {
             //$this->getResponse()->setRedirect('/')->sendResponse();
             //exit;
         }
@@ -240,7 +240,7 @@ class WebTricks_Install_WizardController extends WebTricks_Install_Controller_Ac
     {
         $this->_checkIsInstalled();
 
-        $date = (string) $this->getApplication()->getConfig()->getNode('global/install/date');
+        $date = (string) $this->_getApplication()->getConfig()->getNode('global/install/date');
         if ($date !== WebTricks_Install_Installer_Config::TMP_INSTALL_DATE_VALUE) {
             $this->_redirect('*/*');
             return;
