@@ -245,7 +245,7 @@ class WebTricks_Install_Installer_Console extends WebTricks_Install_Installer_Ab
         $this->_app = $app;
         $this->_getInstaller()->setDataModel($this->_getDataModel());
 
-        if ($this->getApplication()->isInstalled()) {
+        if ($this->_getApplication()->isInstalled()) {
             $this->addError('ERROR: WebTricks is already installed');
             return false;
         }
@@ -313,7 +313,7 @@ class WebTricks_Install_Installer_Console extends WebTricks_Install_Installer_Ab
             /**
              * Check if already installed
              */
-            if ($this->getApplication()->isInstalled()) {
+            if ($this->_getApplication()->isInstalled()) {
                 $this->addError('ERROR: WebTricks is already installed');
                 return false;
             }
@@ -349,7 +349,7 @@ class WebTricks_Install_Installer_Console extends WebTricks_Install_Installer_Ab
              */
 
             $this->_app->cleanCache();
-            $this->getApplication()->getConfig()->reinit();
+            $this->_getApplication()->getConfig()->reinit();
 
             /**
              * Install database

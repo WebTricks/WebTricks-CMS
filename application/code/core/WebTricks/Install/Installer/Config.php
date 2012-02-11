@@ -44,7 +44,7 @@ class WebTricks_Install_Installer_Config extends WebTricks_Install_Installer_Abs
 
     public function __construct()
     {
-        $this->_localConfigFile = $this->getApplication()->getOptions()->getConfigDir() . DS .'local.xml';
+        $this->_localConfigFile = $this->_getApplication()->getOptions()->getConfigDir() . DS .'local.xml';
     }
 
     public function setConfigData($data)
@@ -63,7 +63,7 @@ class WebTricks_Install_Installer_Config extends WebTricks_Install_Installer_Abs
     public function install()
     {
         $data = $this->getConfigData();
-        //foreach ($this->getApplication()->getConfig()->getDistroServerVars() as $index => $value) {
+        //foreach ($this->_getApplication()->getConfig()->getDistroServerVars() as $index => $value) {
         //    if (!isset($data[$index])) {
         //        $data[$index] = $value;
         //    }
@@ -92,7 +92,7 @@ class WebTricks_Install_Installer_Config extends WebTricks_Install_Installer_Abs
 
         $this->_getInstaller()->getDataModel()->setConfigData($data);
 
-        $template = file_get_contents($this->getApplication()->getOptions()->getConfigDir() .DS .'local.xml.template');
+        $template = file_get_contents($this->_getApplication()->getOptions()->getConfigDir() .DS .'local.xml.template');
         foreach ($data as $index=>$value) {
             $template = str_replace('{{'.$index.'}}', '<![CDATA['.$value.']]>', $template);
         }

@@ -40,7 +40,7 @@ class WebTricks_Install_Config extends Cream_Config_Base
     public function __init()
     {
         $this->loadString('<?xml version="1.0"?><config></config>');
-        $this->getApplication()->getConfig()->loadModulesConfiguration('install.xml', $this);    	
+        $this->_getApplication()->getConfig()->loadModulesConfiguration('install.xml', $this);    	
     } 
     
     /**

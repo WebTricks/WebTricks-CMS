@@ -26,6 +26,6 @@ class WebTricks_Install_WebControls_LicenseControl extends Cream_Web_UI_WebContr
      */
     public function getLicenseHtml()
     {
-        return file_get_contents(BP . DS . (string)$this->getApplication()->getConfig()->getNode('install/eula_file'));
+        return file_get_contents(BP . DS . (string)$this->_getApplication()->getConfig()->getNode('install/eula_file'));
     }
 }

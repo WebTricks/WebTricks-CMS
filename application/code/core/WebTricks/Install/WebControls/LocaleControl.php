@@ -39,7 +39,7 @@ class WebTricks_Install_WebControls_LocaleControl extends Cream_Web_UI_WebContro
     {
         $culture = $this->_getData('culture');
         if (is_null($culture)) {
-            $culture = $this->getApplication()->getContext()->getCulture();
+            $culture = $this->_getApplication()->getContext()->getCulture();
             $this->_setData('culture', $culture);
         }
         return $culture;
@@ -86,7 +86,7 @@ class WebTricks_Install_WebControls_LocaleControl extends Cream_Web_UI_WebContro
 		$select->setTitle('Time Zone');
 		$select->setClass('required-entry');
 		$select->setValue($this->getTimezone());
-		$select->setOptions($this->getApplication()->getContext()->getCulture()->getCultureInfo()->getOptionTimezones());
+		$select->setOptions($this->_getApplication()->getContext()->getCulture()->getCultureInfo()->getOptionTimezones());
 		return $select->getHtml();
     }
 
@@ -99,7 +99,7 @@ class WebTricks_Install_WebControls_LocaleControl extends Cream_Web_UI_WebContro
     {
         $timezone = WebTricks_Install_Session::singleton()->getTimezone()
             ? WebTricks_Install_Session::singleton()->getTimezone()
-            : $this->getApplication()->getContext()->getCulture()->getCultureInfo()->getTimezone();
+            : $this->_getApplication()->getContext()->getCulture()->getCultureInfo()->getTimezone();
         if ($timezone == Cream_Globalization_Culture::DEFAULT_TIMEZONE) {
             $timezone = 'America/Los_Angeles';
         }
@@ -120,7 +120,7 @@ class WebTricks_Install_WebControls_LocaleControl extends Cream_Web_UI_WebContro
 		$select->setTitle('Default Currency');
 		$select->setClass('required-entry');
 		$select->setValue($this->getCurrency());
-		$select->setOptions($this->getApplication()->getContext()->getCulture()->getCultureInfo()->getOptionCurrencies());
+		$select->setOptions($this->_getApplication()->getContext()->getCulture()->getCultureInfo()->getOptionCurrencies());
 
 		return $select->getHtml();
     }
@@ -134,7 +134,7 @@ class WebTricks_Install_WebControls_LocaleControl extends Cream_Web_UI_WebContro
     {
         return WebTricks_Install_Session::singleton()->getCurrency()
             ? WebTricks_Install_Session::singleton()->getCurrency()
-            : $this->getApplication()->getContext()->getCulture()->getCultureInfo()->getCurrency();
+            : $this->_getApplication()->getContext()->getCulture()->getCultureInfo()->getCurrency();
             
     }
 
