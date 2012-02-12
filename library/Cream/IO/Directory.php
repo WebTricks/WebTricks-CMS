@@ -92,4 +92,51 @@ class Cream_IO_Directory
 		
 		return $directories;
 	}	
+	
+    public static function remove($dirname)
+    {
+        // Sanity check
+        if (!@file_exists($dirname)) {
+            return false;
+        }
+     
+        // Simple delete for a file
+        if (@is_file($dirname) || @is_link($dirname)) {
+            return unlink($dirname);
+        }
+     
+        // Create and iterate stack
+        $stack = array($dirname);
+        while ($entry = array_pop($stack)) {
+            // Watch for symlinks
+            if (@is_link($entry)) {
+                @unlink($entry);
+                continue;
+            }
+     
+            // Attempt to remove the directory
+            if (@rmdir($entry)) {
+                continue;
+            }
+     
+            // Otherwise add it to the stack
+            $stack[] = $entry;
+            $dh = opendir($entry);
+            while (false !== $child = readdir($dh)) {
+                // Ignore pointers
+                if ($child === '.' || $child === '..') {
+                    continue;
+                }     
+                // Unlink files and add directories to stack
+                $child = $entry . DIRECTORY_SEPARATOR . $child;
+                if (is_dir($child) && !is_link($child)) {
+                    $stack[] = $child;
+                } else {
+                    @unlink($child);
+                }
+            }
+            @closedir($dh);
+        }     
+        return true;
+    }  	
 }
