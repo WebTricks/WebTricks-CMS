@@ -48,7 +48,7 @@ class Cream_Content_Managers_CultureManager extends Cream_ApplicationComponent
 		if ($this->_cultures[$key]) {
 			return $this->_cultures[$key];
 		} else {
-			$cache = $this->getApplication()->getCache()->load($key);
+			$cache = $this->_getApplication()->getCache()->load($key);
 			
 			if ($cache === false) {
 				return null;
@@ -69,7 +69,7 @@ class Cream_Content_Managers_CultureManager extends Cream_ApplicationComponent
 	{
 		$key = $this->_getCulturesCacheKey($repository);
 		
-		$this->getApplication()->getCache()->save($cultures, $key);
+		$this->_getApplication()->getCache()->save($cultures, $key);
 	}
 	
 	/**

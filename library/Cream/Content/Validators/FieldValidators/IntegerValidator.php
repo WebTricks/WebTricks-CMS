@@ -43,4 +43,14 @@ class Cream_Content_Validators_FieldValidators_IntegerValidator extends Cream_Co
 		
 		return Cream_Content_Validators_ValidatorResult::VALID;
 	}
+	
+	public function allowNegative()
+	{
+		
+	}
+	
+	public function allowZero()
+	{
+		
+	}
 }

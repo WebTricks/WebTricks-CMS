@@ -50,13 +50,13 @@ class WebTricks_Shell_Applications_Desktop extends Cream_ApplicationComponent
 	
 	public function getDesktop()
 	{
-		$repository = $this->getApplication()->getContext()->getRepository();
+		$repository = $this->_getApplication()->getContext()->getRepository();
 		$startMenuItem = $repository->getItemByPath('webtricks/content/documents and settings/all users/start menu');
 		$startMenu = WebTricks_Shell_Applications_Desktop_StartMenu::instance();
 		$startMenuConfig = $startMenu->getExtControl($startMenuItem);
 		
-		$itemId = $this->getApplication()->getRepository('core')->getDataManager()->resolvePath(self::REPOSITORY_PATH_APPLICATION);
-		$item = $this->getApplication()->getRepository('core')->getItem($itemId);
+		$itemId = $this->_getApplication()->getContext()->getRepository()->getDataManager()->resolvePath(self::REPOSITORY_PATH_APPLICATION);
+		$item = $this->_getApplication()->getContext()->getRepository()->getItem($itemId);
 		
 		
 		$application = WebTricks_Shell_Web_UI_ExtControls_Application::instance();

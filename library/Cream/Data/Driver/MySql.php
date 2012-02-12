@@ -33,7 +33,7 @@ class Cream_Data_Driver_MySql extends Cream_Data_Driver
 	 */
 	public function connect()
 	{
-		$server = $this->getConnection()->getServer();
+		$server = $this->getConnection()->getHost();
 		$database = $this->getConnection()->getDatabase();
 		$username = $this->getConnection()->getUsername();
 		$password = $this->getConnection()->getPassword();
@@ -72,7 +72,7 @@ class Cream_Data_Driver_MySql extends Cream_Data_Driver
 		}
 
 		// Log query
-		//$this->getApplication()->getLog()->log(__CLASS__, $sql, __FILE__, __LINE__);
+		//$this->_getApplication()->getLog()->log(__CLASS__, $sql, __FILE__, __LINE__);
 
 		// Get results
 		$result = mysql_query($sql, $this->getDataConnection());

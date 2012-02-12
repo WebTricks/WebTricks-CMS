@@ -45,9 +45,12 @@ $appPath = implode(PS, $paths);
 set_include_path($appPath . PS . get_include_path());
 
 Cream_Autoload::register();
-Cream::initErrorHandlers();
+//Cream::initErrorHandlers();
 
 $application = new Cream_Application();
-//$application->run();
+$application->init();
 
-Cream_Jobs_JobProvider::dispatch();
+WebTricks_Jobs_JobProvider::dispatch();
+
+//$job = WebTricks_Jobs_Job::instance();
+//$job->load(79252);

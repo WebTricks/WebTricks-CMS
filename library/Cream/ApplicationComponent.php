@@ -32,7 +32,7 @@ abstract class Cream_ApplicationComponent extends Cream_Component
 	 *
 	 * @return Cream_Application
 	 */
-	protected function getApplication() 
+	protected function _getApplication() 
 	{
 		return Cream::getApplication();
 	}

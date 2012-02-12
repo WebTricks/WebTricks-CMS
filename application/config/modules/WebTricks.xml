@@ -31,7 +31,11 @@
         <WebTricks_Install>
             <active>true</active>
             <codePool>core</codePool>
-        </WebTricks_Install>        
+        </WebTricks_Install>
+		<WebTricks_Jobs>
+            <active>true</active>
+            <codePool>core</codePool>
+        </WebTricks_Jobs>                
         <WebTricks_Shell>
             <active>true</active>
             <codePool>core</codePool>

@@ -32,7 +32,8 @@ class WebTricks_Shell_Commands_Item_PasteFromClipboard extends WebTricks_Shell_C
 					
 			}
 			
-			WebTricks_Shell_Client_Response::refresh(array((string) $item->getParent()->getItemId(), (string) $context->getItem()->getItemId()));
+			WebTricks_Shell_Client_Response::refresh((string) $item->getParent()->getItemId());
+			WebTricks_Shell_Client_Response::refresh((string) $context->getItem()->getItemId());
 		}
 	}
 	

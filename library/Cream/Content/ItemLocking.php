@@ -112,7 +112,7 @@ class Cream_Content_ItemLocking extends Cream_ApplicationComponent
 	{
 		$lockField = $this->getLockField();
 		
-		if ($lockField && $lockField->getOwner() == $this->getApplication()->getUser()->getAdministratorProfile()->getUserId()) {
+		if ($lockField && $lockField->getOwner() == $this->_getApplication()->getUser()->getAdministratorProfile()->getUserId()) {
 			return true;
 		}
 		

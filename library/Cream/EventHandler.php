@@ -26,13 +26,21 @@
 class Cream_EventHandler extends Cream_ApplicationComponent
 {
 	/**
+	 * Holds the object for the event handler. 
+	 * 
+	 * @var Cream_Object
+	 */
+	protected $_object;
+	
+	/**
 	 * Create a new instance of this class.
 	 *  
 	 * @param Cream_Component $object
+	 * @return Cream_EventHandler
 	 */
 	public static function instance(Cream_Component $object)
 	{
-		return Cream::instance(__CLASS__);
+		return Cream::instance(__CLASS__, $object);
 	}
 	
 	/**
@@ -45,13 +53,13 @@ class Cream_EventHandler extends Cream_ApplicationComponent
 		$this->_object = $object;
 	}
 	
-	public function dispatchEvent($eventName, $args)
+	public function dispatch($eventName, $args)
 	{
 		$path = "global/events/". $eventName ."/observers";
-		$observers = $this->getApplication()->getConfig()->getNode($path);
+		$observers = $this->_getApplication()->getConfig()->getNode($path);
 		
-		foreach($observers as $observer) {
+		//foreach($observers as $observer) {
 			
-		}
+		//}
 	}
 }

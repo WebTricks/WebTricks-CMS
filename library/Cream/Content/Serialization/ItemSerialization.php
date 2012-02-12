@@ -134,7 +134,7 @@ class Cream_Content_Serialization_ItemSerialization
 	
 	protected static function _pasteItem(Cream_Content_Serialization_SyncItem $syncItem)
 	{
-		$repository = Cream::getApplication()->getRepository($syncItem->getRepositoryName());
+		$repository = Cream_Content_Managers_RepositoryProvider::getRepository($syncItem->getRepositoryName());
 
 		$itemId = Cream_Guid::parseGuid($syncItem->getId());
 		$templateId = Cream_Guid::parseGuid($syncItem->getTemplateId());

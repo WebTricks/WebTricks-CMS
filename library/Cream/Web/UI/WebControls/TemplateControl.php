@@ -179,7 +179,7 @@ class Cream_Web_UI_WebControls_TemplateControl extends Cream_Web_UI_WebControl
      */
     public function renderView()
     {
-        $this->setScriptPath($this->getApplication()->getOptions()->getDesignDir());
+        $this->setScriptPath($this->_getApplication()->getOptions()->getDesignDir());
         $html = $this->fetchView($this->getTemplateFile());
         return $html;
     }

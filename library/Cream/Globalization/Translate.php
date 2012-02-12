@@ -38,7 +38,7 @@ class Cream_Globalization_Translate extends Cream_ApplicationComponent
 		} else {
 			$dictionary = Cream_Globalization_Dictionary::instance();
 		
-			$repository = Cream::getApplication()->getRepository('core');
+			$repository = Cream_Content_Managers_RepositoryProvider::getRepository('core');
 			$itemId = $repository->getDataManager()->resolvePath('webtricks/system/dictionary');
 			$item = $repository->getItem($itemId);
 			

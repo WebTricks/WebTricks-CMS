@@ -102,7 +102,7 @@ class Cream_Cache extends Cream_ApplicationComponent
      */
     public function __init(array $options = array())
     {	
-        $this->_defaultBackendOptions['cache_dir'] = $this->getApplication()->getOptions()->getCacheDir();
+        $this->_defaultBackendOptions['cache_dir'] = $this->_getApplication()->getOptions()->getCacheDir();
 
         /**
          * Initialize id prefix
@@ -113,7 +113,7 @@ class Cream_Cache extends Cream_ApplicationComponent
         }
 
         if (empty($this->idPrefix)) {
-            $this->idPrefix = substr(md5($this->getApplication()->getOptions()->getConfigDir()), 0, 3) .'_';
+            $this->idPrefix = substr(md5($this->_getApplication()->getOptions()->getConfigDir()), 0, 3) .'_';
         }
 
         $backend    = $this->_getBackendOptions($options);
@@ -471,7 +471,7 @@ class Cream_Cache extends Cream_ApplicationComponent
     public function getTagsByType($type)
     {
         $path = self::XML_PATH_TYPES.'/'.$type.'/tags';
-        $tagsConfig = $this->getApplication()->getConfig()->getNode($path);
+        $tagsConfig = $this->_getApplication()->getConfig()->getNode($path);
         if ($tagsConfig) {
             $tags = (string) $tagsConfig;
             $tags = explode(',', $tags);
@@ -489,7 +489,7 @@ class Cream_Cache extends Cream_ApplicationComponent
     public function getTypes()
     {
         $types = array();
-        $config = $this->getApplication()->getConfig()->getNode(self::XML_PATH_TYPES);
+        $config = $this->_getApplication()->getConfig()->getNode(self::XML_PATH_TYPES);
         
         if ($config) {
             foreach ($config->children() as $type => $node) {
@@ -597,7 +597,7 @@ class Cream_Cache extends Cream_ApplicationComponent
         }
 
         if ($content) {
-            $this->getApplication()->getResponse()->appendBody($content);
+            $this->_getApplication()->getResponse()->appendBody($content);
             return true;
         }
         return false;

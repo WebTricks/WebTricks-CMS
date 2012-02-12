@@ -29,7 +29,7 @@ class Cream_Controller_Router_WebTricks extends Cream_Controller_Router_Default
     public function fetchDefault()
     { 	
         // set defaults
-        $d = explode('/', (string)$this->getApplication()->getConfig()->getNode('default/web/default/admin'));
+        $d = explode('/', (string)$this->_getApplication()->getConfig()->getNode('default/web/default/admin'));
         $this->getFront()->setDefault(array(
             'module'     => !empty($d[0]) ? $d[0] : '',
             'controller' => !empty($d[1]) ? $d[1] : 'index',
@@ -54,8 +54,8 @@ class Cream_Controller_Router_WebTricks extends Cream_Controller_Router_Default
      */
     protected function _afterModuleMatch()
     {
-        if (!$this->getApplication()->isInstalled()) {
-            $response = $this->getApplication()->getFrontController()->getResponse();
+        if (!$this->_getApplication()->isInstalled()) {
+            $response = $this->_getApplication()->getFrontController()->getResponse();
             $response->setRedirect(Cream_Url::getUrl('install'));
             $response->sendResponse();
             exit;

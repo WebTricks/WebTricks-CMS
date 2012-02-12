@@ -88,7 +88,7 @@ class Cream
 		$args = func_get_args();
         array_shift($args);
 		
-        $instance = new $class;        
+        $instance = new $class;
 
 		if (count($args)) {
         	call_user_func_array(array($instance, "__init"), $args);

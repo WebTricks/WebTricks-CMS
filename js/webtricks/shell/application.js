@@ -168,15 +168,15 @@ Ext.extend(WebTricks.Shell.Application, Ext.util.Observable,
     		params: {
     			itemId: id
     		},
-    		success: function(o){	
-    			if(o.responseText !== ''){
+    		success: function(o) {	
+    			if (o.responseText !== '') {
     				config = Ext.decode(o.responseText);
     				this.loadModuleComplete(true, id, config);
-    			}else{
+    			} else {
     				Ext.MessageBox.alert('Error', 'An error occured on the server.');    				
     			}
     		},
-    		failure: function(){
+    		failure: function() {
 				Ext.MessageBox.alert('Error', 'Connection to the server failed!');    				    			
     		},
     		scope: this
@@ -197,7 +197,7 @@ Ext.extend(WebTricks.Shell.Application, Ext.util.Observable,
     {   	
 		if(success === true && id) {
 			var m = this.instantiateModule(id, config);
-			if(m){
+			if (m) {
 				m.isLoading = false;
 				m.loaded = true;
 				m.init();
@@ -217,7 +217,7 @@ Ext.extend(WebTricks.Shell.Application, Ext.util.Observable,
 		
 		        this.requestQueue = nq;
 		
-		        if(found){
+		        if (found) {
 		           found.callback.call(found.scope, m);
 		        }
 			}

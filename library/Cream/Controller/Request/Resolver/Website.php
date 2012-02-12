@@ -7,7 +7,7 @@ class Cream_Controller_Request_Resolver_Website extends Cream_Controller_Request
 		$site = $this->_resolveSite();
 
 		if ($site) {
-			$this->getApplication()->getContext()->setSite($site);
+			$this->_getApplication()->getContext()->setSite($site);
 		}
 	}
 	
@@ -29,10 +29,10 @@ class Cream_Controller_Request_Resolver_Website extends Cream_Controller_Request
 	protected function _resolveFromQueryString()
 	{
 		$website = null;
-		$siteName = $this->getApplication()->getRequest()->getParam('__site');
+		$siteName = $this->_getApplication()->getRequest()->getParam('__site');
 		
 		if ($siteName) {
-			$website = Cream_Websites_SiteProvider::getSite($siteName);
+			$website = WebTricks_Websites_SiteProvider::getSite($siteName);
 		}
 		
 		return $website;
@@ -40,11 +40,11 @@ class Cream_Controller_Request_Resolver_Website extends Cream_Controller_Request
 	
 	protected function _resolveFromHost()
 	{
-		$host = $this->getApplication()->getRequest()->getHttpHost();
-		$port = $this->getApplication()->getRequest()->getHttpPort();
-		$path = $this->getApplication()->getRequest()->getPathInfo();
+		$host = $this->_getApplication()->getRequest()->getHttpHost();
+		$port = $this->_getApplication()->getRequest()->getHttpPort();
+		$path = $this->_getApplication()->getRequest()->getPathInfo();
 		
-		$website = Cream_Websites_SiteProvider::getSiteFromHost($host, $port, $path);
+		$website = WebTricks_Websites_SiteProvider::getSiteFromHost($host, $port, $path);
 		
 		return $website;		
 	}

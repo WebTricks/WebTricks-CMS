@@ -125,6 +125,6 @@ class WebTricks_Shell_Applications_Security_SecuritydetailsController extends We
 	 */
 	protected function _getItem()
 	{
-		return $this->getApplication()->getContext()->getContentRepository()->getItem(Cream_Application_ItemIds::getRootId());
+		return $this->_getApplication()->getContext()->getContentRepository()->getItem(Cream_Application_ItemIds::getRootId());
 	}
 }

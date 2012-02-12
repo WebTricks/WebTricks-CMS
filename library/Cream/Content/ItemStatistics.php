@@ -101,7 +101,7 @@ class Cream_Content_ItemStatistics extends Cream_ApplicationComponent
 	 */
 	public function updateStatistics()
 	{
-		$username = $this->getApplication()->getUser()->getAdministratorProfile()->getTitle();
+		$username = $this->_getApplication()->getUser()->getAdministratorProfile()->getTitle();
 		$dateTime = time();
 		
 		if (!$this->item->get(Cream_Application_FieldIds::createdBy)->getValue()) {

@@ -21,10 +21,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <?php echo $this->getChildHtml('head') ?>
 <body class="<?php echo $this->getBodyClass(); ?>">
-<div>
 <?php echo $this->getChildHtml('after_body_start'); ?>
-<?php echo $this->getChildHtml('content'); ?>
-<?php echo $this->getChildHtml('before_body_end'); ?>
+<div class="page-container">
+    <div class="page">
+        <?php echo $this->getChildHtml('header'); ?>
+        <div class="main-container">
+            <div class="main">
+				<div class="top-block">
+			        <h1>Blog</h1>
+			        <form id="blog-search" class="blog-search" name="blog-search" method="post" action="http://www.sencha.com/">
+						<label for="keywords">Search for:</label>
+			  			<input type="text" id="keywords" name="keywords" placeholder="Search">
+			  			<button id="search-submit" name="submit">Search</button>
+					</form>
+			    </div>            
+                <div class="col-main">
+                    <?php echo $this->getChildHtml('content'); ?>
+                </div>
+                <div class="col-left sidebar">
+                	<?php echo $this->getChildHtml('left'); ?>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('footer'); ?>
+    </div>
 </div>
+<?php echo $this->getChildHtml('before_body_end'); ?>
 </body>
 </html>

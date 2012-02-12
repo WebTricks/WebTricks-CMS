@@ -67,30 +67,22 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 	}
 	
 	/**
-	 * Creates an item under the given parent item
+	 * Creates an item under the given parent item. Returns the id of
+	 * the new item.
 	 * 
+	 * @param string $name
 	 * @param Cream_Guid $templateId
 	 * @param Cream_Content_Item $parentItem
-	 * @return Cream_Content_Item
+	 * @return Cream_Guid
 	 */
-	public function createItem(Cream_Guid $templateId, Cream_Content_Item $parentItem) 
+	public function createItem($name, Cream_Guid $templateId, Cream_Content_Item $parentItem) 
 	{
 		$itemId = Cream_Guid::generateGuid();
-		$version = Cream_Content_Version::getFirst();
-		$culture = $parentItem->getCulture();
+
+		$parentItem->getRepository()->getDataManager()->createItem($itemId, $templateId, $name, $parentItem);	
+		$this->_deleteChildIdsFromCache($parentItem->getRepository(), $parentItem->getItemId());
 		
-		$itemDefinition = Cream_Content_ItemDefinition::instance($itemId, $templateId, $parentItem->getParentId(), '<<NEW ITEM>>');
-		$itemFields = $this->_getItemFields($itemId, $culture, $version);
-		$itemData = Cream_Content_ItemData::instance($itemDefinition, $culture, $version, $itemFields);
-		$item = Cream_Content_Item::instance($itemId, $itemData);
-		
-		// Add the new item to the parent
-		$parentItem->getChildren()->add($item);
-		
-		// Always set to cache the item, so changes will be cached automatically
-		$this->_addItemToCache($itemId, $culture, $version, $item);		
-		
-		return $item;
+		return $itemId;
 	}
 	
 	/**
@@ -103,7 +95,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 	public function deleteItem(Cream_Content_Item $item)
 	{
 		$this->_deleteItemFromCache($item->getRepository(), $item->getItemId(), $item->getCulture(), $item->getVersion());	
-		$this->repository->getDataManager()->deleteItem($item);
+		$item->getRepository()->getDataManager()->deleteItem($item);
 	}
 	
 	/**
@@ -131,7 +123,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 		$cacheItem = false;
 				
 		if (!$culture) {
-			$culture = $this->getApplication()->getContext()->getCulture();
+			$culture = $this->_getApplication()->getContext()->getCulture();
 		}		
 				
 		if (!$version) {
@@ -284,7 +276,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 		if (isset($this->_innerCache[$key])) {
 			return $this->_innerCache[$key];
 		} else {
-			$cache = $this->getApplication()->getCache()->load($key);
+			$cache = $this->_getApplication()->getCache()->load($key);
 			
 			if ($cache === false) {
 				return null;
@@ -331,7 +323,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 			unset($this->_innerCache[$key]);
 		}
 		
-		$this->getApplication()->getCache()->remove($key);
+		$this->_getApplication()->getCache()->remove($key);
 	}
 	
 	/**
@@ -352,7 +344,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 			unset($this->_innerCache[$key]);
 		}
 		
-		$this->getApplication()->getCache()->remove($key);
+		$this->_getApplication()->getCache()->remove($key);
 	}	
 	
 	/**
@@ -372,7 +364,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 		$this->_innerCache[$key] = $item;
 		
 		if ($external) {
-			$this->getApplication()->getCache()->save($item, $key);
+			$this->_getApplication()->getCache()->save($item, $key);
 		}
 	}
 	
@@ -486,7 +478,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 		if (isset($this->_innerCache[$key])) {
 			return $this->_innerCache[$key];
 		} else {
-			$cache = $this->getApplication()->getCache()->load($key);
+			$cache = $this->_getApplication()->getCache()->load($key);
 			
 			if ($cache === false) {
 				return null;
@@ -510,7 +502,7 @@ class Cream_Content_Managers_ItemManager extends Cream_ApplicationComponent
 		$this->_innerCache[$key] = $childIds;
 		
 		if ($external) {
-			$this->getApplication()->getCache()->save($childIds, $key);
+			$this->_getApplication()->getCache()->save($childIds, $key);
 		}
 	}
 	

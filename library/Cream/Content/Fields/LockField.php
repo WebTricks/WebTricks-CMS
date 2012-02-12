@@ -44,7 +44,7 @@ class Cream_Content_Fields_LockField extends Cream_Content_Fields_XmlField
 	 */
 	public function acquireLock()
 	{
-		$username = $this->getApplication()->getUser()->getAdministratorProfile()->getTitle();
+		$username = $this->_getApplication()->getUser()->getAdministratorProfile()->getTitle();
 		$this->setAttribute('owner', $username);
 		$this->setAttribute('date', date());
 		

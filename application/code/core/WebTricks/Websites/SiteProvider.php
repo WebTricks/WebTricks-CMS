@@ -20,10 +20,10 @@
 /**
  * Site provider. Static class for returning site objects.
  *
- * @package		Cream_Websites
+ * @package		WebTricks_Websites
  * @author		WebTricks Core Team <core@webtricksframework.com>
  */
-class Cream_Websites_SiteProvider
+class WebTricks_Websites_SiteProvider
 {
 	/**
 	 * Holds an instance of the site manager.
@@ -37,7 +37,7 @@ class Cream_Websites_SiteProvider
 	 * returns null.
 	 * 
 	 * @param string $name
-	 * @return Cream_Websites_Site
+	 * @return WebTricks_Websites_Site
 	 */
 	public static function getSite($name)
 	{
@@ -60,12 +60,12 @@ class Cream_Websites_SiteProvider
 	/**
 	 * Returns the site manager
 	 * 
-	 * @return Cream_Websites_SiteManager
+	 * @return WebTricks_Websites_SiteManager
 	 */
 	protected static function _getManager()
 	{
 		if (!self::$_manager) {
-			self::$_manager = Cream_Websites_SiteManager::instance();
+			self::$_manager = WebTricks_Websites_SiteManager::instance();
 		}		
 		
 		return self::$_manager;

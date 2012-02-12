@@ -212,7 +212,7 @@ class Cream_Url extends Cream_ApplicationComponent
     public function getRequest()
     {
         if (!$this->_request) {
-            $this->_request = $this->getApplication()->getRequest();
+            $this->_request = $this->_getApplication()->getRequest();
         }
         
         return $this->_request;
@@ -303,10 +303,10 @@ class Cream_Url extends Cream_ApplicationComponent
         return $this->getStore()->getBaseUrl($this->getType(), $this->getSecure());
         **/
     	
-    	if ($this->getApplication()->getContext()->getSite()->getHost()) {
-    		return $this->getApplication()->getContext()->getSite()->getHost();
+    	if ($this->_getApplication()->getContext()->getSite()->getHost()) {
+    		return $this->_getApplication()->getContext()->getSite()->getHost();
     	} else {
-    		return 'http://'. $this->getApplication()->getRequest()->getServer('HTTP_HOST') ."/index.php/";
+    		return 'http://'. $this->_getApplication()->getRequest()->getServer('HTTP_HOST') ."/index.php/";
     	}
 
     	return 'http://webtrickscms.development.cream.nl/index.php/';
@@ -432,7 +432,7 @@ class Cream_Url extends Cream_ApplicationComponent
     {
         if (!$this->_hasData('route_front_name')) {
             $routeName = $this->getRouteName();
-            $route = $this->getApplication()->getFrontController()->getRouterByRoute($routeName);
+            $route = $this->_getApplication()->getFrontController()->getRouterByRoute($routeName);
             $frontName = $route->getFrontNameByRoute($routeName);
 
             $this->setRouteFrontName($frontName);

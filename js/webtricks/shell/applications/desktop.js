@@ -49,42 +49,50 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     *    return false;
     * }
     */
-   startMenuSortFn: function(a, b){ // Sort in ASC alphabetical order with menus at the top
+   startMenuSortFn: function(a, b)
+   { // Sort in ASC alphabetical order with menus at the top
       if( ( ( b.menu && a.menu ) && ( b.text < a.text ) ) || ( b.menu && !a.menu ) || ( (b.text < a.text) && !a.menu ) ){
          return true;
       }
       return false;
    },
+   
    /**
     * Read only.
     * @type {Ext.Window}
     */
    activeWindow: null,
+   
    /**
     * Read only.
     * @type {Ext.menu.Menu}
     */
    contextMenu: null,
+   
    /**
     * Read only.
     * @type {Ext.ux.Shortcuts}
     */
    shortcuts: null,
+   
    /**
     * Read only.
     * @type {Ext.ux.Taskbar}
     */
    taskbar: null,
+   
    /**
     * Read only.
     * @type {Ext.WindowGroup}
     */
    windows: new Ext.WindowGroup(),
+   
    /**
     * Read only.
     * @type {Number}
     */
    xTickSize: 1,
+   
    /**
     * Read only.
     * @type {Number}
@@ -210,7 +218,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }, this);
    },
 
-   initModules : function(){
+   initModules : function()
+   {
       var ms = this.app.modules;
       if(!ms){
          return false;
@@ -226,14 +235,16 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       return true;
    },
 
-   initLaunchers : function(){
+   initLaunchers : function()
+   {
       this.initContextMenu();
       this.initQuickStart();
       this.initShortcut();
       this.initAutoRun();
    },
 
-   initAutoRun : function(){
+   initAutoRun : function()
+   {
       var mIds = this.launchers.autorun;
       if(mIds && mIds.length > 0){
          this.app.onReady(function(){
@@ -248,7 +259,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   initShortcut : function(){
+   initShortcut : function()
+   {
       var mIds = this.launchers.shortcut;
       if(mIds){
          for(var i = 0, len = mIds.length; i < len; i++){
@@ -257,7 +269,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   initQuickStart : function(){
+   initQuickStart : function()
+   {
       var mIds = this.launchers.quickstart;
       if(mIds){
          for(var i = 0, len = mIds.length; i < len; i++){
@@ -266,7 +279,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   initContextMenu : function(){
+   initContextMenu : function()
+   {
       var ms = this.app.modules;
       if(ms){
          for(var i = 0, len = ms.length; i < len; i++){
@@ -277,7 +291,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   initLogout : function(){
+   initLogout : function()
+   {
       if(this.logoutConfig){
          this.taskbar.startButton.menu.addTool(this.logoutConfig);
       }
@@ -289,9 +304,12 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * Passes in the callback and scope as params.
     * @param {string} id
     */
-   launchWindow : function(id){
+   launchWindow : function(id)
+   {
       var m = this.app.requestModule(id, function(m) {
-         if(m){m.createWindow();}
+    	  if(m){
+    		  m.createWindow();
+    	  }
       }, this);
    },
 
@@ -299,7 +317,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * @param {object} config The window config object.
     * @param {string} cls The class to use instead of Ext.Window.
     */
-   createWindow : function(config, cls){
+   createWindow : function(config, cls)
+   {
       var win = new (cls||Ext.Window)(
          Ext.applyIf(config||{}, {
             manager: this.windows,
@@ -309,17 +328,12 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
             shim: false,
             animCollapse: false,
             constrainHeader: true,
-            border: false            
+            border: false
          })
       );
             
-      win.render(this.el);     
+      win.render(this.el);
       win.taskButton = this.taskbar.addTaskButton(win);
-      /*win.cmenu = new Ext.menu.Menu({
-         items: [
-
-         ]
-      });*/
       win.animateTarget = win.taskButton.el;
 
       win.on({
@@ -364,7 +378,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {Ext.Window} win The window to minimize.
     */
-   minimizeWin : function(win){
+   minimizeWin : function(win)
+   {
       win.minimized = true;
       win.hide();
    },
@@ -372,7 +387,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {Ext.Window} win The window to mark active.
     */
-   markActive : function(win){
+   markActive : function(win)
+   {
       if(this.activeWindow && this.activeWindow != win){
          this.markInactive(this.activeWindow);
       }
@@ -385,7 +401,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {Ext.Window} win The window to mark inactive.
     */
-   markInactive : function(win){
+   markInactive : function(win)
+   {
       if(win == this.activeWindow){
          this.activeWindow = null;
          Ext.fly(win.taskButton.el).removeClass('active-win');
@@ -401,11 +418,13 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       this.layout();
    },
 
-   layout : function(){
+   layout : function()
+   {
       this.el.setHeight(Ext.lib.Dom.getViewHeight() - this.getTaskbarHeight());
    },
 
-   getManager : function(){
+   getManager : function()
+   {
       return this.windows;
    },
 
@@ -420,7 +439,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {String} key The launcher key.  Options are: 'autorun', 'quickstart' and 'shortcut'.
     */
-   getLauncher : function(key){
+   getLauncher : function(key)
+   {
       return this.launchers[key];
    },
 
@@ -428,7 +448,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * @param {String} key The launcher key.  Options are: 'autorun', 'quickstart' and 'shortcut'.
     * @param {String} id The module id to add.
     */
-   addToLauncher : function(key, id){
+   addToLauncher : function(key, id)
+   {
       var c = this.getLauncher(key);
       if(c){
          c.push(id);
@@ -439,7 +460,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * @param {String} key The launcher key.  Options are: 'autorun', 'quickstart' and 'shortcut'.
     * @param {String} id The module id to remove.
     */
-   removeFromLauncher : function(key, id){
+   removeFromLauncher : function(key, id)
+   {
       var c = this.getLauncher(key);
       if(c){
          var i = 0;
@@ -453,28 +475,34 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   getTaskbarPosition : function(){
+   getTaskbarPosition : function()
+   {
       return this.taskbar.position;
    },
 
-   getTaskbarHeight : function(){
+   getTaskbarHeight : function()
+   {
       return this.taskbar.isVisible() ? this.taskbar.getHeight() : 0;
    },
 
-   getViewHeight : function(){
+   getViewHeight : function()
+   {
       return (Ext.lib.Dom.getViewHeight() - this.getTaskbarHeight());
    },
 
-   getViewWidth : function(){
+   getViewWidth : function()
+   {
       return Ext.lib.Dom.getViewWidth();
    },
 
-   getWinWidth : function(){
+   getWinWidth : function()
+   {
       var width = this.getViewWidth();
       return width < 200 ? 200 : width;
    },
 
-   getWinHeight : function(){
+   getWinHeight : function()
+   {
       var height = this.getViewHeight();
       return height < 100 ? 100 : height;
    },
@@ -482,18 +510,21 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {integer} width The width.
     */
-   getWinX : function(width){
+   getWinX : function(width)
+   {
       return (Ext.lib.Dom.getViewWidth() - width) / 2;
    },
 
    /**
     * @param {integer} height The height.
     */
-   getWinY : function(height){
+   getWinY : function(height)
+   {
       return (Ext.lib.Dom.getViewHeight() - this.getTaskbarHeight() - height) / 2;
    },
 
-   setTickSize : function(xTickSize, yTickSize){
+   setTickSize : function(xTickSize, yTickSize)
+   {
       this.xTickSize = xTickSize;
       if (arguments.length == 1){
          this.yTickSize = xTickSize;
@@ -508,7 +539,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }, this);
    },
 
-   cascadeWindows : function(){
+   cascadeWindows : function()
+   {
       var x = 0, y = 0;
       this.windows.each(function(win) {
          if(win.isVisible() && !win.maximized){
@@ -520,7 +552,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }, this);
    },
 
-   tileWindows : function(){
+   tileWindows : function()
+   {
       var availWidth = this.el.getWidth(true);
       var x = this.xTickSize;
       var y = this.yTickSize;
@@ -541,19 +574,22 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }, this);
    },
 
-   closeWindows : function() {
+   closeWindows : function() 
+   {
       this.windows.each(function(win) {
          win.close();
       }, this);
    },
 
-   minimizeWindows : function() {
+   minimizeWindows : function() 
+   {
       this.windows.each(function(win) {
          this.minimizeWin(win);
       }, this);
    },
 
-   checkerboardWindows : function() {
+   checkerboardWindows : function() 
+   {
       var availWidth = this.el.getWidth(true);
       var availHeight = this.el.getHeight(true);
 
@@ -588,7 +624,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }, this);
    },
 
-   snapFitWindows : function() {
+   snapFitWindows : function() 
+   {
       var availWidth = this.el.getWidth(true);
       var availHeight = this.el.getHeight(true);
 
@@ -621,7 +658,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   snapFitVWindows : function(){
+   snapFitVWindows : function()
+   {
       var availWidth = this.el.getWidth(true);
       var availHeight = this.el.getHeight(true);
 
@@ -654,7 +692,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   initAppearance : function(){
+   initAppearance : function()
+   {
     	var a = this.appearance;
     	if(a){
          this.setFontColor(a.fontColor);
@@ -663,11 +702,13 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   getAppearance : function(){
+   getAppearance : function()
+   {
       return this.appearance;
    },
 
-   initBackground : function(){
+   initBackground : function()
+   {
       var b = this.background;
       if(b){
          this.setBackgroundColor(b.color);
@@ -676,14 +717,16 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   getBackground : function(){
+   getBackground : function()
+   {
       return this.background;
    },
 
    /**
     * @param {string} hex The hexidecimal number for the color.
     */
-   setBackgroundColor : function(hex){
+   setBackgroundColor : function(hex)
+   {
       if(hex){
          Ext.getBody().setStyle('background-color', '#'+hex);
          this.background.backgroundcolor = hex;
@@ -693,7 +736,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {string} hex The hexidecimal number for the color.
     */
-   setFontColor : function(hex){
+   setFontColor : function(hex)
+   {
       if(hex){
          //Ext.util.CSS.updateRule('.ux-shortcut-btn-text', 'color', '#'+hex);
          this.shortcuts.setFontColor(hex);
@@ -710,7 +754,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     *    file: 'path/to/file'
     * }
     */
-   setTheme : function(o){
+   setTheme : function(o)
+   {
       if(o && o.id && o.name && o.file){
          Ext.util.CSS.swapStyleSheet('theme', o.file);
          this.appearance.theme = o;
@@ -720,7 +765,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {integer} v The value.  An integer from 0 to 100.
     */
-   setTaskbarTransparency : function(v){
+   setTaskbarTransparency : function(v)
+   {
       if(v >= 0 && v <= 100){
          this.taskbar.el.addClass("transparent");
          Ext.util.CSS.updateRule('.transparent','opacity', v/100);
@@ -731,7 +777,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
       }
    },
 
-   getWallpaper : function(){
+   getWallpaper : function()
+   {
       return this.background.wallpaper;
    },
 
@@ -744,8 +791,9 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     *    file: 'path/to/file'
     * }
     */
-   setWallpaper : function(o){
-      if(o){
+   setWallpaper : function(o)
+   {
+      if (o) {
 
          var wp = new Image();
          wp.src = o;
@@ -769,7 +817,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {string} pos Options are 'tile' or 'center'.
     */
-   setWallpaperPosition : function(pos){
+   setWallpaperPosition : function(pos)
+   {
       if(pos){
          var b = Ext.getBody();
          if(pos === "center"){
@@ -786,7 +835,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {object} config The config object.
     */
-   showNotification : function(config){
+   showNotification : function(config)
+   {
       var win = new Ext.ux.Notification(Ext.apply({
          animateTarget: this.taskbar.el,
          animateFrom: this.getTaskbarPosition(),
@@ -805,7 +855,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * @param {Ext.ux.Notification} win The notification window.
     * @param {integer} delay The delay time in milliseconds.
     */
-   hideNotification : function(win, delay){
+   hideNotification : function(win, delay)
+   {
       if(win){
          (function(){win.animHide();}).defer(delay || 3000);
       }
@@ -814,7 +865,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {string} id The id of the module to add.
     */
-   addAutoRun : function(id){
+   addAutoRun : function(id)
+   {
       var m = this.app.getModule(id);
       var c = this.getLauncher('autorun');
 			
@@ -827,7 +879,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {string} id The id of the module to remove.
     */
-   removeAutoRun : function(id){
+   removeAutoRun : function(id)
+   {
       var m = this.app.getModule(id);
       var c = this.getLauncher('autorun');
 
@@ -849,7 +902,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
     * @param {string} id The id of the module to add.
     */
-   addContextMenuItem : function(id){
+   addContextMenuItem : function(id)
+   {
       var m = this.app.getModule(id);
 
       if(m && !m.contextMenuItem && m.launcher){
@@ -868,7 +922,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * @param {string} id The module id
     * @param {boolean} updateConfig 
     */
-   addShortcut : function(id, updateConfig){
+   addShortcut : function(id, updateConfig)
+   {
       var m = this.app.getModule(id);
       
       if(m && !m.shortcut){
@@ -891,7 +946,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * @param {string} id The module id
     * @param {boolean} updateConfig
     */
-   removeShortcut : function(id, updateConfig){
+   removeShortcut : function(id, updateConfig)
+   {
       var m = this.app.getModule(id);
 
       if(m && m.shortcut){
@@ -933,7 +989,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
     * @param {string} id The module id
     * @param {boolean} updateConfig
     */
-   removeQuickStartButton : function(id, updateConfig){
+   removeQuickStartButton : function(id, updateConfig)
+   {
       var m = this.app.getModule(id);
 
       if(m && m.quickStartButton){
@@ -949,7 +1006,8 @@ Ext.Desktop = Ext.extend(Ext.util.Observable, {
    /**
 	 * Returns the Start Menu items and toolItems configs
 	 */
-	buildStartItemConfig : function(){
+	buildStartItemConfig : function()
+	{
 		var ms = this.app.modules;
 		var sortFn = this.startMenuSortFn;
 

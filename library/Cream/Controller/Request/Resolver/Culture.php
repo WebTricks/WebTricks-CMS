@@ -6,31 +6,29 @@ class Cream_Controller_Request_Resolver_Culture extends Cream_Controller_Request
 	
 	public function process()
 	{
-		if ($this->_setFromUrlPath()) {
-			return;
-		}
-		
-		if ($this->_setFromQueryString()) {
-			return;
-		}
-		
-		if ($this->_setFromQueryString()) {
-			return;
-		}
-		
-		if ($this->_setFromBrowser()) {
-			return;
-		}
-		
-		if ($this->_setFromSite()) {
-			return;
-		}
-		
-		if ($this->_setFromDefaultSetting()) {
-			return;
-		}
+		if ($this->_getApplication()->getContext()->getItem()) {
+			if ($this->_setFromUrlPath()) {
+				return;
+			}
+			
+			if ($this->_setFromQueryString()) {
+				return;
+			}
+			
+			//if ($this->_setFromBrowser()) {
+			//	return;
+			//}
+			
+			if ($this->_setFromSite()) {
+				return;
+			}
+	
+			if ($this->_setFromDefaultSetting()) {
+				return;
+			}
 
-		throw new Cream_Controller_Exception('Culture could not be set.');
+			throw new Cream_Controller_Exception('Culture could not be set.');			
+		}
 	}
 	
 	protected function _setFromUrlPath()
@@ -45,7 +43,7 @@ class Cream_Controller_Request_Resolver_Culture extends Cream_Controller_Request
 	 */
 	protected function _setFromQueryString()
 	{
-		$culture = $this->getApplication()->getRequest()->getParam('__culture');
+		$culture = $this->_getApplication()->getRequest()->getParam('__culture');
 		
 		if ($culture) {
 			return $this->_setCulture($culture, true);	
@@ -61,7 +59,7 @@ class Cream_Controller_Request_Resolver_Culture extends Cream_Controller_Request
 	 */
 	protected function _setFromBrowser()
 	{
-		$cultures = $this->getApplication()->getRequest()->getServer('HTTP_ACCEPT_LANGUAGE');
+		$cultures = $this->_getApplication()->getRequest()->getServer('HTTP_ACCEPT_LANGUAGE');
 		$cultures = explode(',', $cultures);
 		
 	    foreach ($cultures as $culture) {
@@ -85,7 +83,7 @@ class Cream_Controller_Request_Resolver_Culture extends Cream_Controller_Request
 	 */	
 	protected function _setFromSite()
 	{
-		return $this->_setCulture($this->getApplication()->getContext()->getSite()->getCultureName());
+		return $this->_setCulture($this->_getApplication()->getContext()->getSite()->getCultureName());
 	}
 	
 	/**
@@ -95,7 +93,7 @@ class Cream_Controller_Request_Resolver_Culture extends Cream_Controller_Request
 	 */
 	protected function _setFromDefaultSetting()
 	{
-		$culture = $this->getApplication()->getConfig()->getNode(self::CONFIG_DEFAULT_CULTURE_PATH);
+		$culture = $this->_getApplication()->getConfig()->getNode(self::CONFIG_DEFAULT_CULTURE_PATH);
 
 		return $this->_setCulture((string) $culture);
 	}
@@ -110,11 +108,11 @@ class Cream_Controller_Request_Resolver_Culture extends Cream_Controller_Request
 		if ($cultureName) {
 
 			
-			$cultures = $this->getApplication()->getContext()->getRepository()->getCultures();
+			$cultures = $this->_getApplication()->getContext()->getRepository()->getCultures();
 
 			foreach($cultures as $culture) {
 				if ($culture->getCulture() == $cultureName) {
-					$contextItem = $this->getApplication()->getContext()->getItem();
+					$contextItem = $this->_getApplication()->getContext()->getItem();
 					
 					if ($this->_hasVersionInLanguage($contextItem, $culture)) {
 						$this->_setContextCulture($culture, $persistent);
@@ -134,7 +132,7 @@ class Cream_Controller_Request_Resolver_Culture extends Cream_Controller_Request
 	 */
 	protected function _setContextCulture(Cream_Globalization_Culture $culture, $persistent = false)
 	{
-		$this->getApplication()->getContext()->setCulture($culture);
+		$this->_getApplication()->getContext()->setCulture($culture);
 		
 		if ($persistent) {
 			

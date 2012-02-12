@@ -24,8 +24,8 @@ abstract class WebTricks_Shell_Applications_ContentManager_Abstract extends WebT
 	 */
 	public function __init($controller = null)
 	{
-		$this->_itemId = Cream_Guid::parseGuid($this->getApplication()->getRequest()->getParam('itemId'));
-		$this->_culture = Cream_Globalization_Culture::instance($this->getApplication()->getRequest()->getParam('culture'));
+		$this->_itemId = Cream_Guid::parseGuid($this->_getApplication()->getRequest()->getParam('itemId'));
+		$this->_culture = Cream_Globalization_Culture::instance($this->_getApplication()->getRequest()->getParam('culture'));
 		
 		if ($controller) {
 			$this->_controller = $controller;
@@ -64,7 +64,7 @@ abstract class WebTricks_Shell_Applications_ContentManager_Abstract extends WebT
 	 */
 	public function getRepository()
 	{
-		return $this->getApplication()->getContext()->getContentRepository();
+		return $this->_getApplication()->getContext()->getContentRepository();
 	}
 	
 	protected function _getToolbar()

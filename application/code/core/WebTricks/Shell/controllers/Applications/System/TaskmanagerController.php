@@ -26,7 +26,7 @@ class WebTricks_Shell_Applications_System_TaskmanagerController extends WebTrick
 	public function dataAction()
 	{
 		//$input = $this->getRequest()->getParam('application');
-		//$repository = $this->getApplication()->getRepository('core');
+		//$repository = $this->_getApplication()->getRepository('core');
 		//$itemId = $repository->getDataManager()->resolvePath(self::REPOSITORY_PATH_APPLICATION_ROOT .'/'. $input);
 		//
 		//if ($itemId) {

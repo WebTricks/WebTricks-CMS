@@ -27,7 +27,7 @@ class Cream_Controller_Router_Standard extends Cream_Controller_Router_Abstract
 {
     public function match(Cream_Controller_Request_Http $request)
     {
-        $d = explode('/', $this->getApplication()->getConfig()->getNode('web/default/no_route'));
+        $d = explode('/', $this->_getApplication()->getConfig()->getNode('web/default/no_route'));
         
         $request->setModuleName(isset($d[0]) ? $d[0] : 'core')
             ->setControllerName(isset($d[1]) ? $d[1] : 'index')

@@ -12,7 +12,7 @@ class WebTricks_Shell_Commands_Shell_SecurityEditor extends WebTricks_Shell_Comm
 	 */
 	public function execute(WebTricks_Shell_Commands_CommandContext $context)
 	{
-		$item = $this->getApplication()->getContext()->getRepository()->getItemByPath(self::APPLICATION_PATH);
+		$item = $this->_getApplication()->getContext()->getRepository()->getItemByPath(self::APPLICATION_PATH);
 		
 		if ($item) {
 			WebTricks_Shell_Client_Response::runApplication($item);
@@ -29,7 +29,7 @@ class WebTricks_Shell_Commands_Shell_SecurityEditor extends WebTricks_Shell_Comm
 	 */
 	public function queryState(WebTricks_Shell_Commands_CommandContext $context)
 	{
-		$item = $this->getApplication()->getContext()->getRepository()->getItemByPath(self::APPLICATION_PATH);
+		$item = $this->_getApplication()->getContext()->getRepository()->getItemByPath(self::APPLICATION_PATH);
 		
 		if (!$item) {
 			return WebTricks_Shell_Commands_CommandState::HIDDEN;	

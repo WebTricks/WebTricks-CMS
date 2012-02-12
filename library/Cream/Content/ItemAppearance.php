@@ -56,7 +56,14 @@ class Cream_Content_ItemAppearance extends Cream_ApplicationComponent
 
 	public function getDisplayName()
 	{
-		return $this->item->getName();
+		$field = $this->item->getFields()->getField(Cream_Application_FieldIds::getDisplayName());
+		return $field->getValue();
+	}
+	
+	public function setDisplayName($displayName)
+	{
+		$field = $this->item->getFields()->getField(Cream_Application_FieldIds::getDispayName());
+		$field->setValue($displayName);		
 	}
 	
 	/**

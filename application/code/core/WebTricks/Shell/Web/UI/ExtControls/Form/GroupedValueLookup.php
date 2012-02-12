@@ -24,7 +24,7 @@ class WebTricks_Shell_Web_UI_ExtControls_Form_GroupedValueLookup extends Cream_W
 	protected function _getStore()
 	{
 		$data = array();
-		$item = $this->getApplication()->getContext()->getContentRepository()->getItemByPath($this->_source);
+		$item = $this->_getApplication()->getContext()->getContentRepository()->getItemByPath($this->_source);
 		
 		if ($item) {
 			foreach($item->getChildren() as $group) {

@@ -84,7 +84,7 @@ class Cream_Config extends Cream_Config_Base
      */
     public function loadBase()
     {
-        $configDir = $this->getApplication()->getOptions()->getConfigDir();
+        $configDir = $this->_getApplication()->getOptions()->getConfigDir();
         $files = glob($configDir . DS .'*.xml');
         
         if (!count($files)) {
@@ -117,7 +117,7 @@ class Cream_Config extends Cream_Config_Base
          * Prevent local.xml directives overwriting
          */
         $mergeConfig = clone $this->_prototype;
-        $this->_isLocalConfigLoaded = $mergeConfig->loadFile($this->getApplication()->getOptions()->getConfigDir().DS.'local.xml');
+        $this->_isLocalConfigLoaded = $mergeConfig->loadFile($this->_getApplication()->getOptions()->getConfigDir().DS.'local.xml');
         if ($this->_isLocalConfigLoaded) {
             $this->merge($mergeConfig);
         }
@@ -145,7 +145,7 @@ class Cream_Config extends Cream_Config_Base
         $modules = $this->getNode('modules')->children();
         foreach ($modules as $modName => $module) {
             if ($module->is('active')) {
-                $configFile = $this->getApplication()->getOptions()->getModuleDir(Cream_ApplicationOptions::MODULE_CONFIG_DIRECTORY, $modName) . DS . $fileName;
+                $configFile = $this->_getApplication()->getOptions()->getModuleDir(Cream_ApplicationOptions::MODULE_CONFIG_DIRECTORY, $modName) . DS . $fileName;
                 if ($mergeModel->loadFile($configFile)) {
                     $mergeToObject->merge($mergeModel, true);
                 }
@@ -220,7 +220,7 @@ class Cream_Config extends Cream_Config_Base
      */
     protected function _getDeclaredModuleFiles()
     {
-        $configDir = $this->getApplication()->getOptions()->getConfigDir();
+        $configDir = $this->_getApplication()->getOptions()->getConfigDir();
         $moduleFiles = glob($configDir . DS . 'modules' . DS . '*.xml');
         $collectModuleFiles = array();
 
@@ -255,11 +255,11 @@ class Cream_Config extends Cream_Config_Base
      * Get resource configuration for resource name
      *
      * @param string $name
-     * @return Varien_Simplexml_Object
+     * @return Cream_Config_Xml_Element
      */
     public function getResourceConfig($name)
     {
-        return $this->_xml->global->resources->{$name};
+        return $this->_xml->global->data->{$name};
     }    
     
     /**
@@ -366,5 +366,97 @@ class Cream_Config extends Cream_Config_Base
         $class .= 'Control';
         
         return $class;
+    }    
+    
+    /**
+     * Get factory class name for a resource
+     *
+     * @param string $modelClass
+     * @return string|false
+     */
+    protected function _getResourceModelFactoryClassName($modelClass)
+    {
+    	$classArray = explode('/', $modelClass);
+    	if (count($classArray) != 2) {
+    		return false;
+    	}
+    	    
+    	list($module, $model) = $classArray;
+    	if (!isset($this->_xml->global->models->{$module})) {
+    		return false;
+    	}
+    	    
+    	$moduleNode = $this->_xml->global->models->{$module};
+    	if (!empty($moduleNode->resourceModel)) {
+    		$resourceModel = (string)$moduleNode->resourceModel;
+    	} else {
+    		return false;
+    	}
+    
+    	return $resourceModel . '/' . $model;
+    }
+    
+    /**
+     * Get a resource model class name
+     *
+     * @param string $modelClass
+     * @return string|false
+     */
+    public function getResourceModelClassName($modelClass)
+    {	
+    	$factoryName = $this->_getResourceModelFactoryClassName($modelClass);
+    	if ($factoryName) {
+    		return $this->getModelClassName($factoryName);
+    	}
+    	return false;
+    }    
+    
+    /**
+     * Retrieve module class name
+     *
+     * @param   sting $modelClass
+     * @return  string
+     */
+    public function getModelClassName($modelClass)
+    {
+    	$modelClass = trim($modelClass);
+    	if (strpos($modelClass, '/')===false) {
+    		return $modelClass;
+    	}
+    	return $this->getGroupedClassName('model', $modelClass);
+    }    
+    
+    /**
+     * Get connection configuration
+     *
+     * @param   string $name
+     * @return  Cream_Config_Xml_Element
+     */
+    public function getConnectionConfig($name)
+    {
+    	$config = $this->_xml->global->data->{$name};
+    	
+    	if ($config) {
+    		$conn = $config->connection;
+    		if ($conn) {
+    			if (!empty($conn->use)) {
+    				return $this->getConnectionConfig((string)$conn->use);
+    			} else {
+    				return $conn;
+    			}
+    		}
+    	}
+    	return false;
+    }
+    
+    /**
+     * Retrieve resource type configuration for resource name
+     *
+     * @param string $type
+     * @return Cream_Config_Xml_Element
+     */
+    public function getResourceTypeConfig($type)
+    {
+    	return $this->_xml->global->data->connection->types->{$type};
     }    
 }

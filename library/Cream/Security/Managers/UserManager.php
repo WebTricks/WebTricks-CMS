@@ -23,7 +23,7 @@ class Cream_Security_Managers_UserManager extends Cream_ApplicationComponent
 	protected function _getDataManager()
 	{
 		if (!$this->_dataManager) {
-			$config = $this->getApplication()->getConfig()->getNode('global/security/data');
+			$config = $this->_getApplication()->getConfig()->getNode('global/security/data');
 			$this->_dataManager = Cream_Security_Data_Manager::factory($config);
 		}
 		

@@ -66,7 +66,7 @@ class Cream_Workflows_Data_Manager_Database extends Cream_Workflows_Data_Manager
 			'oldStateId' => $oldStateId,
 			'newStateId' => $newStateId,
 			'message' => $message,
-			'user' => $this->getApplication()->getContext()->getUser()->getName(),
+			'user' => $this->_getApplication()->getContext()->getUser()->getName(),
 			'date' => Cream_Expression::instance('NOW()')
 		));
 		
@@ -124,7 +124,7 @@ class Cream_Workflows_Data_Manager_Database extends Cream_Workflows_Data_Manager
 	 */
 	protected function _getReadConnection()
 	{
-		return $this->getApplication()->getConnection($this->_readConnection);
+		return $this->_getApplication()->getConnection($this->_readConnection);
 	}
 
 	/**
@@ -134,6 +134,6 @@ class Cream_Workflows_Data_Manager_Database extends Cream_Workflows_Data_Manager
 	 */	
 	protected function _getWriteConnection()
 	{
-		return $this->getApplication()->getConnection($this->_writeConnection);
+		return $this->_getApplication()->getConnection($this->_writeConnection);
 	}	
 }

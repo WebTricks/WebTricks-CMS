@@ -57,7 +57,7 @@ class Cream_Data_Connection
 	/**
 	 * @var string
 	 */
-	protected $_server;
+	protected $_host;
 
 	/**
 	 * @var string
@@ -89,13 +89,13 @@ class Cream_Data_Connection
 	public function __init($config)
 	{
 		if (Cream::isInstanceOf($config, 'Cream_Config_Xml_Element')) {
-			$this->_server = (string) $config->server;
+			$this->_host = (string) $config->host;
 			$this->_database = (string) $config->database;
 			$this->_username = (string) $config->username;
 			$this->_password = (string) $config->password;
 			$this->_type = (string) $config->type;
 		} else {
-			$this->_server = $config['server'];
+			$this->_host = $config['host'];
 			$this->_database = $config['database'];
 			$this->_username = $config['username'];
 			$this->_password = $config['password'];
@@ -121,9 +121,9 @@ class Cream_Data_Connection
 	 *
 	 * @return string
 	 */
-	public function getServer()
+	public function getHost()
 	{
-		return $this->_server;
+		return $this->_host;
 	}
 
 	/**

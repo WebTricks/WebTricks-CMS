@@ -50,7 +50,7 @@ class WebTricks_Shell_ShellController extends WebTricks_Shell_Controller_Action
 	public function runAction()
 	{
 		$itemId = Cream_Guid::parseGuid($this->getRequest()->getParam('itemId'));
-		$item = $this->getApplication()->getRepository('core')->getItem($itemId);
+		$item = $this->_getApplication()->getContext()->getRepository()->getItem($itemId);
 		$class = $item->get('Application');
 		
 		$application = Cream::instance((string) $class);

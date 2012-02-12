@@ -119,7 +119,7 @@ class Cream_Content_ItemChanges
 	
 	/**
 	 * Determines whether this object holds any fields that has been
-	 * changed. true if this instance has fields changed; otherwise, 
+	 * changed. True if this instance has fields changed, otherwise 
 	 * false. 
 	 *
 	 * @return boolean
@@ -132,6 +132,21 @@ class Cream_Content_ItemChanges
 			return false;
 		}	
 	}
+	
+	/**
+	 * Determines whether any properties have been changed. True if 
+	 * there are changed properties, otherwise false. 
+	 *
+	 * @return boolean
+	 */
+	public function hasChangedProperties()
+	{
+		if (count($this->_properties)) {
+			return true;
+		} else {
+			return false;
+		}	
+	}	
 	
 	/**
 	 * Returns an array of the field changes.
@@ -183,5 +198,16 @@ class Cream_Content_ItemChanges
 		} else {
 			return false;
 		}
+	}
+	
+	/**
+	 * Returns all property changes. Returns an empty array when no
+	 * properties have been changed.
+	 * 
+	 * @return array
+	 */
+	public function getProperties()
+	{
+		return $this->_properties;
 	}
 }

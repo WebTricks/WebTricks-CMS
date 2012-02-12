@@ -53,7 +53,7 @@ class WebTricks_Shell_IndexController extends WebTricks_Shell_Controller_Action
 	{
 		$this->_prepareLayout();
 		
-        if ($this->getApplication()->getContext()->getUser()->isAuthenticated()) {
+        if ($this->_getApplication()->getContext()->getUser()->isAuthenticated()) {
             $this->_redirect('*');
         }
 		
@@ -112,7 +112,7 @@ class WebTricks_Shell_IndexController extends WebTricks_Shell_Controller_Action
 	{
 		$this->_prepareLayout();
 		
-        if ($this->getApplication()->getContext()->getUser()->isAuthenticated()) {
+        if ($this->_getApplication()->getContext()->getUser()->isAuthenticated()) {
             $this->_redirect('*');
         }
 		
@@ -144,7 +144,7 @@ class WebTricks_Shell_IndexController extends WebTricks_Shell_Controller_Action
 	
 	public function testAction()
 	{        		
-		$item = $this->getApplication()->getRepository('core')->getItem(Cream_Application_ItemIds::getRootId());
+		$item = $this->_getApplication()->getContext()->getRepository()->getItem(Cream_Application_ItemIds::getRootId());
 		
 		foreach ($item->getChildren() as $child)
 		{
@@ -186,16 +186,17 @@ class WebTricks_Shell_IndexController extends WebTricks_Shell_Controller_Action
     /**
      * Retrieves the cultures defined for the WebTricks Shell.
      * 
-     * @return Cream_Content_ItemCollection
+     * @return array
      */
 	protected function _getCultures()
 	{
-		$item = $this->getApplication()->getRepository('core')->getItemByPath('webtricks/system/languages');
+		$cultures = array();
+		$item = $this->_getApplication()->getContext()->getRepository()->getItemByPath('webtricks/system/languages');
+
+		foreach ($item->getChildren() as $child) {
+			$cultures[] = Cream_Globalization_Culture::instance($child->getName());
+		} 
 		
-		if ($item) {
-			return $item->getChildren();
-		} else {
-			return Cream_Content_ItemCollection::instance();
-		}
+		return $cultures;
 	}
 }

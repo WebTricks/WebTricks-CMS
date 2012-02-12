@@ -51,7 +51,6 @@ class WebTricks_Shell_Applications_Webedit extends Cream_ApplicationComponent
 		$panel->setMargins('5 5 5 5');
 		$panel->setRegion('center');
 		$panel->setLayout('fit');
-		$panel->setBorder(false);
 		$panel->setTbar($this->_getToolbar());
 				
 		return $panel;
@@ -68,10 +67,14 @@ class WebTricks_Shell_Applications_Webedit extends Cream_ApplicationComponent
 	
 	protected function _getToolbar()
 	{
-		$itemId = $this->getApplication()->getRepository('core')->getDataManager()->resolvePath('WebTricks/content/Applications/WebEdit/Ribbons/Preview');
-		$item = $this->getApplication()->getRepository('core')->getItem($itemId);
+		$itemId = $this->_getApplication()->getRepository('core')->getDataManager()->resolvePath('WebTricks/content/Applications/WebEdit/Ribbons/WebEdit');
+		$item = $this->_getApplication()->getRepository('core')->getItem($itemId);
+		
+		$context = WebTricks_Shell_Commands_CommandContext::instance();		
 
 		$ribbon = WebTricks_Shell_Toolbar_Ribbon::instance();
+		$ribbon->setCommandContext($context);		
+		
 		return $ribbon->getExtControl($item);
 	}
 }

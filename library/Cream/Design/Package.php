@@ -187,7 +187,7 @@ class Cream_Design_Package extends Cream_ApplicationComponent
 
     public function designPackageExists($packageName, $area = self::DEFAULT_AREA)
     {
-        return is_dir($this->getApplication()->getOptions()->getDesignDir() . DS . $area . DS . $packageName);
+        return is_dir($this->_getApplication()->getOptions()->getDesignDir() . DS . $area . DS . $packageName);
     }
 
     /**
@@ -270,7 +270,7 @@ class Cream_Design_Package extends Cream_ApplicationComponent
     public function getBaseDir(array $params)
     {
         $this->updateParamDefaults($params);
-        $baseDir = (empty($params['_relative']) ? $this->getApplication()->getOptions()->getDesignDir() . DS : '').
+        $baseDir = (empty($params['_relative']) ? $this->_getApplication()->getOptions()->getDesignDir() . DS : '').
             $params['_area'].DS.$params['_package'].DS.$params['_theme'].DS.$params['_type'];
         return $baseDir;
     }
@@ -279,7 +279,7 @@ class Cream_Design_Package extends Cream_ApplicationComponent
     {
         $params['_type'] = 'skin';
         $this->updateParamDefaults($params);
-        $baseDir = (empty($params['_relative']) ? $this->getApplication()->getOptions()->getSkinDir() .DS : '').
+        $baseDir = (empty($params['_relative']) ? $this->_getApplication()->getOptions()->getSkinDir() .DS : '').
             $params['_area'].DS.$params['_package'].DS.$params['_theme'];
         return $baseDir;
     }
@@ -288,9 +288,9 @@ class Cream_Design_Package extends Cream_ApplicationComponent
     {
         $params['_type'] = 'locale';
         $this->updateParamDefaults($params);
-        $baseDir = (empty($params['_relative']) ? $this->getApplication()->getOptions()->getDesignDir() .DS : '').
+        $baseDir = (empty($params['_relative']) ? $this->_getApplication()->getOptions()->getDesignDir() .DS : '').
             $params['_area'].DS.$params['_package'].DS.$params['_theme'] . DS . 'locale' . DS .
-            $this->getApplication()->getContext()->getCulture()->getCulture();
+            $this->_getApplication()->getContext()->getCulture()->getCulture();
         return $baseDir;
     }
 
@@ -318,7 +318,7 @@ class Cream_Design_Package extends Cream_ApplicationComponent
     public function validateFile($file, array $params)
     {
         $fileName = $this->_renderFilename($file, $params);
-        $testFile = (empty($params['_relative']) ? '' : $this->getApplication()->getOptions()->getDesignDir() . DS) . $fileName;
+        $testFile = (empty($params['_relative']) ? '' : $this->_getApplication()->getOptions()->getDesignDir() . DS) . $fileName;
         if (!file_exists($testFile)) {
             return false;
         }
@@ -459,7 +459,7 @@ class Cream_Design_Package extends Cream_ApplicationComponent
      */
     public function getPackageList()
     {
-        $directory = $this->getApplication()->getOptions()->getDesignDir() . DS . 'frontend';
+        $directory = $this->_getApplication()->getOptions()->getDesignDir() . DS . 'frontend';
         return $this->_listDirectories($directory);
     }
 
@@ -477,7 +477,7 @@ class Cream_Design_Package extends Cream_ApplicationComponent
                 $result[$package] = $this->getThemeList($package);
             }
         } else {
-            $directory = $this->getApplication()->getOptions()->getDesignDir() . DS . 'frontend' . DS . $package;
+            $directory = $this->_getApplication()->getOptions()->getDesignDir() . DS . 'frontend' . DS . $package;
             $result = $this->_listDirectories($directory);
         }
 
@@ -527,7 +527,7 @@ class Cream_Design_Package extends Cream_ApplicationComponent
             if (!empty(self::$_customThemeTypeCache[$regexpsConfigPath])) {
                 return self::$_customThemeTypeCache[$regexpsConfigPath];
             }
-            $configValueSerialized = $this->getApplication()->getConfig()->getNode($regexpsConfigPath);
+            $configValueSerialized = $this->_getApplication()->getConfig()->getNode($regexpsConfigPath);
             if ($configValueSerialized) {
                 $regexps = @unserialize($configValueSerialized);
                 if (!empty($regexps)) {

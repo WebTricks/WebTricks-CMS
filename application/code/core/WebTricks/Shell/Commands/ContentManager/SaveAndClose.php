@@ -9,7 +9,7 @@ class WebTricks_Shell_Commands_ContentManager_SaveAndClose extends WebTricks_She
 	
 	public function queryState(WebTricks_Shell_Commands_CommandContext $context)
 	{
-		if ($this->getApplication()->getRequest()->get('editmode') !== 'webedit') {
+		if ($this->_getApplication()->getRequest()->get('editmode') !== 'webedit') {
 			return WebTricks_Shell_Commands_CommandState::HIDDEN;
 		}
 	}

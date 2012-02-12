@@ -36,6 +36,8 @@ class WebTricks_Shell_Toolbar_Ribbon
 	
 	const SMALL_MENU_COMBO_BUTTON = '52e27a46-dab2-42ee-881c-7f3b9433b27a';
 	
+	const PANEL = 'f6bea742-4707-419f-8b8f-a577a622f8fe';
+	
 	/**
 	 * Context of the command.
 	 * 
@@ -199,7 +201,8 @@ class WebTricks_Shell_Toolbar_Ribbon
 			$chunkControl->setItems($buttons);
 			
 			if ($click && $enabled == WebTricks_Shell_Commands_CommandState::ENABLED) {
-				$chunkControl->setOnTitleClick('');
+				$chunkControl->setOnTitleClick(Cream_Expression::instance('function() { alert(this.application.getModule(\'16192c38-8337-4895-9364-4d29e78b7b40\').invokeCommand(\''. $click .'\')); }'));
+				$chunkControl->associate('scope', Cream_Expression::instance('this'));				
 			}
 			
 			return $chunkControl;
@@ -243,6 +246,12 @@ class WebTricks_Shell_Toolbar_Ribbon
 	protected function _getButton(Cream_Content_Item $button, &$columns)
 	{
 		switch($button->getTemplateId()) {
+			case self::PANEL:
+				$control = $this->_getPanel($button);
+				if ($control) {
+					$columns++;
+				}
+				break;
 			case self::LARGE_BUTTON:
 				$control = $this->_getLargeButton($button);
 				if ($control) {
@@ -388,13 +397,14 @@ class WebTricks_Shell_Toolbar_Ribbon
 		
 		if ($command) {
 			$enabled = $command->queryState($this->_commandContext);
+			$header = $command->getHeader($this->getCommandContext(), $header);
 		}
 		
 		if ($enabled != WebTricks_Shell_Commands_CommandState::HIDDEN) {
 		
 			$buttonControl = Cream_Web_UI_ExtControls_Button::instance();
 			$buttonControl->setScale('small');
-			$buttonControl->setText((string) $button->get('Header'));
+			$buttonControl->setText((string) $header);
 			$buttonControl->setTooltip((string) $button->get('Tooltip'));
 			$buttonControl->setIconCls('icon-'. $button->get('Icon'));
 			$buttonControl->setIconAlign('left');
@@ -476,5 +486,15 @@ class WebTricks_Shell_Toolbar_Ribbon
 		$buttonControl->setHeight(28);
 				
 		return $buttonControl;		
+	}
+	
+	protected function _getPanel(Cream_Content_Item $button)
+	{
+		$type = $button->get('Type');
+		
+		if ((string) $type) {
+			$panel = Cream::instance((string) $type);
+			return $panel->getExtControl($button, $this->getCommandContext());
+		}
 	}
 }

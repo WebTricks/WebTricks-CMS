@@ -157,7 +157,7 @@ class Cream_Content_Managers_TemplateManager extends Cream_ApplicationComponent
 		if (isset($this->_innerCache[$key])) {
 			return $this->_innerCache[$key];
 		} else {
-			$cache = $this->getApplication()->getCache()->load($key);
+			$cache = $this->_getApplication()->getCache()->load($key);
 			
 			if ($cache === false) {
 				return null;
@@ -182,7 +182,7 @@ class Cream_Content_Managers_TemplateManager extends Cream_ApplicationComponent
 		$this->_innerCache[$key] = $item;
 		
 		if ($external) {
-			$this->getApplication()->getCache()->save($item, $key);
+			$this->_getApplication()->getCache()->save($item, $key);
 		}
 	}	
 	
@@ -205,7 +205,9 @@ class Cream_Content_Managers_TemplateManager extends Cream_ApplicationComponent
 		foreach($baseTemplatesIds as $id) {
 			$baseTemplateId = Cream_Guid::parseGuid($id);
 			$baseTemplate = $this->getTemplateById($baseTemplateId, $item->getRepository());
-			$template->addBaseTemplate($baseTemplate);
+			if ($baseTemplate) {
+				$template->addBaseTemplate($baseTemplate);
+			}
 		}
 		
 		foreach($item->getChildren() as $childItem) {

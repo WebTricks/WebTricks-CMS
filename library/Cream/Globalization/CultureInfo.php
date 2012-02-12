@@ -24,7 +24,7 @@ class Cream_Globalization_CultureInfo extends Cream_ApplicationComponent
     public function getLocale()
     {
         if (!$this->_locale || $this->_locale->__toString() != $this->_culture) {
-            //Zend_Locale_Data::setCache($this->getApplication()->getCache());
+            //Zend_Locale_Data::setCache($this->_getApplication()->getCache());
             $this->_locale = new Zend_Locale($this->_culture);
         }
 
@@ -194,9 +194,9 @@ class Cream_Globalization_CultureInfo extends Cream_ApplicationComponent
     public function getAllowCurrencies()
     {
         $data = array();
-        if ($this->getApplication()->isInstalled()) {
+        if ($this->_getApplication()->isInstalled()) {
 			$data = Cream_Globalization_LocaleConfig::singleton()->getAllowedCurrencies();        	
-            //$data = $this->getApplication()->getConfig()->getNode(self::XML_PATH_ALLOW_CURRENCIES_INSTALLED);
+            //$data = $this->_getApplication()->getConfig()->getNode(self::XML_PATH_ALLOW_CURRENCIES_INSTALLED);
             //return explode(',', $data);
         } else {
             $data = Cream_Globalization_LocaleConfig::singleton()->getAllowedCurrencies();

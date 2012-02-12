@@ -148,11 +148,11 @@
 			<item_edit>WebTricks_Shell_Commands_Edit</item_edit>
 			<item_gototemplate>WebTricks_Shell_Commands_GotoTemplate</item_gototemplate>
 			<item_gotomaster>WebTricks_Shell_Commands_GotoMaster</item_gotomaster>
-			<item_movedown>WebTricks_Shell_Commands_MoveDown</item_movedown>
-			<item_movefirst>WebTricks_Shell_Commands_MoveFirst</item_movefirst>
-			<item_movelast>WebTricks_Shell_Commands_MoveLast</item_movelast>
+			<item_movedown>WebTricks_Shell_Commands_Item_MoveDown</item_movedown>
+			<item_movefirst>WebTricks_Shell_Commands_Item_MoveFirst</item_movefirst>
+			<item_movelast>WebTricks_Shell_Commands_Item_MoveLast</item_movelast>
 			<item_moveto>WebTricks_Shell_Commands_MoveTo</item_moveto>
-			<item_moveup>WebTricks_Shell_Commands_MoveUp</item_moveup>
+			<item_moveup>WebTricks_Shell_Commands_Item_MoveUp</item_moveup>
 			<item_myitems>WebTricks_Shell_Commands_MyItems</item_myitems>
 			<item_new>WebTricks_Shell_Commands_Item_New</item_new>
 			<item_newfolder>WebTricks_Shell_Commands_NewFolder</item_newfolder>
@@ -187,8 +187,8 @@
 			<item_setsubitemssorting>WebTricks_Shell_Commands_SetSubitemsSorting</item_setsubitemssorting>
 			<item_settreenodestyle>WebTricks_Shell_Commands_SetTreeNodeStyle</item_settreenodestyle>
 			<item_showversions>WebTricks_Shell_Commands_Item_ShowVersions</item_showversions>
-			<item_togglehidden>WebTricks_Shell_Commands_ToggleHidden</item_togglehidden>
-			<item_togglereadonly>WebTricks_Shell_Commands_ToggleReadOnly</item_togglereadonly>
+			<item_togglehidden>WebTricks_Shell_Commands_Item_ToggleHidden</item_togglehidden>
+			<item_togglereadonly>WebTricks_Shell_Commands_Item_ToggleReadOnly</item_togglereadonly>
 			<item_transfertodatabase>WebTricks_Shell_Commands_TransferToDatabase</item_transfertodatabase>
 			<item_upload>WebTricks_Shell_Commands_Upload</item_upload>
 			<item_workflow>WebTricks_Shell_Commands_Workflow</item_workflow>

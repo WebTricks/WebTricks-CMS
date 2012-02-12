@@ -31,6 +31,13 @@ class Cream_Application_FieldIds extends Cream_ApplicationIds
 	
 	const createdBy = '6c27700a-e10b-4bb4-a581-61dfe39bc0fe';
 	
+	/**
+	 * Id of the display name field.
+	 * 
+	 * @var string
+	 */
+	const DISPLAY_NAME = 'a9988745-43d9-4d2f-bdb3-ac25e6122d07';
+	
 	const HIDDEN = '07ed66f6-cdee-4835-9773-354de49b0d1e';
 	
 	const iconId = 'ecd239b7-e16d-4eaf-8970-d61d7d3bf6d7';
@@ -104,6 +111,16 @@ class Cream_Application_FieldIds extends Cream_ApplicationIds
 	{
 		
 	}
+	
+	/**
+	 * Returns the display name id.
+	 * 
+	 * @return Cream_Guid
+	 */
+	public static function getDisplayName()
+	{
+		return self::_getGuid(self::DISPLAY_NAME);
+	}	
 	
 	/**
 	 * Returns the icon id GUID.

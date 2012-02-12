@@ -229,6 +229,6 @@ class Cream_Content_ItemAccess extends Cream_ApplicationComponent
 	 */
 	protected function _isAllowed(Cream_Content_Item $item, $accessRight)
 	{
-		return Cream_Security_Managers_AuthorizationProvider::isAllowed($this->getApplication()->getContext()->getUser(), $item, $accessRight);
+		return Cream_Security_Managers_AuthorizationProvider::isAllowed($this->_getApplication()->getContext()->getUser(), $item, $accessRight);
 	}
 }

@@ -6,6 +6,7 @@ Ext.namespace("WebTricks.Shell.Applications.ContentManager");
 Ext.namespace("WebTricks.Shell.Applications.ContentManager.Dialogs");
 Ext.namespace("WebTricks.Shell.Applications.ContentManager.Fields");
 Ext.namespace("WebTricks.Shell.Applications.Dialogs");
+Ext.namespace("WebTricks.Shell.Applications.Market");
 Ext.namespace("WebTricks.Shell.Applications.Media");
 Ext.namespace("WebTricks.Shell.Applications.Media.ImageEditor");
 Ext.namespace("WebTricks.Shell.Applications.Reports");

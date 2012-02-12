@@ -195,20 +195,20 @@ ul.ux-quickstart-strip li.ux-quickstart-edge { background:transparent !important
 }
 
 .ux-taskbar .ux-taskbuttons-panel button { color:#f1f1f1; }
-.ux-taskbar .ux-taskbuttons-panel .x-btn { background:transparent url(../images/default/taskbar/btn.gif) no-repeat top right; }
-.ux-taskbar .ux-taskbuttons-panel .active-win { background:transparent url(../images/default/taskbar/btn-active.gif) no-repeat top right; }
+/*.ux-taskbar .ux-taskbuttons-panel .x-btn { background:transparent url(../images/taskbar/btn.gif) no-repeat top right; }*/
+/*.ux-taskbar .ux-taskbuttons-panel .active-win { background:transparent url(../images/taskbar/btn-active.gif) no-repeat top right; }*/
 .ux-taskbar .x-btn-over,
-.ux-taskbar .ux-quickstart-panel .x-btn-over { background:transparent url(../images/default/taskbar/btn-plain-over.gif) no-repeat top right; }
-.ux-taskbar .ux-taskbuttons-panel .x-btn-over { background:transparent url(../images/default/taskbar/btn-over.gif) no-repeat top right; }
+/*.ux-taskbar .ux-quickstart-panel .x-btn-over { background:transparent url(../images/taskbar/btn-plain-over.gif) no-repeat top right; }*/
+/*.ux-taskbar .ux-taskbuttons-panel .x-btn-over { background:transparent url(../images/taskbar/btn-over.gif) no-repeat top right; }*/
 .ux-taskbar-top .x-splitbar-h,
 .ux-taskbar-top .ux-taskbuttons-panel .x-btn,
 .ux-taskbar-top .ux-taskbuttons-panel .active-win,
 .ux-taskbar-top .x-btn-over,
 .ux-taskbar-top .ux-quickstart-panel .x-btn-over,
 .ux-taskbar-top .ux-taskbuttons-panel .x-btn-over { background-position:bottom right; }
-.ux-quickstart-menubutton { background-image:url(../images/default/taskbar/quickstart-menubutton-icon.gif) !important; }
-.ux-taskbuttons-scroller-left { background-image:url(../images/default/taskbar/scroll-left.gif); }
-.ux-taskbuttons-scroller-right { background-image:url(../images/default/taskbar/scroll-right.gif); }
+/*.ux-quickstart-menubutton { background-image:url(../images/taskbar/quickstart-menubutton-icon.gif) !important; }*/
+/*.ux-taskbuttons-scroller-left { background-image:url(../images/taskbar/scroll-left.gif); }*/
+/*.ux-taskbuttons-scroller-right { background-image:url(../images/taskbar/scroll-right.gif); }*/
 
 
 .ux-taskbuttons-strip .active-win .x-btn-ml {
@@ -291,9 +291,6 @@ ul.ux-quickstart-strip li.ux-quickstart-edge { background:transparent !important
 .ux-quickstart-strip .x-btn-click .x-btn-mr {
     background: url("../images/taskbar/black/taskbutton.gif") no-repeat scroll 0 -112px transparent;	
 }
-
-
-
 
 .ux-quickstart-strip .x-btn-tl,
 .ux-quickstart-strip .x-btn-tc,
