@@ -466,20 +466,21 @@ abstract class Zend_Db_Adapter_Abstract
 
             $sql = $sql->assemble();
         }
-
+           
         // make sure $bind to an array;
         // don't use (array) typecasting because
         // because $bind may be a Zend_Db_Expr object
         if (!is_array($bind)) {
             $bind = array($bind);
         }
-
+        
         // prepare and execute the statement with profiling
         $stmt = $this->prepare($sql);
         $stmt->execute($bind);
 
         // return the results embedded in the prepared statement object
-        $stmt->setFetchMode($this->_fetchMode);
+        $stmt->setFetchMode($this->_fetchMode);    
+        
         return $stmt;
     }
 
@@ -750,7 +751,8 @@ abstract class Zend_Db_Adapter_Abstract
         if ($fetchMode === null) {
             $fetchMode = $this->_fetchMode;
         }
-        $stmt = $this->query($sql, $bind);
+        
+        $stmt = $this->query($sql, $bind); 
         $result = $stmt->fetch($fetchMode);
         return $result;
     }

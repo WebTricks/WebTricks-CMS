@@ -20,23 +20,23 @@
 /**
  * Site collection holding a collection of website objects.
  *
- * @package		Cream_Websites
+ * @package		WebTricks_Websites
  * @author		WebTicks Core Team <core@webtricksframework.com>
  */
-class Cream_Websites_SiteCollection extends Cream_Collection_Iterator
+class WebTricks_Websites_SiteCollection extends Cream_Collection_Iterator
 {
 	/**
 	 * The classname of the default comparer to use.
 	 * 
 	 * @var string
 	 */
-	const defaultComparer = 'Cream_Websites_SiteComparer';
+	const defaultComparer = 'WebTricks_Websites_SiteComparer';
 	
 	/**
 	 * Create a new instance of this class
 	 *
 	 * @param array $data
-	 * @return Cream_Websites_SiteCollection
+	 * @return WebTricks_Websites_SiteCollection
 	 */
 	public static function instance($data = null)
 	{

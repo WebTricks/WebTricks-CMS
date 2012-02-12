@@ -249,7 +249,7 @@ abstract class Cream_Controller_Action extends Cream_ApplicationComponent
      */
     public function renderLayout($output='')
     {
-        //if ($this->getApplication()->getFrontController()->getNoRender()) {
+        //if ($this->_getApplication()->getFrontController()->getNoRender()) {
         //    return;
         //}
 
@@ -419,7 +419,7 @@ abstract class Cream_Controller_Action extends Cream_ApplicationComponent
             $errorUrl = $defaultUrl;
         }
         if (!$this->_isUrlInternal($errorUrl)) {
-            $errorUrl = $this->getApplication()->getSite()->getBaseUrl();
+            $errorUrl = $this->_getApplication()->getSite()->getBaseUrl();
         }
         $this->getResponse()->setRedirect($errorUrl);
     }
@@ -476,7 +476,7 @@ abstract class Cream_Controller_Action extends Cream_ApplicationComponent
     protected function _isUrlInternal($url)
     {
         if (strpos($url, 'http') !== false) {
-            if (strpos($url, $this->getApplication()->getSite()->getBaseUrl()) === 0) {
+            if (strpos($url, $this->_getApplication()->getSite()->getBaseUrl()) === 0) {
 		        return true;
             }
         }
@@ -507,7 +507,7 @@ abstract class Cream_Controller_Action extends Cream_ApplicationComponent
     protected function _validateFormKey()
     {
         if (!($formKey = $this->getRequest()->getParam('form_key', null))
-            || $formKey != $this->getApplication()->getSession()->getFormKey()) {
+            || $formKey != $this->_getApplication()->getSession()->getFormKey()) {
             return false;
         }
         return true;

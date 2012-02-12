@@ -20,10 +20,10 @@
 /**
  * Site class
  *
- * @package		Cream_Websites
+ * @package		WebTricks_Websites
  * @author		Danny Verkade
  */
-class Cream_Websites_Site extends Cream_ApplicationComponent
+class WebTricks_Websites_Site extends Cream_ApplicationComponent
 {
 	/**
 	 * Title to display in the browser
@@ -62,7 +62,7 @@ class Cream_Websites_Site extends Cream_ApplicationComponent
 	/**
 	 * Create a new instance of this class.
 	 * 
-	 * @return Cream_Websites_Site
+	 * @return WebTricks_Websites_Site
 	 */
 	public static function instance()
 	{
@@ -157,7 +157,7 @@ class Cream_Websites_Site extends Cream_ApplicationComponent
 	 */
 	public function getRepository()
 	{
-		return $this->getApplication()->getRepository($this->_repositoryName);
+		return Cream_Content_Managers_RepositoryProvider::getRepository($this->_repositoryName);
 	}
 	
 	public function getRepositoryName()

@@ -123,7 +123,7 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
      */
     public function getRequest()
     {
-        $controller = $this->getApplication()->getFrontController();
+        $controller = $this->_getApplication()->getFrontController();
         if ($controller) {
             $this->_request = $controller->getRequest();
         } else {
@@ -160,7 +160,7 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
      */
     public function getAction()
     {
-        return $this->getApplication()->getFrontController()->getAction();
+        return $this->_getApplication()->getFrontController()->getAction();
     }
 
     /**
@@ -383,7 +383,7 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
      * @return mixed
      */
     public function getChild($name='')
-    {
+    {   	
         if (''===$name) {
             return $this->_children;
         } elseif (isset($this->_children[$name])) {
@@ -490,7 +490,7 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
      */
     public function getBlockHtml($name)
     {
-        if (!($layout = $this->getLayout()) && !($layout = $this->getApplication()->getFrontController()->getAction()->getLayout())) {
+        if (!($layout = $this->getLayout()) && !($layout = $this->_getApplication()->getFrontController()->getAction()->getLayout())) {
             return '';
         }
         if (!($block = $layout->getBlock($name))) {
@@ -1010,7 +1010,7 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
             return false;
         }
         
-        return $this->getApplication()->getCache()->load($this->getCacheKey());
+        return $this->_getApplication()->getCache()->load($this->getCacheKey());
     }
 
     /**
@@ -1025,6 +1025,6 @@ abstract class Cream_Web_UI_WebControl extends Cream_Web_UI_Control
             return false;
         }
         
-        $this->getApplication()->getCache()->save($data, $this->getCacheKey(), $this->getCacheTags(), $this->getCacheLifetime());
+        $this->_getApplication()->getCache()->save($data, $this->getCacheKey(), $this->getCacheTags(), $this->getCacheLifetime());
     }
 }

@@ -11,9 +11,14 @@ class WebTricks_Shell_Commands_Rename extends WebTricks_Shell_Commands_Command
 	{
 		if ($context->hasResult()) {
 			if ($context->getResult() == 'ok' && count($context->getItems()) == 1 && $context->getItem()->getAccess()->canWrite()) {
-				$context->getItem()->getEditing()->startEdit();
-				$context->getItem()->setName($context->getValue());
-				$context->getItem()->getEditing()->endEdit();
+				if ($context->hasValue() && $context->getValue()) {
+					$context->getItem()->getEditing()->startEdit();
+					$context->getItem()->setName($context->getValue());
+					$context->getItem()->getEditing()->endEdit();
+				} else {
+					WebTricks_Shell_Client_Response::alert('Given unvalid name for the item.');					
+					//WebTricks_Shell_Client_Response::prompt('Enter a new name for the item:');
+				} 
 			}
 		} else {
 			WebTricks_Shell_Client_Response::prompt('Enter a new name for the item:');

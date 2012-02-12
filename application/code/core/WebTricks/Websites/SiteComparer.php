@@ -20,10 +20,10 @@
 /**
  * Site comparer
  *
- * @package		Cream_Websites
+ * @package		WebTricks_Websites
  * @author		WebTicks Core Team <core@webtricksframework.com>
  */
-class Cream_Websites_SiteComparer implements Cream_Content_Sorting_ComparerInterface
+class WebTricks_Websites_SiteComparer implements Cream_Content_Sorting_ComparerInterface
 {
 	/**
 	 * Compare the two content items.

@@ -469,7 +469,7 @@ class Cream_Layout extends Cream_Config_Base
     {
         if (is_string($block)) {
             if (strpos($block, '/')!==false) {
-                if (!$block = $this->getApplication()->getConfig()->getBlockClassName($block)) {
+                if (!$block = $this->_getApplication()->getConfig()->getBlockClassName($block)) {
                     throw new Cream_Layout_Exception_InvalidBlockTypeException('Invalid block type: '. $block);
                 }
             }

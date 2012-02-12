@@ -64,6 +64,10 @@ class WebTricks_Shell_Controller_CommandAction extends WebTricks_Shell_Controlle
 			$commandContext->setResult($params['__result']);
 		}
 		
+		if (isset($params['__value'])) {
+			$commandContext->setValue($params['__value']);
+		}		
+		
 		if (isset($params['__itemId'])) {
 			$itemIds = $params['__itemId'];
 			if (!is_array($itemIds)) {
@@ -72,7 +76,7 @@ class WebTricks_Shell_Controller_CommandAction extends WebTricks_Shell_Controlle
 					
 			foreach($itemIds as $itemId) {
 				$itemId = Cream_Guid::parseGuid($itemId);
-				$item = $this->getApplication()->getContext()->getContentRepository()->getItem($itemId);
+				$item = $this->_getApplication()->getContext()->getContentRepository()->getItem($itemId);
 				$commandContext->addItem($item);
 			}
 		}

@@ -136,8 +136,10 @@ class Cream_Content_Template_Item
 	 */
 	public function getFieldByName($name)
 	{
+		$name = strtolower($name);
+		
 		foreach($this->getFields() as $field) {
-			if ($field->getName() == $name) {
+			if (strtolower($field->getName()) == $name) {
 				return $field;
 			}
 		}

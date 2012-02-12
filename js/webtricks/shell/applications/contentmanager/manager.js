@@ -151,9 +151,10 @@ WebTricks.Shell.Applications.ContentManager.Manager = Ext.extend(WebTricks.Shell
 				dialog.show();
 		    	break;
 		    case 'refresh':
-		    	Ext.each(command.value, function(item, index, allItems) {
-		    		this.tree.getLoader().load(this.tree.getNodeById(item));
-		    	}, this); 
+	    		this.tree.getLoader().load(this.tree.getNodeById(command.value), function() {
+		    		this.tree.getNodeById(command.value).select();
+		    		this.tree.expandPath(this.tree.getNodeById(command.value).getPath());	    			
+	    		}, this);
 		}
 	},
 	

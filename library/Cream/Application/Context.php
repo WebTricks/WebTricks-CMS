@@ -62,7 +62,7 @@ class Cream_Application_Context extends Cream_ApplicationComponent
 	/**
 	 * 
 	 * 
-	 * @var Cream_Websites_Site
+	 * @var WebTricks_Websites_Site
 	 */
 	protected $_site;
 	
@@ -112,7 +112,7 @@ class Cream_Application_Context extends Cream_ApplicationComponent
 	public function getCulture()
 	{
 		if (!$this->_culture) {
-			$culture = $this->getApplication()->getConfig()->getNode(Cream_Controller_Request_Resolver_Culture::CONFIG_DEFAULT_CULTURE_PATH);
+			$culture = $this->_getApplication()->getConfig()->getNode(Cream_Controller_Request_Resolver_Culture::CONFIG_DEFAULT_CULTURE_PATH);
 			return Cream_Globalization_Culture::instance((string) $culture);			
 		}
 		
@@ -171,7 +171,7 @@ class Cream_Application_Context extends Cream_ApplicationComponent
 	 * @return void
 	 */
 	public function setItem(Cream_Content_Item $item)
-	{
+	{	
 		$this->_item = $item;
 	}
 	
@@ -203,7 +203,7 @@ class Cream_Application_Context extends Cream_ApplicationComponent
 	/**
 	 * Returns the website context.
 	 * 
-	 * @return Cream_Websites_Site
+	 * @return WebTricks_Websites_Site
 	 */
 	public function getSite()
 	{
@@ -213,9 +213,9 @@ class Cream_Application_Context extends Cream_ApplicationComponent
 	/**
 	 * Sets the website context.
 	 * 
-	 * @param Cream_Websites_Site $site
+	 * @param WebTricks_Websites_Site $site
 	 */
-	public function setSite(Cream_Websites_Site $site)
+	public function setSite(WebTricks_Websites_Site $site)
 	{
 		$this->_site = $site;
 	}

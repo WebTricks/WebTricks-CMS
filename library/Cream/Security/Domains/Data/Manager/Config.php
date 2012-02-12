@@ -56,7 +56,7 @@ class Cream_Security_Domains_Data_Manager_Config extends Cream_Security_Domains_
 	public function getDomains()
 	{		
 		if (!$this->_domains) {
-			$node = $this->getApplication()->getConfig()->getNode($this->_path);
+			$node = $this->_getApplication()->getConfig()->getNode($this->_path);
 			
 			foreach ($node->children() as $child) {
 				$domain = $this->_buildDomain($child);

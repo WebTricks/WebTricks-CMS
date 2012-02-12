@@ -58,7 +58,6 @@ class Cream_Controller_Router_Frontend extends Cream_Controller_Router_Abstract
         return true;
     }
 
-
     public function match(Cream_Controller_Request_Http $request)
     {
     	$found = false;
@@ -72,17 +71,13 @@ class Cream_Controller_Router_Frontend extends Cream_Controller_Router_Abstract
 
         $front = $this->getFront();
         $path = trim($request->getPathInfo(), '/');
-        
-        $itemId = $this->getApplication()->getRepository('core')->getDataManager()->resolvePath($path);
-        
-        if ($itemId) {
+                
+        if ($this->_getApplication()->getContext()->getItem()) {
         	
-        	$item = $this->getApplication()->getRepository('core')->getItem($itemId);
-        	$this->getApplication()->getContext()->setItem($item); 
         	$module = 'Content';
         	$realModule = 'WebTricks_Content';
         	$controller = 'Page';
-        	$action = 'index';
+        	$action = 'view';
         	
             //checking if this place should be secure
             //$this->_checkShouldBeSecure($request, '/'.$module.'/'.$controller.'/'.$action);
@@ -92,16 +87,17 @@ class Cream_Controller_Router_Frontend extends Cream_Controller_Router_Abstract
             // instantiate controller class
             $controllerInstance = new $controllerClassName($request, $front->getResponse());
             $found = true;
-
         }
 
         /**
-         * if we did not found any siutibul
+         * if we did not find a match
          */
         if (!$found) {
             if ($this->_noRouteShouldBeApplied()) {
-                $controller = 'index';
-                $action = 'noroute';
+            	$module = 'Content';
+            	$realModule = 'WebTricks_Content';
+                $controller = 'Page';
+                $action = 'noRoute';
 
                 $controllerClassName = $this->_validateControllerClassName($realModule, $controller);
                 if (!$controllerClassName) {
@@ -139,7 +135,7 @@ class Cream_Controller_Router_Frontend extends Cream_Controller_Router_Abstract
      */
     protected function _noRouteShouldBeApplied()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -234,7 +230,7 @@ class Cream_Controller_Router_Frontend extends Cream_Controller_Router_Abstract
     {
         $parts = explode('_', $realModule);
         $realModule = implode('_', array_splice($parts, 0, 2));
-        $file = $this->getApplication()->getOptions()->getModuleDir(Cream_ApplicationOptions::MODULE_CONTROLLERS_DIRECTORY, $realModule);
+        $file = $this->_getApplication()->getOptions()->getModuleDir(Cream_ApplicationOptions::MODULE_CONTROLLERS_DIRECTORY, $realModule);
 
         if (count($parts)) {
             $file .= DS . implode(DS, $parts);
@@ -260,7 +256,7 @@ class Cream_Controller_Router_Frontend extends Cream_Controller_Router_Abstract
 
     public function rewrite(array $p)
     {
-        $rewrite = $this->getApplication()->getConfig()->getNode('global/rewrite');
+        $rewrite = $this->_getApplication()->getConfig()->getNode('global/rewrite');
 	    $module = $rewrite->{$p[0]};
         
         if ($module) {

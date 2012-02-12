@@ -32,7 +32,7 @@ class Cream_Security_Domains_Data_Manager_Repository extends Cream_Security_Doma
 	public function __init(Cream_Config_Xml_Element $config)
 	{	
 		$repositoryName = (string) $config->repository;
-		$repository = $this->getApplication()->getRepository($repositoryName);
+		$repository = Cream_Content_Managers_RepositoryProvider::getRepository($repositoryName);
 		
 		$this->_repository = $repository;
 		$this->_path = (string) $config->path;

@@ -32,7 +32,7 @@ class Cream_Controller_Router_Default extends Cream_Controller_Router_Abstract
     public function collectRoutes($configArea, $useRouterName)
     {
         $routers = array();
-        $routersConfigNode = $this->getApplication()->getConfig()->getNode($configArea.'/routers');
+        $routersConfigNode = $this->_getApplication()->getConfig()->getNode($configArea.'/routers');
         
         if($routersConfigNode) {
             $routers = $routersConfigNode->children();
@@ -109,7 +109,7 @@ class Cream_Controller_Router_Default extends Cream_Controller_Router_Abstract
         if ($path) {
             $p = explode('/', $path);
         } else {
-            //$p = explode('/', $this->getApplication()->getConfig()->getNode('web/default/front'));
+            //$p = explode('/', $this->_getApplication()->getConfig()->getNode('web/default/front'));
         }
 
         // get module name
@@ -340,7 +340,7 @@ class Cream_Controller_Router_Default extends Cream_Controller_Router_Abstract
     {
         $parts = explode('_', $realModule);
         $realModule = implode('_', array_splice($parts, 0, 2));
-        $file = $this->getApplication()->getOptions()->getModuleDir(Cream_ApplicationOptions::MODULE_CONTROLLERS_DIRECTORY, $realModule);
+        $file = $this->_getApplication()->getOptions()->getModuleDir(Cream_ApplicationOptions::MODULE_CONTROLLERS_DIRECTORY, $realModule);
 
         if (count($parts)) {
             $file .= DS . implode(DS, $parts);
@@ -366,7 +366,7 @@ class Cream_Controller_Router_Default extends Cream_Controller_Router_Abstract
 
     public function rewrite(array $p)
     {
-        $rewrite = $this->getApplication()->getConfig()->getNode('global/rewrite');
+        $rewrite = $this->_getApplication()->getConfig()->getNode('global/rewrite');
     	$module = $rewrite->{$p[0]};
         if ($module) {
             if (!$module->children()) {

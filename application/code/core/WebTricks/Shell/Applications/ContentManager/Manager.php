@@ -23,8 +23,8 @@ class WebTricks_Shell_Applications_ContentManager_Manager extends WebTricks_Shel
 	
 	protected function _getToolbar()
 	{
-		$itemId = $this->getApplication()->getRepository('core')->getDataManager()->resolvePath('WebTricks/content/Applications/Content Editor/Ribbons/Ribbons/Default');
-		$item = $this->getApplication()->getRepository('core')->getItem($itemId);
+		$itemId = $this->_getApplication()->getContext()->getRepository()->getDataManager()->resolvePath('WebTricks/content/Applications/Content Editor/Ribbons/Ribbons/Default');
+		$item = $this->_getApplication()->getContext()->getRepository()->getItem($itemId);
 
 		$context = WebTricks_Shell_Commands_CommandContext::instance();
 		

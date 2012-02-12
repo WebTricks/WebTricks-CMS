@@ -416,7 +416,11 @@ class Cream_Content_Data_Manager_Database extends Cream_Content_Data_Manager_Abs
 		foreach($result->getRows() as $row) {
 			$fieldName = Cream_Guid::parseGuid($row->fieldId);
 			$value = $row->value;
-			$itemFieldData->add($fieldName, $value);
+			if ($fieldName) {
+				$itemFieldData->add($fieldName, $value);
+			} else {
+				throw new Exception(print_r($row, true));
+			}
 		}
 		
 		return $itemFieldData;
@@ -436,8 +440,13 @@ class Cream_Content_Data_Manager_Database extends Cream_Content_Data_Manager_Abs
 			$changes = $item->getChanges();
 		}
 
-		$this->_saveItemDefinition($item->getItemData()->getItemDefinition());
-		$this->_saveItemFields($item->getItemId(), $item->getChanges());			
+		if ($changes->hasChangedProperties()) {
+			$this->_saveItemDefinition($item->getItemData()->getItemDefinition(), $changes);
+		}
+		
+		if ($changes->hasChangedFields()) {
+			$this->_saveItemFields($item->getItemId(), $changes);
+		}			
 	}
 	
 	/**
@@ -446,30 +455,30 @@ class Cream_Content_Data_Manager_Database extends Cream_Content_Data_Manager_Abs
 	 * @param Cream_Content_ItemDefinition $itemDefinition
 	 * @return void
 	 */
-	protected function _saveItemDefinition(Cream_Content_ItemDefinition $itemDefinition)
-	{
+	protected function _saveItemDefinition(Cream_Content_ItemDefinition $itemDefinition, Cream_Content_ItemChanges $itemChanges)
+	{	
+		if ($itemChanges->isPropertyModified('name')) {
+			$name = $itemChanges->getPropertyValue('name');
+		} else {
+			$name = $itemDefinition->getName();
+		}
+		
+		if ($itemChanges->isPropertyModified('templateId')) {
+			$templateId = $itemChanges->getPropertyValue('templateId');
+		} else {
+			$templateId = $itemDefinition->getTemplateId();
+		}		
+		
 		if ($this->itemExists($itemDefinition->getItemId())) {
 			$query = Cream_Data_Statement_Update::instance();
 			$query->from($this->_getTableName('item'));
-			$query->set('templateId', $itemDefinition->getTemplateId());
-			$query->set('parentId', $itemDefinition->getParentId());
-			$query->set('name', $itemDefinition->getName());
+			$query->set('templateId', $templateId);
+			$query->set('name', $name);
 			$query->set('updated', Cream_Expression::instance('NOW()'));
 			$query->where('itemId = ?', $itemDefinition->getItemId());
-		} else {
-			$query = Cream_Data_Statement_Insert::instance();
-			$query->into($this->_getTableName('item'));
-			$query->values(array(
-				'itemId' => $itemDefinition->getItemId(),
-				'templateId' => $itemDefinition->getTemplateId(),
-				'parentId' => $itemDefinition->getParentId(),
-				'name' => $itemDefinition->getName(),
-				'created' => Cream_Expression::instance('NOW()'),
-				'updated' => Cream_Expression::instance('NOW()')
-			));
-		}
-		
-		$this->_getWriteConnection()->query($query);		
+			
+			$this->_getWriteConnection()->query($query);				
+		}	
 	}
 	
 	/**
@@ -621,6 +630,29 @@ class Cream_Content_Data_Manager_Database extends Cream_Content_Data_Manager_Abs
 	}
 	
 	/**
+	 * Create a new item.
+	 * 
+	 * @param Cream_Guid $itemId
+	 * @param Cream_Guid $templateId
+	 * @param string $name 
+	 * @param Cream_Content_Item $parent
+	 */
+	public function createItem(Cream_Guid $itemId, Cream_Guid $templateId, $name, Cream_Content_Item $parent)
+	{
+		$query = Cream_Data_Statement_Insert::instance();
+		$query->into($this->_getTableName('item'));
+		$query->values(array(
+			'itemId' => $itemId,
+			'templateId' => $templateId,
+			'name' => $name,
+			'created' => Cream_Expression::instance('NOW()'),
+			'updated' => Cream_Expression::instance('NOW()')
+		));		
+		
+		$this->_getWriteConnection()->query($query);
+	}
+	
+	/**
 	 * Moves an item, returns true of the item is moved, otherwise
 	 * false.
 	 * 
@@ -633,6 +665,7 @@ class Cream_Content_Data_Manager_Database extends Cream_Content_Data_Manager_Abs
 		$update = Cream_Data_Statement_Update::instance();
 		$update->from($this->_getTableName('item'));
 		$update->set('parentId', $destinationId);
+		$update->set('updated', Cream_Expression::instance('NOW()'));		
 		$update->where('itemId = ?', $itemId);
 
 		$result = $this->_getWriteConnection()->query($update);
@@ -731,7 +764,7 @@ class Cream_Content_Data_Manager_Database extends Cream_Content_Data_Manager_Abs
 	 */
 	protected function _getReadConnection()
 	{
-		return $this->getApplication()->getConnection($this->_readConnection);
+		return $this->_getApplication()->getConnection($this->_readConnection);
 	}
 
 	/**
@@ -741,6 +774,6 @@ class Cream_Content_Data_Manager_Database extends Cream_Content_Data_Manager_Abs
 	 */	
 	protected function _getWriteConnection()
 	{
-		return $this->getApplication()->getConnection($this->_writeConnection);
+		return $this->_getApplication()->getConnection($this->_writeConnection);
 	}
 }

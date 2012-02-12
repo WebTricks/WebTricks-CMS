@@ -91,8 +91,8 @@ class WebTricks_Shell_Applications_ContentManager_Editor_Fields_FieldTypeManager
 
 		if (isset($fieldTypeIds[$type])) {
 			$itemId = $fieldTypeIds[$type];
-			$repository = Cream::getApplication()->getRepository('core');
-			return $repository->getItem($itemId);			
+			$repository = Cream_Content_Managers_RepositoryProvider::getRepository('core');
+			return $repository->getItem($itemId);
 		}
 	}
 	
@@ -105,7 +105,7 @@ class WebTricks_Shell_Applications_ContentManager_Editor_Fields_FieldTypeManager
 			if ($fieldTypeIds) {
 				self::$_fieldTypeIds = $fieldTypeIds;
 			} else {
-				$repository = Cream::getApplication()->getRepository('core');
+				$repository = Cream_Content_Managers_RepositoryProvider::getRepository('core');
 				$item = $repository->getItemByPath(self::REPOSITORY_PATH_FIELDS);
 
 				if ($item) {

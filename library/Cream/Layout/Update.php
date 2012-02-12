@@ -83,7 +83,7 @@ class Cream_Layout_Update extends Cream_ApplicationComponent
     public function __init(Cream_Layout $layout)
     {
     	$this->_layout = $layout;
-        //$subst = $this->getApplication()->getConfig()->getPathVars();
+        //$subst = $this->_getApplication()->getConfig()->getPathVars();
         //foreach ($subst as $k=>$v) {
         //    $this->_subst['from'][] = '{{'.$k.'}}';
         //    $this->_subst['to'][] = $v;
@@ -182,11 +182,11 @@ class Cream_Layout_Update extends Cream_ApplicationComponent
 
     public function loadCache()
     {
-        if (!$this->getApplication()->getCache()->useCache('layout')) {
+        if (!$this->_getApplication()->getCache()->useCache('layout')) {
             return false;
         }
 
-        if (!$result = $this->getApplication()->getCache()->load($this->getCacheId())) {
+        if (!$result = $this->_getApplication()->getCache()->load($this->getCacheId())) {
             return false;
         }
 
@@ -197,14 +197,14 @@ class Cream_Layout_Update extends Cream_ApplicationComponent
 
     public function saveCache()
     {
-        if (!$this->getApplication()->getCache()->useCache('layout')) {
+        if (!$this->_getApplication()->getCache()->useCache('layout')) {
             return false;
         }
         
         $str = $this->asString();
         $tags = $this->getHandles();
         $tags[] = self::LAYOUT_GENERAL_CACHE_TAG;
-        return $this->getApplication()->getCache()->save($str, $this->getCacheId(), $tags);
+        return $this->_getApplication()->getCache()->save($str, $this->getCacheId(), $tags);
     }
 
     /**
@@ -266,7 +266,7 @@ class Cream_Layout_Update extends Cream_ApplicationComponent
         $cacheKey = 'LAYOUT_'. $design->getArea() .'_'. $design->getPackageName() .'_'. $design->getTheme('layout');
         $cacheTags = array(self::LAYOUT_GENERAL_CACHE_TAG);
         
-        if ($this->getApplication()->getCache()->useCache('layout') && ($layoutStr = $this->getApplication()->getCache()->load($cacheKey))) {
+        if ($this->_getApplication()->getCache()->useCache('layout') && ($layoutStr = $this->_getApplication()->getCache()->load($cacheKey))) {
             $this->_packageLayout = simplexml_load_string($layoutStr, $elementClass);
         }
 
@@ -277,8 +277,8 @@ class Cream_Layout_Update extends Cream_ApplicationComponent
                 $design->getTheme('layout')
             );
             
-            if ($this->getApplication()->getCache()->useCache('layout')) {
-                $this->getApplication()->getCache()->save($this->_packageLayout->asXml(), $cacheKey, $cacheTags);
+            if ($this->_getApplication()->getCache()->useCache('layout')) {
+                $this->_getApplication()->getCache()->save($this->_packageLayout->asXml(), $cacheKey, $cacheTags);
             }
         }
     }
@@ -320,7 +320,7 @@ class Cream_Layout_Update extends Cream_ApplicationComponent
     	$design = $this->getLayout()->getController()->getDesign();
         $layoutXml = null;
         $elementClass = $this->getElementClass();
-        $updatesRoot = $this->getApplication()->getConfig()->getNode($area.'/layout/updates');
+        $updatesRoot = $this->_getApplication()->getConfig()->getNode($area.'/layout/updates');
         
         $updateFiles = array();
 		

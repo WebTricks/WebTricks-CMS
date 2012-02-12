@@ -43,7 +43,7 @@ class WebTricks_Shell_Session extends Cream_Session_Abstract
     public function getUser()
     {
     	if (!$this->_getData('user')) {
-    		$this->_setData('user', $this->getApplication()->getContext()->getDomain()->getAnonymousUser());
+    		$this->_setData('user', $this->_getApplication()->getContext()->getDomain()->getAnonymousUser());
     	}
     	
     	return $this->_getData('user');    	

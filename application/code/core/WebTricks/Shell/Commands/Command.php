@@ -41,7 +41,7 @@ abstract class WebTricks_Shell_Commands_Command extends Cream_ApplicationCompone
 		}
 	}
 	
-	public function getHeader($header)
+	public function getHeader(WebTricks_Shell_Commands_CommandContext $context, $header)
 	{
 		if ($this->_header) {
 			return $this->_header;

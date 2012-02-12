@@ -14,7 +14,7 @@
  * the future. If you wish to customize WebTricks for your needs please go to 
  * http://www.webtricksframework.com for more information.
  *
- * @copyright Copyright (c) 2007-2011 Cream (http://www.cream.nl)
+ * @copyright Copyright (c) 2007-2013 Cream (http://www.cream.nl)
  * @license   http://www.webtricksframework.com/license
  */
 -->
@@ -30,7 +30,25 @@ Default layout, loads most of the pages
                 <action method="addCss"><stylesheet>css/screen.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
             </block>
-        </block>
+            
+            <block type="webcontrol/template" name="header" as="header" template="page/header.phtml">
+                <block type="webcontrol/text_list" name="top.menu" as="topMenu" translate="label">
+                    <label>Navigation Bar</label>
+                </block>
+            </block>
+            
+            <block type="webcontrol/text_list" name="content" as="content" translate="label">
+                <label>Main Content Area</label>
+            </block>
+            
+            <block type="webcontrol/text_list" name="left" as="left" translate="label">
+                <label>Left Content Area</label>
+            </block>
+            
+            <block type="webcontrol/template" name="footer" as="footer" template="page/footer.phtml">
+            </block>         
+                        
+        </block>        
     </default>
 
     <print translate="label" module="page">
@@ -52,11 +70,6 @@ Default layout, loads most of the pages
                 <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
 
             </block>
-
-            <block type="core/text_list" name="content" as="content" translate="label">
-                <label>Main Content Area</label>
-            </block>
-
         </block>
     </print>
 </layout>

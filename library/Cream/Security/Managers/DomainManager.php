@@ -43,7 +43,7 @@ class Cream_Security_Managers_DomainManager extends Cream_ApplicationComponent
 	{
 		if (!$this->_dataManager) {
 			$path = self::CONFIG_PATH_DOMAIN_DATA_MANAGER;
-			$config = $this->getApplication()->getConfig()->getNode($path);
+			$config = $this->_getApplication()->getConfig()->getNode($path);
 
 			if ($config) {
 				$this->_dataManager = Cream_Security_Domains_Data_Manager::factory($config);
@@ -100,7 +100,7 @@ class Cream_Security_Managers_DomainManager extends Cream_ApplicationComponent
 	 */
 	public function getDefaultDomain()
 	{
-		$config = $this->getApplication()->getConfig()->getNode(self::CONFIG_PATH_DEFAULT_DOMAIN);
+		$config = $this->_getApplication()->getConfig()->getNode(self::CONFIG_PATH_DEFAULT_DOMAIN);
 		$this->getDomain((string) $config);
 	}
 	

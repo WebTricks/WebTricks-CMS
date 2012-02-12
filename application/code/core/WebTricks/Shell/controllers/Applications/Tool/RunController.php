@@ -34,7 +34,7 @@ class WebTricks_Shell_Applications_Tool_RunController extends WebTricks_Shell_Co
 	public function runAction()
 	{
 		$input = $this->getRequest()->getParam('application');
-		$repository = $this->getApplication()->getRepository('core');
+		$repository = $this->_getApplication()->getRepository('core');
 		$itemId = $repository->getDataManager()->resolvePath(self::REPOSITORY_PATH_APPLICATION_ROOT .'/'. $input);
 		
 		if ($itemId) {

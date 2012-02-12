@@ -90,13 +90,6 @@ class Cream_Application extends Cream_Component
 	protected $_options;
 	
 	/**
-	 * Array holding the repositories.
-	 * 
-	 * @var array
-	 */
-	protected $_repository = array();
-	
-	/**
 	 * Request object
 	 * 
 	 * @var Cream_Controller_Request_Http
@@ -109,6 +102,13 @@ class Cream_Application extends Cream_Component
 	 * @var Cream_Controller_Request_Response
 	 */
 	protected $_response;
+	
+	/**
+	 * Has cache been initialized.
+	 * 
+	 * @var boolean
+	 */
+	protected $_hasCache = false;
 	
 	/**
 	 * Constructor function
@@ -152,6 +152,7 @@ class Cream_Application extends Cream_Component
         }
         
         $this->_cache = Cream_Cache::instance($options);
+        $this->_hasCache = true;
     }
     
     /**
@@ -184,7 +185,7 @@ class Cream_Application extends Cream_Component
         //if (!$this->getConfig()->loadModulesCache()) {
             $this->getConfig()->loadModules();
             if ($this->getConfig()->isLocalConfigLoaded()) {
-                WebTricks_Core_Setup::applyAllUpdates();
+                // WebTricks_Core_Setup::applyAllUpdates();
             }
         //    $this->getConfig()->loadDb();
         //    $this->getConfig()->saveCache();
@@ -230,6 +231,16 @@ class Cream_Application extends Cream_Component
     }
     
     /**
+     * Determines if cache has been initialized.
+     * 
+     * @return boolean
+     */
+    public function hasCache()
+    {
+    	return $this->_hasCache;
+    }
+    
+    /**
      * Retrieve the configuration
      *
      * @return Cream_Config
@@ -253,9 +264,13 @@ class Cream_Application extends Cream_Component
     {
     	if (!isset($this->_connection[$name])) {
     		
-    		$config = $this->getConfig()->getNode('global/data/connection/'. $name);
+    		$config = $this->getConfig()->getConnectionConfig($name);
     		
-    		if ($name) {
+    		if (!$config->is('active', 1)) {
+    			return false;
+    		}    		
+    		
+    		if ($config) {
     			$this->_connection[$name] = Cream_Data_Connection::instance($config);
     		} else {
     			throw new Cream_Exceptions_Exception('Connection with name "'. $name .'" not configured.');
@@ -319,29 +334,6 @@ class Cream_Application extends Cream_Component
     	
     	return $this->_options;
     }
-    
-    /**
-     * Retrieves a content repository.
-     * 
-     * @param string $name
-     * @return Cream_Content_Repository
-     */
-    public function getRepository($name)
-    {
-    	if (!isset($this->_repository[$name])) {
-
-    		$config = $this->getConfig()->getNode('global/content/repository/'. $name);
-
-    		if ($config) {
-    			$repository = Cream_Content_Repository::instance($name, $config);
-	    		$this->_repository[$name] = $repository;
-    		} else {
-    			throw new Cream_Exceptions_Exception('Repository with name "'. $name .'" not found.');
-    		}
-    	}
-    	
-    	return $this->_repository[$name];
-    }
 	
     /**
      * Retrieve request object
@@ -388,6 +380,7 @@ class Cream_Application extends Cream_Component
 	/**
 	 * Executes the lifecycles of the application. This is the main entry
 	 * function that leads to the running of the whole application.
+	 * 
 	 */
 	public function run()
 	{
@@ -405,6 +398,10 @@ class Cream_Application extends Cream_Component
 		}
 	}
 	
+	/**
+	 * Initializes the application but does not dispatch the front controller.
+	 * 
+	 */
 	public function init()
 	{
 		try {

@@ -54,8 +54,8 @@ class WebTricks_Shell_Applications_ContentManager_ManagerController extends WebT
 		$items['editor'][] = $builder;
 		$items['editor'][] = $inherentence;
 		
-		$ribbonItemId = $this->getApplication()->getRepository('core')->getDataManager()->resolvePath('WebTricks/content/Applications/Content Editor/Ribbons/Ribbons/Default');
-		$ribbonItem = $this->getApplication()->getRepository('core')->getItem($ribbonItemId);
+		$ribbonItemId = $this->_getApplication()->getContext()->getRepository()->getDataManager()->resolvePath('WebTricks/content/Applications/Content Editor/Ribbons/Ribbons/Default');
+		$ribbonItem = $this->_getApplication()->getContext()->getRepository()->getItem($ribbonItemId);
 		
 		$context = $this->_getCommandContext();
 		$context->clearItems();
@@ -111,7 +111,7 @@ class WebTricks_Shell_Applications_ContentManager_ManagerController extends WebT
 		$culture = Cream_Globalization_Culture::instance($message->getCulture());
 		$version = Cream_Content_Version::instance($message->getVersion());
 
-		$repository = $this->getApplication()->getContext()->getContentRepository();
+		$repository = $this->_getApplication()->getContext()->getContentRepository();
 		$item = $repository->getItem($itemId, $culture, $version);
 		
 		if (!$item) {

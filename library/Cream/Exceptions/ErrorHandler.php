@@ -90,7 +90,7 @@ class Cream_Exceptions_ErrorHandler extends Cream_ApplicationComponent
 		restore_error_handler();
 		restore_exception_handler();
 
-		if (($response = $this->getApplication()->getResponse())!==null) {
+		if (($response = $this->_getApplication()->getResponse())!==null) {
 			$response->clear();
 		}
 
@@ -100,7 +100,7 @@ class Cream_Exceptions_ErrorHandler extends Cream_ApplicationComponent
 			$content = $this->getError($exception->getStatusCode(), $exception);
 			$statusCode = $exception->getStatusCode();
 
-		//} elseif ($this->getApplication()->getMode() === Cream_Application::MODE_DEBUG) {
+		//} elseif ($this->_getApplication()->getMode() === Cream_Application::MODE_DEBUG) {
 		} else {
 			// Application in DEBUG mode, display the exception
 			$content = $this->getException($exception);
@@ -223,7 +223,7 @@ class Cream_Exceptions_ErrorHandler extends Cream_ApplicationComponent
 			$errorLine = $exception->getLine();
 		}
 
-		$requestInfo = $this->getApplication()->getRequest();
+		$requestInfo = $this->_getApplication()->getRequest();
 
 		$template = Cream_Web_UI_WebControls_TemplateControl::instance();
 		$template->setTemplate($this->getExceptionTemplate($exception));
@@ -304,10 +304,10 @@ class Cream_Exceptions_ErrorHandler extends Cream_ApplicationComponent
 	private function emailError($exception)
 	{
 		$message = new Cream_Net_Mail_Message();
-		$message->addTo($this->getApplication()->getConfig()->system->exception->emailAddress);
+		$message->addTo($this->_getApplication()->getConfig()->system->exception->emailAddress);
 		$message->setFrom('systeembeheer@mbwp.nl', 'MBWP Internetbureau Systeembeheer');
 		$message->setBodyHtml($this->getException($exception));
-		$message->setSubject($this->getApplication()->getConfig()->system->application->name .': '. get_class($exception));
+		$message->setSubject($this->_getApplication()->getConfig()->system->application->name .': '. get_class($exception));
 
 		$mail = new Cream_Net_Mail();
 		$mail->send($message);

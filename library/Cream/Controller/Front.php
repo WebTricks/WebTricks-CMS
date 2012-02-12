@@ -61,7 +61,7 @@ class Cream_Controller_Front extends Cream_ApplicationComponent
      */
     public function __init()
     {
-        $routersInfo = $this->getApplication()->getConfig()->getNode(self::CONFIG_ROUTERS_PATH)->asArray();
+        $routersInfo = $this->_getApplication()->getConfig()->getNode(self::CONFIG_ROUTERS_PATH)->asArray();
                 
         if (is_array($routersInfo)) {
         	foreach ($routersInfo as $routerCode => $routerInfo) {
@@ -239,7 +239,7 @@ class Cream_Controller_Front extends Cream_ApplicationComponent
     public function rewrite()
     {
         $request = $this->getRequest();
-        $config = $this->getApplication()->getConfig()->getNode('global/rewrite');
+        $config = $this->_getApplication()->getConfig()->getNode('global/rewrite');
         if (!$config) {
             return;
         }

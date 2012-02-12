@@ -150,7 +150,7 @@ class Cream_Content_Fields_Field
 				return $fieldValue;
 			}
 		}
-		
+			
 		$fields = $this->_item->getItemData()->getFieldList();
 		
 		if (isset($fields[$this->_fieldId->toString()]) && $fields[$this->_fieldId->toString()] !== null) {

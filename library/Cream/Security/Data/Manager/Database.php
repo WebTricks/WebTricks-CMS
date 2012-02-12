@@ -7,14 +7,14 @@ class Cream_Security_Data_Manager_Database extends Cream_Security_Data_Manager_A
 	 * 
 	 * @var string
 	 */
-	protected $readConnection;
+	protected $_readConnection;
 	
 	/**
 	 * Name of the write connection to use
 	 * 
 	 * @var string
 	 */
-	protected $writeConnection;
+	protected $_writeConnection;
 	
 	/**
 	 * Initialize function
@@ -23,8 +23,8 @@ class Cream_Security_Data_Manager_Database extends Cream_Security_Data_Manager_A
 	 */
 	public function __init(Cream_Config_Xml_Element $config)
 	{
-		$this->readConnection = (string) $config->connection->read;
-		$this->writeConnection = (string) $config->connection->write;
+		$this->_readConnection = (string) $config->connection->read;
+		$this->_writeConnection = (string) $config->connection->write;
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Cream_Security_Data_Manager_Database extends Cream_Security_Data_Manager_A
 	 */
 	protected function _getReadConnection()
 	{
-		return $this->getApplication()->getConnection($this->readConnection);
+		return $this->_getApplication()->getConnection($this->_readConnection);
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Cream_Security_Data_Manager_Database extends Cream_Security_Data_Manager_A
 	 */	
 	protected function _getWriteConnection()
 	{
-		return $this->getApplication()->getConnection($this->writeConnection);
+		return $this->_getApplication()->getConnection($this->_writeConnection);
 	}	
 	
 	public function getUserByEmail($email, $domain)

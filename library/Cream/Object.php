@@ -265,4 +265,14 @@ class Cream_Object implements ArrayAccess
     {
         return isset($this->_data[$offset]) ? $this->_data[$offset] : null;
     }
+    
+    /**
+     * Determines if data has been changed on the object.
+     * 
+     * @return boolean
+     */
+    public function hasDataChanges()
+    {
+    	return $this->_hasDataChanges;
+    }
 }

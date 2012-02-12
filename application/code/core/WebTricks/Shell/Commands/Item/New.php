@@ -19,7 +19,7 @@ class WebTricks_Shell_Commands_Item_New extends WebTricks_Shell_Commands_Command
 	
 	public function queryState(WebTricks_Shell_Commands_CommandContext $context)
 	{
-		if (!count($context->getItems)) {
+		if (!$context->hasItems()) {
 			return WebTricks_Shell_Commands_CommandState::DISABLED;
 		}
 				

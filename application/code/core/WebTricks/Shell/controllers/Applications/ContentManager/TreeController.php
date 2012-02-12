@@ -31,7 +31,7 @@ class WebTricks_Shell_Applications_ContentManager_TreeController extends WebTric
 		$itemId = Cream_Guid::parseGuid($this->getRequest()->getParam('node'));
 		
 		if ($itemId) {
-			$item = $this->getApplication()->getContext()->getContentRepository()->getItem($itemId);
+			$item = $this->_getApplication()->getContext()->getContentRepository()->getItem($itemId);
 		} else {
 			return;
 		}

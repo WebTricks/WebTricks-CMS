@@ -20,22 +20,22 @@
 /**
  * Site manager class. Manages the retrieval of websites.
  *
- * @package		Cream_Websites
+ * @package		WebTricks_Websites
  * @author		WebTricks Core Team <core@webtricksframework.com>
  */
-class Cream_Websites_SiteManager extends Cream_ApplicationComponent
+class WebTricks_Websites_SiteManager extends Cream_ApplicationComponent
 {
 	/**
 	 * Collection of the defined websites.
 	 * 
-	 * @var Cream_Websites_SiteCollection
+	 * @var WebTricks_Websites_SiteCollection
 	 */
 	protected $_sites;
 	
 	/**
 	 * Create a new instance of this class.
 	 * 
-	 * @return Cream_Websites_SiteManager
+	 * @return WebTricks_Websites_SiteManager
 	 */
 	public static function instance()
 	{
@@ -62,7 +62,7 @@ class Cream_Websites_SiteManager extends Cream_ApplicationComponent
 	 * @param string $host
 	 * @param integer $port
 	 * @param string $path
-	 * @return Cream_Websites_Site
+	 * @return WebTricks_Websites_Site
 	 */
 	public function getSiteFromHost($host, $port, $path)
 	{
@@ -76,12 +76,12 @@ class Cream_Websites_SiteManager extends Cream_ApplicationComponent
 	/**
 	 * Returns the collection of sites.
 	 * 
-	 * @return Cream_Websites_SiteCollection
+	 * @return WebTricks_Websites_SiteCollection
 	 */
 	public function getSites()
 	{
 		if (!$this->_sites) {
-			$this->_sites = Cream_Websites_SiteCollection::instance();
+			$this->_sites = WebTricks_Websites_SiteCollection::instance();
 			$this->_addSitesFromConfig();
 			$this->_addSitesFromRepository();
 			//$this->_sites->sort($comparer)		
@@ -97,7 +97,7 @@ class Cream_Websites_SiteManager extends Cream_ApplicationComponent
 	 */
 	protected function _addSitesFromConfig()
 	{
-		$manager = Cream_Websites_Data_Manager_Config::instance();
+		$manager = WebTricks_Websites_Data_Manager_Config::instance();
 		$manager->addSites($this->_sites);
 	}
 	
@@ -108,7 +108,7 @@ class Cream_Websites_SiteManager extends Cream_ApplicationComponent
 	 */
 	protected function _addSitesFromRepository()
 	{
-		$manager = Cream_Websites_Data_Manager_Repository::instance();
+		$manager = WebTricks_Websites_Data_Manager_Repository::instance();
 		$manager->addSites($this->_sites);
 	}
 }

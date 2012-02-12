@@ -65,7 +65,7 @@ class WebTricks_Shell_Controller_Action extends Cream_Controller_Action
 		$this->_setUserContext();
 		$this->_setContentRepositoryContext();
 		
-		$user = $this->getApplication()->getContext()->getUser();
+		$user = $this->_getApplication()->getContext()->getUser();
 		$request = $this->getRequest();
 
 		if ($request->isDispatched() && !$this->_isPublic) {
@@ -109,13 +109,17 @@ class WebTricks_Shell_Controller_Action extends Cream_Controller_Action
 	public function _setContentRepositoryContext()
 	{
 		if (!$this->_getSession()->contentRepositoryName) {
-			$node = $this->getApplication()->getConfig()->getNode(self::CONFIG_PATH_DEFAULT_CONTENT_REPOSITORY);
+			$node = $this->_getApplication()->getConfig()->getNode(self::CONFIG_PATH_DEFAULT_CONTENT_REPOSITORY);
 			$this->_getSession()->contentRepositoryName = (string) $node;
+		}
+		
+		if ($this->getRequest()->getParam('__content')) {
+			$this->_getSession()->contentRepositoryName = $this->getRequest()->getParam('__content');
 		}
 				
 		$repositoryName = $this->_getSession()->contentRepositoryName;
-		$repository = $this->getApplication()->getRepository($repositoryName);
-		$this->getApplication()->getContext()->setContentRepository($repository);
+		$repository = Cream_Content_Managers_RepositoryProvider::getRepository($repositoryName);
+		$this->_getApplication()->getContext()->setContentRepository($repository);
 	}
 	
 	/**
@@ -128,6 +132,6 @@ class WebTricks_Shell_Controller_Action extends Cream_Controller_Action
 	{
 		$user = $this->_getSession()->getUser();
 	
-		$this->getApplication()->getContext()->setUser($user);		
+		$this->_getApplication()->getContext()->setUser($user);		
 	}
 }

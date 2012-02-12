@@ -19,7 +19,7 @@ class WebTricks_Shell_Commands_CommandManager extends Cream_ApplicationComponent
 		$name = $this->_getNameWithoutArguments($name);
 		$name = str_replace(':', '_', $name);
 		
-		$node = $this->getApplication()->getConfig()->getNode(self::CONFIG_PATH_COMMANDS);
+		$node = $this->_getApplication()->getConfig()->getNode(self::CONFIG_PATH_COMMANDS);
 
 		if ($node && $node->$name) {
 			$className = (string) $node->$name;
@@ -81,7 +81,7 @@ class WebTricks_Shell_Commands_CommandManager extends Cream_ApplicationComponent
 	protected function _getArgumentsFromRequest()
 	{
 		$arguments = array();
-		$params = Cream_Json::decode($this->getApplication()->getRequest()->getParam('params'));
+		$params = Cream_Json::decode($this->_getApplication()->getRequest()->getParam('params'));
 		
 		foreach($params as $key => $value)
 		{

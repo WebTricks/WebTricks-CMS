@@ -49,13 +49,15 @@ class Cream_Content_Managers_ItemProvider
 	}
 
 	/**
-	 * Creates an item under the given item.
+	 * Creates an item under the given item. Returns the id of the
+	 * item created.
 	 * 
+	 * @param string $name
 	 * @param Cream_Guid $templateId
 	 * @param Cream_Content_Item $parentItem
-	 * @return Cream_Content_Item
+	 * @return Cream_Guid
 	 */	
-	public static function createItem(Cream_Guid $templateId, Cream_Content_Item $parentItem)
+	public static function createItem($name, Cream_Guid $templateId, Cream_Content_Item $parentItem)
 	{
 		return self::_getManager()->createItem($templateId, $parentItem);
 	}

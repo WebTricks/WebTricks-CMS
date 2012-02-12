@@ -24,7 +24,7 @@ class WebTricks_Shell_Applications_Templates_TemplateBuilderController extends W
 		$itemId = Cream_Guid::parseGuid($this->getRequest()->getParam('itemId'));
 		
 		if ($itemId) {
-			$item = Cream_Content_Managers_TemplateProvider::getTemplateById($itemId, $this->getApplication()->getContext()->getContentRepository()); 
+			$item = Cream_Content_Managers_TemplateProvider::getTemplateById($itemId, $this->_getApplication()->getContext()->getContentRepository()); 
 		} else {
 			$item = Cream_Content_Template_Item::instance(Cream_Guid::generateGuid());			
 		}

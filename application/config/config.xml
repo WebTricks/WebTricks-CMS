@@ -24,17 +24,29 @@
             <date></date>
         </install>
         <data>
-        	<connection>
-        		<default_setup>
-                    <server>localhost</server>
+            <default_setup>
+                <connection>
+                    <host>localhost</host>
                     <username/>
                     <password/>
                     <database>webtricks</database>
 					<init_statements>SET NAMES utf8</init_statements>
-                    <type>mysql</type>        	        		
-        		</default_setup>
-        	</connection>
+                    <type>mysql</type>
+                    <active>0</active>                                        
+                </connection>
+            </default_setup>
+            <default_write>
+                <connection>
+                    <use>default_setup</use>
+                </connection>
+            </default_write>
+            <default_read>
+                <connection>
+                    <use>default_setup</use>
+                </connection>
+            </default_read>
         </data>
+        
 		<content>
 			<fields>
 				<checkbox>Cream_Content_Fields_CheckboxField</checkbox>			
@@ -79,7 +91,7 @@
 						<write>default_write</write>
 					</connection>								
 				</web>				
-				<default_content_repository>core</default_content_repository>
+				<default_content_repository>content</default_content_repository>
 			</repository>
 		</content>
 		<environment>
@@ -105,12 +117,6 @@
 		<overrides>
 
 		</overrides>
-		
-		<resources>			
-			<default>
-				<connection>default_write</connection>
-			</default>
-		</resources>
 		
 		<security>
 			<authentication>
@@ -172,13 +178,13 @@
 			<site>
 				<name>Website</name>
 				<repository>content</repository>
-				<rootPath>WebTricks/content</rootPath>
+				<rootPath>WebTricks/content/sample</rootPath>
 				<router>Cream_Controller_Router_Frontend</router>	
 				<domain>website</domain>
 			</site>
 		</websites>    	
     	<globalization>
-			<default_culture>en_US</default_culture>
+			<default_culture>en</default_culture>
 			<timezone>America/Los_Angeles</timezone>
     	</globalization>
 		<workflows>

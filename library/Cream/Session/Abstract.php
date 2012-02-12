@@ -40,7 +40,7 @@ abstract class Cream_Session_Abstract extends Cream_ApplicationComponent
     public function start()
     {
         $options = array(
-            'save_path' => $this->getApplication()->getOptions()->getSessionDir(),
+            'save_path' => $this->_getApplication()->getOptions()->getSessionDir(),
             'use_only_cookies'=>'off',
         );
 

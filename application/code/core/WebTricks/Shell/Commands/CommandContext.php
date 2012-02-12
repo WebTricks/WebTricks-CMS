@@ -65,6 +65,21 @@ class WebTricks_Shell_Commands_CommandContext extends Cream_Object
 		$this->_setData('result', $result);
 	}
 	
+	public function getValue()
+	{
+		return $this->_getData('value');
+	}
+	
+	public function hasValue()
+	{
+		return $this->_hasData('value');
+	}
+	
+	public function setValue($value)
+	{
+		$this->_setData('value', $value);
+	}
+	
 	/**
 	 * Returns the context message
 	 * 

@@ -252,7 +252,7 @@ class Cream_ApplicationOptions extends Cream_ApplicationComponent
      */
     public function getModuleDir($type, $moduleName)
     {
-        $codePool = (string)$this->getApplication()->getConfig()->getModuleConfig($moduleName)->codePool;
+        $codePool = (string)$this->_getApplication()->getConfig()->getModuleConfig($moduleName)->codePool;
         $dir = $this->getCodeDir() . DS . $codePool . DS . Cream_Utility::ucWords($moduleName, DS);
 
         switch ($type) {

@@ -4,13 +4,13 @@ class Cream_Controller_Request_Resolver_Repository extends Cream_Controller_Requ
 {
 	public function process()
 	{
-		$repositoryName = $this->getApplication()->getRequest()->getParam('__repository');
+		$repositoryName = $this->_getApplication()->getRequest()->getParam('__repository');
 		
 		if ($repositoryName) {
-			$repository = $this->getApplication()->getRepository($repositoryName);
+			$repository = Cream_Content_Managers_RepositoryProvider::getRepository($repositoryName);
 		
 			if ($repository) {
-				$this->getApplication()->getContext()->setRepository($repository);
+				$this->_getApplication()->getContext()->setRepository($repository);
 			} else {
 				throw new Cream_Controller_Exception('Could not find repository "'. $repositoryName .'" from query string.');
 			}

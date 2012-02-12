@@ -53,7 +53,7 @@ $application->init();
 
 set_time_limit(3600);
 
-replaceGuids('878154c8-3299-4a54-af59-24ab7347fbb6');
+replaceGuids('1bc2a8d1-0e14-489a-af4c-ad95c15a090b');
 
 function replaceGuids($parent)
 {
@@ -62,7 +62,7 @@ function replaceGuids($parent)
 	global $application;
 	
 	//$guid = Cream_Guid::generateGuid();
-	$guid = Cream_Guid::parseGuid('24ecd8eb-b3aa-4439-b200-4fde450f2b21');
+	$guid = Cream_Guid::parseGuid('4d09ce1a-44b5-483a-a9b4-dc59e57dc54b');
 	
 	$update = Cream_Data_Statement_Update::instance();
 	$update->from('content_item');
