@@ -29,7 +29,7 @@ WebTricks.Shell.Applications.Tools.Run = Ext.extend(WebTricks.Shell.Module,
 	/**
 	 * URL to use for determining the ID of the application
 	 */
-	url : '/index.php/webtricks/application_tool_run/run',
+	url : '/index.php/webtricks/application_tools_run/run',
 	
 	/**
 	 * Input textfield
