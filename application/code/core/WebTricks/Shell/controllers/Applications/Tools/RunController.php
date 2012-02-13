@@ -17,7 +17,7 @@
  * @package		WebTricks_Shell
  * @author		Danny Verkade
  */
-class WebTricks_Shell_Applications_Tool_RunController extends WebTricks_Shell_Controller_Action
+class WebTricks_Shell_Applications_Tools_RunController extends WebTricks_Shell_Controller_Action
 {
 	/**
 	 * Root path where to find the applications
