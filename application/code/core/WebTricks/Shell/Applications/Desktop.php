@@ -55,6 +55,9 @@ class WebTricks_Shell_Applications_Desktop extends Cream_ApplicationComponent
 		$startMenu = WebTricks_Shell_Applications_Desktop_StartMenu::instance();
 		$startMenuConfig = $startMenu->getExtControl($startMenuItem);
 		
+		$trayItem = $repository->getItemByPath('webtricks/content/applications/desktop/tray');
+		$trayConfig = $this->_getTrayConfig($trayItem);
+		
 		$itemId = $this->_getApplication()->getContext()->getRepository()->getDataManager()->resolvePath(self::REPOSITORY_PATH_APPLICATION);
 		$item = $this->_getApplication()->getContext()->getRepository()->getItem($itemId);
 		
@@ -65,7 +68,7 @@ class WebTricks_Shell_Applications_Desktop extends Cream_ApplicationComponent
 		$application->setDesktopConfig(array(
 		'launchers' => array('shortcut' => array('16192c38-8337-4895-9364-4d29e78b7b40'), 'quickstart' => array('47a2f005-e136-44ef-81c2-af1761674445')),
 		'background' => array('color' => '3769b0', 'wallpaperPosition' => 'center', 'wallpaper' => '/media/shell/base/default/images/background.png'),
-		'taskbarConfig' => array('startMenuConfig' => $startMenuConfig)));
+		'taskbarConfig' => array('startMenuConfig' => $startMenuConfig, 'trayConfig' => $trayConfig)));
 		
 		return $application;
 	}
@@ -106,5 +109,18 @@ class WebTricks_Shell_Applications_Desktop extends Cream_ApplicationComponent
 	protected function _getJavascriptClass($class)
 	{
 		return str_replace('_', '.', $class);
+	}
+	
+	protected function _getTrayConfig(Cream_Content_Item $item)
+	{
+		$config = array();
+		
+		foreach($item->getChildren() as $child) {
+			
+			
+			$config[] = array('text' => $child->get('Tool tip'), 'iconCls' => 'icon-'. $child->getAppearance()->getIcon());	
+		}
+		
+		return $config;
 	}
 }

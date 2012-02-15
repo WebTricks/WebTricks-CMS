@@ -32,9 +32,9 @@ Ext.ux.TaskBar = Ext.extend(Ext.Container, {
    desktop: null,
    /**
     * Read only.
-    * @type {Ext.ux.QuickStartPanel}
+    * @type {Ext.ux.TrayPanel}
     */
-   quickStartPanel: null,
+   trayPanel: null,
    /**
     * Read only.
     * @type {Ext.Button}
@@ -96,12 +96,13 @@ Ext.ux.TaskBar = Ext.extend(Ext.Container, {
          }
       }, this);
 
-      this.quickStartPanel = new Ext.ux.QuickStartPanel(Ext.apply({
-         region: 'west',
-         split: true,
-         width: 120
-      }, config.quickstartConfig || {}));
-      this.quickStartPanel.taskbar = this;
+      this.trayPanel = new Ext.ux.QuickStartPanel(Ext.apply({
+         region: 'east',
+         split: false,
+         width: 50
+      }));
+      this.trayPanel.taskbar = this;
+      this.trayPanel.trayConfig = config.trayConfig; 
 
       this.taskButtonPanel = new Ext.ux.TaskButtonsPanel({
          region: 'center'
@@ -113,8 +114,8 @@ Ext.ux.TaskBar = Ext.extend(Ext.Container, {
             this.startButton,
             {
                items: [
-                  this.quickStartPanel,
-                  this.taskButtonPanel
+                  this.taskButtonPanel,
+                  this.trayPanel
                ],
                layout: 'border',
                region: 'center',
@@ -197,15 +198,15 @@ Ext.ux.TaskBar = Ext.extend(Ext.Container, {
    /**
     * @param {Object}
     */
-   addQuickStartButton : function(config){
-      return this.quickStartPanel.add(Ext.apply(config, { scale: this.buttonScale }));
+   addTrayPanelButton : function(config){
+      return this.trayPanel.add(Ext.apply(config, { scale: this.buttonScale }));
    },
 
    /**
     * @param {Ext.Button}
     */
-   removeQuickStartButton : function(btn){
-      this.quickStartPanel.remove(btn);
+   removeTrayPanelButton : function(btn){
+      this.trayPanel.remove(btn);
    }
 });
 
@@ -576,6 +577,7 @@ Ext.ux.QuickStartPanel = Ext.extend(Ext.BoxComponent, {
     * @cfg {Ext.ux.Taskbar}
     */
    taskbar: null,
+   trayConfig: {},
    enableMenu: true,
 
    onRender : function(ct, position){
@@ -599,6 +601,15 @@ Ext.ux.QuickStartPanel = Ext.extend(Ext.BoxComponent, {
       this.strip.createChild({
         	cls: 'x-clear'
       });
+   },
+   
+   afterRender: function()
+   {
+      	Ext.ux.QuickStartPanel.superclass.afterRender.call(this);		
+      	   	
+		Ext.each(this.trayConfig, function(child) {
+			this.add(child);
+		}, this);	
    },
 
    initComponent : function(){

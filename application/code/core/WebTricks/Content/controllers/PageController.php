@@ -49,7 +49,7 @@ class WebTricks_Content_PageController extends WebTricks_Content_Controller_Acti
         $this->getResponse()->setHeader('HTTP/1.1','404 Not Found');
         $this->getResponse()->setHeader('Status','404 File not found');
         
-        print 'asdf';
+        print '404 page not found';
 
         //$pageId = Mage::getStoreConfig(Mage_Cms_Helper_Page::XML_PATH_NO_ROUTE_PAGE);
         //if (!Mage::helper('cms/page')->renderPage($this, $pageId)) {
