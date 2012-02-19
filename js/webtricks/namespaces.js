@@ -16,3 +16,4 @@ Ext.namespace("WebTricks.Shell.Applications.Tools");
 Ext.namespace("WebTricks.Shell.Applications.WebEdit");
 Ext.namespace("WebTricks.Shell.Applications.WebEdit.Dialogs");
 Ext.namespace("WebTricks.Shell.Controls");
+Ext.namespace("WebTricks.Shell.Controls.Form");

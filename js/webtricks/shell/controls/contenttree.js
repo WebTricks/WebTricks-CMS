@@ -8,7 +8,7 @@ WebTricks.Shell.Controls.ContentTree = function(config)
     this.containerScroll = true;
     this.border = true;
 
-    this.dataUrl = '/index.php/webtricks/application_contentmanager_tree/children';
+    this.dataUrl = '/index.php/webtricks/applications_contentManager_tree/children';
 
     this.root = new Ext.tree.AsyncTreeNode({
         nodeType: 'async',
@@ -24,7 +24,7 @@ WebTricks.Shell.Controls.ContentTree = function(config)
 			var location = e.getXY();
 			
 	    	Ext.Ajax.request({
-	    		url: '/index.php/webtricks/application_contentmanager_tree/contextmenu',
+	    		url: '/index.php/webtricks/applications_contentManager_tree/contextmenu',
 	    		params: {
 	    			itemId: node.attributes.id
 	    		},

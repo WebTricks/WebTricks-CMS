@@ -542,3 +542,15 @@ a.x-menu-item-large img.x-menu-item-icon {
 .x-contenteditor-header-title h1
 {
 	font-size: 18px;
+}
+
+/* GROUPED COMBO BOX */
+.x-combo-list-group	
+{
+	font: bold 12px tahoma,arial,helvetica,sans-serif;
+	padding: 2px;
+	border: 1px solid #fff;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

@@ -134,7 +134,7 @@
 			<item_checkin>WebTricks_Shell_Commands_CheckIn</item_checkin>
 			<item_checkout>WebTricks_Shell_Commands_CheckOut</item_checkout>
 			<item_compareversions>WebTricks_Shell_Commands_Item_CompareVersions</item_compareversions>
-			<item_copyto>WebTricks_Shell_Commands_CopyTo</item_copyto>
+			<item_copyto>WebTricks_Shell_Commands_Item_CopyTo</item_copyto>
 			<item_copytoclipboard>WebTricks_Shell_Commands_Item_CopyToClipboard</item_copytoclipboard>
 			<item_cuttoclipboard>WebTricks_Shell_Commands_Item_CutToClipboard</item_cuttoclipboard>
 			<item_create>WebTricks_Shell_Commands_Create</item_create>
@@ -151,7 +151,7 @@
 			<item_movedown>WebTricks_Shell_Commands_Item_MoveDown</item_movedown>
 			<item_movefirst>WebTricks_Shell_Commands_Item_MoveFirst</item_movefirst>
 			<item_movelast>WebTricks_Shell_Commands_Item_MoveLast</item_movelast>
-			<item_moveto>WebTricks_Shell_Commands_MoveTo</item_moveto>
+			<item_moveto>WebTricks_Shell_Commands_Item_MoveTo</item_moveto>
 			<item_moveup>WebTricks_Shell_Commands_Item_MoveUp</item_moveup>
 			<item_myitems>WebTricks_Shell_Commands_MyItems</item_myitems>
 			<item_new>WebTricks_Shell_Commands_Item_New</item_new>

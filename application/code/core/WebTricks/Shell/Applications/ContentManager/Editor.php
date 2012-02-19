@@ -128,15 +128,9 @@ class WebTricks_Shell_Applications_ContentManager_Editor extends WebTricks_Shell
 		
 		$title = $field->getName() .' '. $type .' '. $field->getId();
 		
-		$control = WebTricks_Shell_Applications_ContentManager_Editor_Fields_FieldTypeManager::getField($field);
-		$control->setValue($this->getItem()->getFields()->getField($field->getName())->getValue());
-		$control->setName('editor_'. $field->getId());
-		$control->setWidth('500');
-		//$control->setAutoWidth(true);
+		$fieldControl = WebTricks_Shell_Applications_ContentManager_Editor_Fields_FieldTypeManager::getField($field, $this->getItem());
+		$control = $fieldControl->getExtControl();
 		
-		$button = Cream_Web_UI_ExtControls_Button::instance();
-		$button->setText('tada');
-
 		$container = WebTricks_Shell_Web_UI_ExtControls_ContentManager_Fields_FieldContainer::instance();
 		$container->setItems($control);
 		$container->setTitle($title);

@@ -202,7 +202,7 @@ class WebTricks_Shell_Toolbar_Ribbon
 			
 			if ($click && $enabled == WebTricks_Shell_Commands_CommandState::ENABLED) {
 				$chunkControl->setOnTitleClick(Cream_Expression::instance('function() { alert(this.application.getModule(\'16192c38-8337-4895-9364-4d29e78b7b40\').invokeCommand(\''. $click .'\')); }'));
-				$chunkControl->associate('scope', Cream_Expression::instance('this'));				
+				$chunkControl->associate('scope', Cream_Expression::instance('this'));
 			}
 			
 			return $chunkControl;

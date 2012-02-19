@@ -31,6 +31,13 @@ class WebTricks_Shell_Applications_ContentManager_Editor_Fields_FieldTypeManager
 	 * @var string
 	 */
 	const CACHE_KEY_FIELDTYPEIDS = 'shell_content_fieldtypeids';
+
+	/**
+	 * Defeault field type
+	 * 
+	 * @var string
+	 */	
+	const DEFAULT_FIELD_TYPE = 'WebTricks_Shell_Applications_ContentManager_Editor_Fields_TextField';
 	
 	/**
 	 * Path the the item fields.
@@ -51,9 +58,10 @@ class WebTricks_Shell_Applications_ContentManager_Editor_Fields_FieldTypeManager
 	 * Retrieves a field
 	 *  
 	 * @param Cream_Content_Template_Field $field
-	 * @return Cream_Web_UI_ExtControls_Form_TextField
+	 * @param Cream_Content_Item $item 
+	 * @return WebTricks_Shell_Applications_ContentManager_Editor_Field_Abstract
 	 */
-	public static function getField(Cream_Content_Template_Field $field)
+	public static function getField(Cream_Content_Template_Field $field, Cream_Content_Item $contentItem)
 	{
 		$item = self::getFieldTypeItem($field->getType());
 		
@@ -61,20 +69,15 @@ class WebTricks_Shell_Applications_ContentManager_Editor_Fields_FieldTypeManager
 			$control = $item->get('Control');
 			
 			if (Cream::exists($control)) {
-				$webcontrol = Cream::instance((string) $control);
-
-				if (method_exists($webcontrol, 'setSource')) {
-					$webcontrol->setSource($field->getSource());
-				}
-				
-				return $webcontrol;
-			} else {
-				return Cream_Web_UI_ExtControls_Form_TextField::instance();
+				$fieldControl = Cream::instance((string) $control, $field, $contentItem);
 			}
-			
-		} else {
-			return Cream_Web_UI_ExtControls_Form_TextField::instance();
+		} 
+		
+		if (!isset($fieldControl)) {
+			$fieldControl = Cream::instance(self::DEFAULT_FIELD_TYPE, $field, $contentItem);
 		}
+		
+		return $fieldControl;
 	}
 	
 	/**

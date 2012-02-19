@@ -92,9 +92,7 @@ class Cream_Content_FieldCollection
 		//	} else {
 		//		return null;
 		//	}
-		//}		
-
-		
+		//}			
 	}
 	
 	/**

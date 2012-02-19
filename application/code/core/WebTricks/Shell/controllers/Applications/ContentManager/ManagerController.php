@@ -78,7 +78,9 @@ class WebTricks_Shell_Applications_ContentManager_ManagerController extends WebT
 		$fields = $item->getFields()->getFields();
 		
 		foreach($fields as $field) {
-			$field->setValue($message['values']['editor_'. $field->getFieldId()]);
+			if (isset($message['values']['editor_'. $field->getFieldId()])) {
+				$field->setValue($message['values']['editor_'. $field->getFieldId()]);
+			}
 		}
 				
 		$item->getEditing()->endEdit();
