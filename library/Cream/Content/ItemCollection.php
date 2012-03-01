@@ -49,6 +49,16 @@ class Cream_Content_ItemCollection extends Cream_Collection_Iterator
 	}
 	
 	/**
+	 * Reverses the internal data structure. 
+	 * 
+	 * @return void
+	 */
+	public function reverse()
+	{
+		$this->_data = array_reverse($this->_data);
+	}
+	
+	/**
 	 * Returns the child by the given name. Of no matching item is 
 	 * found, returns null.
 	 * 

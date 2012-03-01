@@ -126,6 +126,13 @@ class Cream_Content_Item extends Cream_ApplicationComponent implements Cream_Sec
 	protected $_runtimeSettings;
 	
 	/**
+	 * Item sorting.
+	 * 
+	 * @var Cream_Content_ItemSorting
+	 */
+	protected $_sorting;
+	
+	/**
 	 * Workflow state of the item
 	 * 
 	 * @var Cream_Content_ItemState
@@ -669,6 +676,20 @@ class Cream_Content_Item extends Cream_ApplicationComponent implements Cream_Sec
 	public function getRepository()
 	{
 		return $this->_repository;
+	}
+	
+	/**
+	 * Returns the item sorting.
+	 * 
+	 * @return Cream_Content_ItemSorting
+	 */
+	public function getSorting()
+	{
+		if (!$this->_sorting) {
+			$this->_sorting = Cream_Content_ItemSorting::instance($this);
+		}
+		
+		return $this->_sorting;		
 	}
 	
 	/**
