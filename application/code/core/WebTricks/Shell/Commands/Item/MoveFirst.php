@@ -32,11 +32,9 @@ class WebTricks_Shell_Commands_Item_MoveFirst extends WebTricks_Shell_Commands_C
 	 */	
 	public function execute(WebTricks_Shell_Commands_CommandContext $context)
 	{
-		$sorting = WebTricks_Shell_Framework_Sorting::instance();
-		
 		if ($context->hasItems()) {
 			foreach($context->getItems() as $item) {
-				$sorting->moveFirst($item);
+				$item->getSorting()->moveToFirst();
 				WebTricks_Shell_Client_Response::refresh((string) $item->getParent()->getItemId());
 			}
 		}		

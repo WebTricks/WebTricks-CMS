@@ -32,11 +32,9 @@ class WebTricks_Shell_Commands_Item_MoveDown extends WebTricks_Shell_Commands_Co
 	 */	
 	public function execute(WebTricks_Shell_Commands_CommandContext $context)
 	{
-		$sorting = WebTricks_Shell_Framework_Sorting::instance();
-		
 		if ($context->hasItems()) {
 			foreach($context->getItems() as $item) {
-				$sorting->moveDown($item);
+				$item->getSorting()->moveDown();
 				WebTricks_Shell_Client_Response::refresh((string) $item->getParent()->getItemId());
 			}
 		}
